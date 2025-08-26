@@ -1,31 +1,81 @@
-/* 🍊 مستطيل برتقالي ترويجي */
+/* 🍊 مستطيل برتقالي ترويجي بنقش خفيف */
 .orange-box {
   background: linear-gradient(90deg, #ff914d, #ff6f00);
   color: #fff;
   padding: 14px 20px;
-  border-radius: 12px;
+  border-radius: 8px;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   margin: 20px auto;
   max-width: 800px;
   text-align: center;
   font-size: 1.1rem;
+  background-image: url('../img/pattern-light.png');
+  background-repeat: repeat;
+  background-blend-mode: overlay;
 }
 
-/* 🧾 زر انتقال كبير */
+/* 🧾 زر انتقال كبير بطابع عملي */
 .cta-button a {
   display: inline-block;
   background: linear-gradient(90deg, #ff5722, #e91e63);
   color: #fff;
   font-weight: bold;
-  padding: 16px 40px;
-  font-size: 1.3rem;
-  border-radius: 50px;
+  padding: 14px 36px;
+  font-size: 1.2rem;
+  border-radius: 12px;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-in-out;
+  background-image: url('../img/pattern-light.png');
+  background-blend-mode: soft-light;
 }
 
 .cta-button a:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
+}
+
+/* 📦 بطاقات الطلبات */
+.order-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  background-image: url('../img/pattern-light.png');
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+}
+
+/* 📋 زر نسخ */
+.copy-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* 📜 زر عرض سجل الطلبات */
+.view-btn {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* 🧠 خلفية الصفحة */
+body {
+  background: #f4f4f4 url('../img/pattern-light.png') repeat;
+  background-blend-mode: overlay;
+  font-family: 'Tajawal', sans-serif;
+  color: #2c3e50;
 }
