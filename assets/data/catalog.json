@@ -1,46 +1,46 @@
 {
   "pizza": [
-    { "name": "بيتزا دجاج", "sizes": { "XL": 65, "L": 45, "M": 33, "S": 18 }, "enabled": true },
-    { "name": "بيتزا خضار", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 }, "enabled": true },
-    { "name": "بيتزا سلامي", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true },
-    { "name": "بيتزا نقانق", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true },
-    { "name": "بيتزا تونة", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true },
-    { "name": "بيتزا مارجريتا", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 }, "enabled": true },
-    { "name": "كلزوني", "sizes": { "XL": 60, "L": 40, "M": 32, "S": 17 }, "enabled": true }
+    { "name": "بيتزا دجاج", "sizes": { "XL": 65, "L": 45, "M": 33, "S": 18 }, "enabled": true, "image": "chicken.png" },
+    { "name": "بيتزا خضار", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 }, "enabled": true, "image": "veggie.png" },
+    { "name": "بيتزا سلامي", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "salami.png" },
+    { "name": "بيتزا نقانق", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "sausage.png" },
+    { "name": "بيتزا تونة", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "tuna.png" },
+    { "name": "بيتزا مارجريتا", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 14 }, "enabled": true, "image": "margherita.png" },
+    { "name": "كلزوني", "sizes": { "XL": 60, "L": 40, "M": 32, "S": 17 }, "enabled": true, "image": "calzone.png" }
   ],
 
   "sides": [
-    { "name": "بطاطا صغير", "price": 5, "enabled": true },
-    { "name": "بطاطا كبير", "price": 10, "enabled": true },
-    { "name": "زنجر صغير", "price": 13, "enabled": true },
-    { "name": "زنجر كبير", "price": 25, "enabled": true },
-    { "name": "أجنحة جنان صغير", "price": 13, "enabled": true },
-    { "name": "أجنحة دجاج كبير", "price": 24, "enabled": true }
+    { "name": "بطاطا صغير", "price": 5, "enabled": true, "image": "fries-small.png" },
+    { "name": "بطاطا كبير", "price": 10, "enabled": true, "image": "fries-large.png" },
+    { "name": "زنجر صغير", "price": 13, "enabled": true, "image": "zinger-small.png" },
+    { "name": "زنجر كبير", "price": 25, "enabled": true, "image": "zinger-large.png" },
+    { "name": "أجنحة جنان صغير", "price": 13, "enabled": true, "image": "wings-small.png" },
+    { "name": "أجنحة دجاج كبير", "price": 24, "enabled": true, "image": "wings-large.png" }
   ],
 
   "drinks": [
-    { "name": "كولا 1.25 لتر", "price": 4, "enabled": true },
-    { "name": "كولا 2 لتر", "price": 6, "enabled": true },
-    { "name": "عصير مانجو", "price": 5, "enabled": true },
-    { "name": "مياه معدنية", "price": 3, "enabled": true }
+    { "name": "كولا 1.25 لتر", "price": 4, "enabled": true, "image": "cola-1.25.png" },
+    { "name": "كولا 2 لتر", "price": 6, "enabled": true, "image": "cola-2.png" },
+    { "name": "عصير مانجو", "price": 5, "enabled": true, "image": "mango.png" },
+    { "name": "مياه معدنية", "price": 3, "enabled": true, "image": "water.png" }
   ],
 
   "cocktails": {
     "enabled": false,
     "items": [
-      { "name": "موهيتو كلاسيك", "description": "نعناع + ليمون + سفن أب", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true },
-      { "name": "موهيتو رمان", "description": "نعناع + ليمون + رمان + سفن أب", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": true },
-      { "name": "موهيتو بلو", "description": "نعناع + ليمون + بلو", "size": "220ml", "price": 6, "type": "كوكتيلات غازية", "enabled": false },
-      { "name": "كوكتيل كولا نعناع", "description": "كولا + نعناع + ليمون", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true },
-      { "name": "كوكتيل كولا رمان", "description": "كولا + رمان + نعناع", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": false }
+      { "name": "موهيتو كلاسيك", "description": "نعناع + ليمون + سفن أب", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-classic.png" },
+      { "name": "موهيتو رمان", "description": "نعناع + ليمون + رمان + سفن أب", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-pomegranate.png" },
+      { "name": "موهيتو بلو", "description": "نعناع + ليمون + بلو", "size": "220ml", "price": 6, "type": "كوكتيلات غازية", "enabled": false, "image": "mojito-blue.png" },
+      { "name": "كوكتيل كولا نعناع", "description": "كولا + نعناع + ليمون", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "cola-mint.png" },
+      { "name": "كوكتيل كولا رمان", "description": "كولا + رمان + نعناع", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": false, "image": "cola-pomegranate.png" }
     ]
   },
 
   "naturalJuices": {
     "enabled": false,
     "items": [
-      { "name": "عصير برتقال طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false },
-      { "name": "عصير جزر طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false }
+      { "name": "عصير برتقال طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false, "image": "orange.png" },
+      { "name": "عصير جزر طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false, "image": "carrot.png" }
     ]
   }
 }
