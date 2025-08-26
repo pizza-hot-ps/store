@@ -35,7 +35,7 @@
   </div>
 
   <div class="card-grid">
-    <div class="card">
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped'); location.href='poster_view_chicken.html'">
       <div class="card-inner">
         <div class="card-front">
           <img src="assets/images/pizza_closeup_main.png" alt="بيتزا قريبة">
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped'); location.href='poster_view_family.html'">
       <div class="card-inner">
         <div class="card-front">
           <img src="assets/images/french_fries_main.jpg" alt="بطاطا مقلية">
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped'); location.href='poster_view_wings.html'">
       <div class="card-inner">
         <div class="card-front">
           <img src="assets/images/grilled_chicken_plate.jpg" alt="دجاج مشوي">
@@ -68,8 +68,7 @@
       </div>
     </div>
 
-    <!-- 🧠 بطاقة شعار PIZZA HOT -->
-    <div class="card">
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped'); location.href='promo_offer.html'">
       <div class="card-inner">
         <div class="card-front">
           <img src="assets/images/pizzahot-bg.jpg" alt="شعار PIZZA HOT">
@@ -80,8 +79,7 @@
       </div>
     </div>
 
-    <!-- 🧃 بطاقة الموهيتو -->
-    <div class="card">
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped'); location.href='poster_gallery.html'">
       <div class="card-inner">
         <div class="card-front">
           <img src="assets/images/Mixed-Berry-Mojito.jpg" alt="موهيتو توت مشكل">
@@ -98,6 +96,13 @@
     &copy; 2025 PIZZA HOT – جميع الحقوق محفوظة
   </div>
 </div>
+
+<!-- ترحيب ذكي حسب الوقت -->
+<script>
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? "صباح الخير" : hour < 18 ? "مساء الخير" : "ليلة سعيدة";
+  document.querySelector("h1").textContent = `🍕 ${greeting}... استعد للعرض`;
+</script>
 
 <script src="floatingCart.js"></script>
 
