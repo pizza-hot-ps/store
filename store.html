@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>🛒 متجر PIZZA HOT – نسخة رمزية</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/store.css">
 
   <!-- إعدادات المشروع -->
@@ -12,6 +12,13 @@
   <script src="assets/js/catalog.js"></script>
 </head>
 <body>
+
+<!-- 🖼️ شعار رمزي -->
+<div class="logo-banner">
+  <img src="assets/images/logo.png" alt="PIZZA HOT Logo">
+</div>
+
+<!-- 🔝 هيدر رمزي -->
 <header>
   <a href="index.html">🏠 الرئيسية</a>
   <a href="promo_offer.html">🔥 العروض</a>
@@ -37,6 +44,7 @@
     🎁 تم تفعيل خصم تلقائي اليوم — لا حاجة لإدخال كود.
   </div>
 
+  <!-- 🍕 قائمة البيتزا -->
   <div class="section">
     <h2>🍕 قائمة البيتزا</h2>
     <table id="pizza-menu" class="menu-table">
@@ -47,6 +55,7 @@
     </table>
   </div>
 
+  <!-- 🍟 أطباق جانبية -->
   <div class="section">
     <h2>🍟 أطباق جانبية</h2>
     <table id="sides-menu" class="menu-table">
@@ -57,11 +66,15 @@
     </table>
   </div>
 
+  <!-- 🥤 مشروبات -->
   <div class="section">
     <h2>🥤 مشروبات</h2>
-    <div id="drinks-container" class="drinks-grid"></div>
+    <div id="drinks-container" class="drinks-grid">
+      <!-- يتم تعبئته ديناميكيًا -->
+    </div>
   </div>
 
+  <!-- 🛒 طلب خاص -->
   <div class="section">
     <h2>🛒 اختيار خاص من السوبرماركت</h2>
     <table id="custom-request" class="menu-table">
@@ -80,6 +93,7 @@
     <button onclick="loadSupermarketCatalog()" class="control-btn">📦 عرض كتالوج السوبرماركت</button>
   </div>
 
+  <!-- 📦 إدارة السلة -->
   <div class="section">
     <h2>📦 إدارة السلة</h2>
     <div id="cart-manager">
@@ -96,21 +110,25 @@
     </div>
   </div>
 
+  <!-- 📎 إدخال كود يدوي -->
   <div class="section">
     <h2>📎 إدخال كود يدوي</h2>
     <button onclick="insertCouponFromClipboard('primary')" class="control-btn">📥 لصق كود في الحقل الأساسي</button>
     <button onclick="insertCouponFromClipboard('secondary')" class="control-btn">📥 لصق كود في الحقل الثانوي</button>
   </div>
 
+  <!-- 🎁 رموز تلقائية -->
   <div class="section">
     <h2>🎁 الرموز التلقائية المتاحة</h2>
     <div id="auto-coupons"></div>
   </div>
 
+  <!-- ✅ إشعار الإضافة -->
   <div id="add-toast" class="toast-success" style="display:none;">
     ✅ تمت إضافة المنتج إلى السلة
   </div>
 
+  <!-- 📍 الفوتر -->
   <div class="footer">
     📍 بلعين – شارع صفا – رام الله<br>
     © 2025 PIZZA HOT — جميع الحقوق محفوظة.
@@ -124,5 +142,6 @@
 <script src="assets/js/messageBuilder.js"></script>
 <script src="assets/js/dailyCoupon.js"></script>
 <script src="assets/js/store.js"></script>
+
 </body>
 </html>
