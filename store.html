@@ -1,147 +1,103 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>🛒 متجر PIZZA HOT – نسخة رمزية</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/store.css">
-
-  <!-- إعدادات المشروع -->
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/catalog.js"></script>
+  <meta charset="UTF-8" />
+  <title>PIZZA HOT – لحظة التحمير</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
 
-<!-- 🖼️ شعار رمزي -->
-<div class="logo-banner">
-  <img src="assets/images/logo.png" alt="PIZZA HOT Logo">
-</div>
-
-<!-- 🔝 هيدر رمزي -->
 <header>
-  <a href="index.html">🏠 الرئيسية</a>
-  <a href="promo_offer.html">🔥 العروض</a>
-  <a href="store.html">🛒 المتجر</a>
+  <a href="index.html">🏠</a>
+  <a href="store.html">🛒 القائمة</a>
+  <a href="promo_offer.html">🔥 العرض</a>
+  <a href="poster_gallery.html">📸 البوسترات</a>
+  <a href="account.html">👤 حسابي</a>
 </header>
 
 <div class="overlay">
-  <h1>🛒 متجر PIZZA HOT – نسخة رمزية</h1>
+  <h1>🍕 لحظة التحمير... استعد للعرض</h1>
 
-  <div class="updated-badge">
-    🚀 تم تحديث نظام الخصومات رسميًا<br>
-    🕒 يبدأ العمل الساعة 21:05 مساءً – 26 أغسطس 2025
+  <div class="cta-ribbon">
+    <a href="store.html">
+      🍕 ابدأ الطلب الآن من الكتالوج
+    </a>
   </div>
 
-  <div class="note-box">
-    🎟️ الكود اليومي: <span id="daily-coupon-box">—</span><br>
-    <button class="control-btn" onclick="insertCoupon(document.getElementById('daily-coupon-box').textContent.trim(), 'primary')">
-      📥 نسخ الكود اليومي إلى الحقل الأساسي
-    </button>
+  <div class="main-links">
+    <a href="promo_offer.html">🔥 عرض العائلة من PIZZA HOT</a>
+    <a href="poster_view_chicken.html">🍕 عرض بيتزا دجاج XL</a>
+    <a href="poster_view_wings.html">🍗 عرض أجنحة الدجاج</a>
+    <a href="poster_gallery.html">📸 استعرض البوسترات والعروض المصوّرة</a>
+    <a href="https://wa.me/972569788731" target="_blank" class="whatsapp">💬 اطلب عبر واتساب مباشرةً</a>
   </div>
 
-  <div id="auto-discount-alert" class="auto-discount-alert">
-    🎁 تم تفعيل خصم تلقائي اليوم — لا حاجة لإدخال كود.
-  </div>
+  <div class="card-grid">
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/pizza_closeup_main.png" alt="بيتزا قريبة">
+        </div>
+        <div class="card-back">
+          بيتزا نابولي الأصلية – جاهزة للطلب
+        </div>
+      </div>
+    </div>
 
-  <!-- 🍕 قائمة البيتزا -->
-  <div class="section">
-    <h2>🍕 قائمة البيتزا</h2>
-    <table id="pizza-menu" class="menu-table">
-      <thead>
-        <tr><th>النوع</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/french_fries_main.jpg" alt="بطاطا مقلية">
+        </div>
+        <div class="card-back">
+          بطاطا مقلية ذهبية – الجانب المثالي لكل وجبة
+        </div>
+      </div>
+    </div>
 
-  <!-- 🍟 أطباق جانبية -->
-  <div class="section">
-    <h2>🍟 أطباق جانبية</h2>
-    <table id="sides-menu" class="menu-table">
-      <thead>
-        <tr><th>الصنف</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/grilled_chicken_plate.jpg" alt="دجاج مشوي">
+        </div>
+        <div class="card-back">
+          دجاج مشوي بتتبيلة رمزية – نكهة لا تُقاوم
+        </div>
+      </div>
+    </div>
 
-  <!-- 🥤 مشروبات -->
-  <div class="section">
-    <h2>🥤 مشروبات</h2>
-    <div id="drinks-container" class="drinks-grid">
-      <!-- يتم تعبئته ديناميكيًا -->
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/pizzahot-bg.jpg" alt="شعار PIZZA HOT">
+        </div>
+        <div class="card-back">
+          أهلاً بك في PIZZA HOT – نكهة، هوية، وتجربة لا تُنسى
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/Mixed-Berry-Mojito.jpg" alt="موهيتو توت مشكل">
+        </div>
+        <div class="card-back">
+          مشروب منعش بنكهة التوت – تجربة رمزية من عالم PIZZA HOT
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- 🛒 طلب خاص -->
-  <div class="section">
-    <h2>🛒 اختيار خاص من السوبرماركت</h2>
-    <table id="custom-request" class="menu-table">
-      <thead>
-        <tr><th>الوصف</th><th>السعر</th><th>الكمية</th><th>أضف</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><input type="text" placeholder="📝 المنتج أو الوصف" id="custom-label"></td>
-          <td><input type="number" placeholder="₪ (اختياري)" id="custom-price" min="0"></td>
-          <td><input type="number" value="1" min="1" id="custom-qty"></td>
-          <td><button onclick="addCustomItem()" class="add-btn">أضف</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <button onclick="loadSupermarketCatalog()" class="control-btn">📦 عرض كتالوج السوبرماركت</button>
-  </div>
-
-  <!-- 📦 إدارة السلة -->
-  <div class="section">
-    <h2>📦 إدارة السلة</h2>
-    <div id="cart-manager">
-      <input id="user-name" placeholder="👤 اسمك (اختياري)" />
-      <input id="user-address" placeholder="📍 العنوان/هاتفك (اختياري)" />
-      <input id="user-coupon" placeholder="🎟️ كود الخصم الرئيسي" />
-      <input id="secondary-coupon" placeholder="🎟️ كود إضافي (ربع الخصم)" />
-
-      <button id="start-btn" class="control-btn">☑ معاينة الطلب</button>
-      <button id="clear-cart" class="control-btn">🗑️ تفريغ السلة</button>
-      <button id="send-wa" class="control-btn">📤 إرسال الطلب</button>
-
-      <div id="cart-preview" class="cart-box"></div>
-    </div>
-  </div>
-
-  <!-- 📎 إدخال كود يدوي -->
-  <div class="section">
-    <h2>📎 إدخال كود يدوي</h2>
-    <button onclick="insertCouponFromClipboard('primary')" class="control-btn">📥 لصق كود في الحقل الأساسي</button>
-    <button onclick="insertCouponFromClipboard('secondary')" class="control-btn">📥 لصق كود في الحقل الثانوي</button>
-  </div>
-
-  <!-- 🎁 رموز تلقائية -->
-  <div class="section">
-    <h2>🎁 الرموز التلقائية المتاحة</h2>
-    <div id="auto-coupons"></div>
-  </div>
-
-  <!-- ✅ إشعار الإضافة -->
-  <div id="add-toast" class="toast-success" style="display:none;">
-    ✅ تمت إضافة المنتج إلى السلة
-  </div>
-
-  <!-- 📍 الفوتر -->
   <div class="footer">
-    📍 بلعين – شارع صفا – رام الله<br>
-    © 2025 PIZZA HOT — جميع الحقوق محفوظة.
+    بلعين – شارع صفا – رام الله<br>
+    &copy; 2025 PIZZA HOT – جميع الحقوق محفوظة
   </div>
 </div>
 
-<!-- ✅ تحميل السكربتات -->
-<script src="assets/js/cart.js"></script>
-<script src="assets/js/discountEngine.js"></script>
-<script src="assets/js/discountRules.js"></script>
-<script src="assets/js/messageBuilder.js"></script>
-<script src="assets/js/dailyCoupon.js"></script>
-<script src="assets/js/store.js"></script>
+<script src="floatingCart.js"></script>
 
 </body>
 </html>
