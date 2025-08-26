@@ -134,17 +134,39 @@ h1 {
 
 /* 📱 دعم الجوال */
 @media (max-width: 480px) {
-  header a {
-    font-size: 1rem;
-    margin: 0 6px;
+  header {
+    flex-wrap: wrap;
+    padding: 10px 0;
   }
 
-  .view-btn {
+  header a {
     font-size: 1rem;
-    padding: 12px 18px;
+    margin: 6px;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin: 20px 0 8px;
+  }
+
+  .cta-ribbon .view-btn {
+    font-size: 1rem;
+    padding: 10px 24px;
+    box-shadow: 0 0 10px 3px rgba(255, 140, 0, 0.4);
+  }
+
+  .main-links {
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .main-links .view-btn {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+
+  .footer {
+    font-size: 0.85rem;
+    padding-bottom: 60px;
   }
 }
