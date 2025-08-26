@@ -1,172 +1,145 @@
-/* 🧠 خلفية بنقش رمزي + طبقة شعار ديناميكية */
+/* 🧩 تنسيق عام للصفحة */
 body {
+  font-family: "Cairo", sans-serif;
+  background-color: #f9f9f9;
   margin: 0;
-  font-family: 'Tajawal', sans-serif;
-  background-color: #111;
-  background-image:
-    url('../images/logo.png'),
-    url('../images/storeassetsimagesbrand-pattern.png');
-  background-repeat: repeat, repeat;
-  background-size: 80px, auto;
-  background-blend-mode: normal;
-  color: #fff;
-  scroll-behavior: smooth;
-  line-height: 1.8em;
-  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+  padding: 20px;
+  direction: rtl;
+  color: #333;
 }
 
-/* 🧱 طبقة خلفية احتياطية */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url('../images/pizzahot-bg.jpg') no-repeat center center;
-  background-size: cover;
-  opacity: 0.015;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* 🧭 شريط التنقل */
-header {
-  position: fixed;
-  top: 0;
+/* 🧾 الجداول */
+table {
   width: 100%;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  justify-content: center;
-  padding: 14px 0;
-  border-bottom: 1px solid #444;
-  z-index: 1000;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-header a {
-  color: #ffd700;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 0 14px;
-}
-
-header a:hover {
-  color: #fff;
-}
-
-/* 🧱 طبقة التعتيم */
-.overlay {
-  padding-top: 90px;
-  background-color: rgba(0,0,0,0.75);
-  min-height: 100vh;
-  position: relative;
-  z-index: 1;
-}
-
-/* 🧩 العنوان الرئيسي */
-h1 {
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
   text-align: center;
-  font-size: clamp(2rem, 5.5vw, 2.8rem);
-  color: #ffd700;
-  margin: 35px 0 10px;
 }
 
-/* 🎯 زر رئيسي مميز */
-.cta-ribbon .view-btn {
-  background: linear-gradient(90deg, #ff9800, #ff5722);
-  color: #fff;
-  box-shadow: 0 0 12px 4px rgba(255, 140, 0, 0.5);
-  border: 2px solid #ff9800;
-  font-weight: bold;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-size: 1.15rem;
-  text-decoration: none;
-  transition: transform 0.3s, background 0.3s;
-  position: relative;
-  z-index: 2;
+thead {
+  background-color: #f0f0f0;
 }
 
-.cta-ribbon .view-btn:hover {
-  transform: scale(1.05);
-  filter: brightness(1.2);
+.highlight-row {
+  background-color: #ffeeba;
 }
 
-/* 📜 أزرار العرض الموحد */
-.main-links .view-btn {
-  display: inline-block;
-  background: linear-gradient(90deg, #d32f2f, #c2185b);
-  color: #fff;
-  font-weight: bold;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-size: 1.15rem;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-  transition: transform 0.3s, background 0.3s;
-  position: relative;
-  z-index: 2;
-  border: none;
-}
-
-.main-links .view-btn:hover {
-  transform: scale(1.05);
-  filter: brightness(1.15);
-}
-
-/* 🧩 روابط رئيسية */
-.main-links {
+/* 🧃 أقسام المشروبات */
+#drinks-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
-/* 🧾 التذييل */
-.footer {
-  text-align: center;
-  font-size: 0.95rem;
-  color: #ccc;
-  margin-top: 50px;
-  padding-bottom: 100px;
-  line-height: 1.6em;
+.drink-section {
+  flex: 1 1 30%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
 }
 
-/* 📱 دعم الجوال */
-@media (max-width: 480px) {
-  header {
-    flex-wrap: wrap;
-    padding: 10px 0;
+.drink-section h4 {
+  margin-top: 0;
+  color: #007bff;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* 📱 استجابة للهاتف */
+@media (max-width: 768px) {
+  .drink-section {
+    flex: 1 1 100%;
   }
 
-  header a {
-    font-size: 1rem;
-    margin: 6px;
+  table {
+    font-size: 14px;
   }
 
-  h1 {
-    font-size: 1.8rem;
-    margin: 20px 0 8px;
+  th, td {
+    padding: 6px;
   }
+}
 
-  .cta-ribbon .view-btn {
-    font-size: 1rem;
-    padding: 10px 24px;
-    box-shadow: 0 0 10px 3px rgba(255, 140, 0, 0.4);
-  }
+/* 🛒 زر الإضافة */
+.add-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
 
-  .main-links {
-    gap: 14px;
-    padding: 16px;
-  }
+.add-btn:hover {
+  background-color: #0056b3;
+}
 
-  .main-links .view-btn {
-    font-size: 0.95rem;
-    padding: 10px 20px;
-  }
+/* ✅ تأثير الإضافة */
+.add-btn.success {
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
 
-  .footer {
-    font-size: 0.85rem;
-    padding-bottom: 60px;
-  }
+/* 🔺 تمييز المنتجات غير المسعّرة */
+li[style*="background:#fff3cd"] {
+  font-weight: bold;
+  color: #d9534f;
+}
+
+/* 📦 معاينة الطلب */
+#cart-preview {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* 🎁 تنبيه الخصم التلقائي */
+#auto-discount-alert {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #c3e6cb;
+  display: none;
+  border-radius: 4px;
+}
+
+/* 📋 زر النسخ */
+.copy-btn {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.copy-btn:hover {
+  background-color: #e0a800;
+}
+
+/* 🧠 مدخلات الزبون */
+input[type="text"], input[type="number"] {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* 🎯 أزرار التحكم */
+button {
+  font-family: inherit;
 }
