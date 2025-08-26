@@ -3,10 +3,8 @@ fetch("assets/data/catalog.json")
   .then(res => res.json())
   .then(data => {
     window.catalog = data;
-    renderCatalog();
+    renderCatalog(); // عرض الكتالوج الرسمي فقط
   });
-
-// 🧩 تحميل كتالوج السوبرماركت بشكل منفصل عند الحاجة فقط
 let supermarketCatalog = [];
 
 function loadSupermarketCatalog() {
@@ -164,9 +162,14 @@ function addCustomItem() {
     price = known.price;
   }
 
-  if (!label || isNaN(price) || isNaN(qty) || price <= 0 || qty <= 0) {
-    alert("يرجى إدخال وصف وسعر وكمية صحيحة");
+  // تعديل رمزي: السماح بإضافة المنتج حتى لو السعر غير معروف
+  if (!label || isNaN(qty) || qty <= 0) {
+    alert("يرجى إدخال اسم المنتج وكمية صحيحة");
     return;
+  }
+
+  if (isNaN(price) || price <= 0) {
+    price = 0; // السعر غير معروف
   }
 
   addToCart(label, price, qty);
@@ -186,7 +189,8 @@ function sendOrder() {
   const orderId = Date.now(); // رقم طلب فريد
   const rawTotal = cartData.reduce((sum, item) => sum + item.price * item.qty, 0);
   const { total, applied, breakdown } = DiscountEngine.apply(
-    rawTotal, cartData, userName, coupon1, coupon2, "instore", new Date().toISOString(), "whatsapp", new Date().getHours()
+    rawTotal, cartData, userName, coupon1, coupon2, "instore",
+    new Date().toISOString(), "whatsapp", new Date().getHours()
   );
 
   const unknownItems = cartData.filter(i => !i.price || i.price === 0);
@@ -199,8 +203,10 @@ function sendOrder() {
 -----------------------
 ${cartData.map(item => {
     const line = `• ${item.qty} × ${item.item} = ${(item.price * item.qty).toFixed(2)}₪`;
-    return item.price ? line : `${line} (🔗 السعر غير معروف – أدخل هنا: https://pizza-hot.ps/admin/price?id=${orderId})`;
-}).join("\n")}
+    return item.price > 0
+      ? line
+      : `${line} (🔗 السعر غير معروف – أدخل هنا: ${config.adminPanelURL}?id=${orderId})`;
+  }).join("\n")}
 -----------------------
 الإجمالي قبل الخصم: ${rawTotal.toFixed(2)}₪
 الخصومات:
@@ -235,10 +241,13 @@ function renderCart() {
   const rawTotal = cartData.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const { total, applied, breakdown } = DiscountEngine.apply(
-    rawTotal, cartData, userName, coupon1, coupon2, "instore", new Date().toISOString(), "whatsapp", new Date().getHours()
+    rawTotal, cartData, userName, coupon1, coupon2,
+    "instore", new Date().toISOString(), "whatsapp", new Date().getHours()
   );
 
-  const autoRule = applied.find(name => name.includes("تلقائي") || name.includes("FRIDAY") || name.includes("HOLIDAY"));
+  const autoRule = applied.find(name =>
+    name.includes("تلقائي") || name.includes("FRIDAY") || name.includes("HOLIDAY")
+  );
   document.getElementById("auto-discount-alert").style.display = autoRule ? "block" : "none";
 
   const preview = document.getElementById("cart-preview");
@@ -252,7 +261,14 @@ function renderCart() {
     <p>💸 الإجمالي بعد الخصم: <strong>${total.toFixed(2)}₪</strong></p>
     <p>🎟️ الكود الأساسي: ${coupon1 || "—"} | الكود الثانوي: ${coupon2 || "—"}</p>
     <p>🧾 محتوى السلة:</p>
-    <ul>${cartData.map(i => `<li>${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}₪</li>`).join("")}</ul>
+    <ul>
+      ${cartData.map(i => {
+        const line = `${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}₪`;
+        return i.price > 0
+          ? `<li>${line}</li>`
+          : `<li style="background:#fff3cd;border-right:4px solid orange;">${line} 🔺 السعر غير معروف</li>`;
+      }).join("")}
+    </ul>
     <button class="copy-btn" onclick="copyOrderMessage()">📋 نسخ الطلب</button>
   `;
 }
