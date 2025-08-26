@@ -1,13 +1,26 @@
-/* 🧠 خلفية بنقش خفيف */
+/* 🧠 خلفية بنقش رمزي */
 body {
   margin: 0;
   font-family: 'Tajawal', sans-serif;
-  background: #1b1b1b url('../img/pattern-dark.png') repeat;
+  background: #1b1b1b url('../images/brand-pattern.png') repeat;
   background-blend-mode: overlay;
   color: #fff;
   scroll-behavior: smooth;
   line-height: 1.8em;
   font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+}
+
+/* 🧱 طبقة خلفية احتياطية */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('../images/pizzahot-bg.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* 🧭 شريط التنقل */
@@ -40,6 +53,8 @@ header a:hover {
   padding-top: 90px;
   background-color: rgba(0,0,0,0.75);
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 /* 🧩 العنوان الرئيسي */
@@ -59,7 +74,9 @@ h1 {
 /* 📜 زر عرض موحد */
 .view-btn {
   display: inline-block;
-  background: linear-gradient(90deg, #00e676, #00c853);
+  background: url('../images/bo-play.png'), linear-gradient(90deg, #00e676, #00c853);
+  background-blend-mode: overlay;
+  background-size: cover;
   color: #111;
   font-weight: bold;
   padding: 12px 30px;
@@ -68,10 +85,12 @@ h1 {
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(0,0,0,0.3);
   transition: transform 0.3s, background 0.3s;
+  position: relative;
+  z-index: 2;
 }
 
 .view-btn:hover {
-  background: linear-gradient(90deg, #00c853, #00e676);
+  background: url('../images/bo-play.png'), linear-gradient(90deg, #00c853, #00e676);
   color: #fff;
   transform: scale(1.05);
 }
