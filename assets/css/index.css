@@ -52,6 +52,16 @@ thead {
   text-align: center;
 }
 
+.drink-table {
+  width: 100%;
+  font-size: 15px;
+}
+
+.drink-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
 /* 📱 استجابة للهاتف */
 @media (max-width: 768px) {
   .drink-section {
@@ -67,6 +77,18 @@ thead {
   }
 }
 
+@media (max-width: 480px) {
+  #cart-preview {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .copy-btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
 /* 🛒 زر الإضافة */
 .add-btn {
   background-color: #007bff;
@@ -75,11 +97,15 @@ thead {
   padding: 6px 12px;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.1s;
 }
 
 .add-btn:hover {
   background-color: #0056b3;
+}
+
+.add-btn:active {
+  transform: scale(0.95);
 }
 
 /* ✅ تأثير الإضافة */
@@ -140,6 +166,20 @@ input[type="text"], input[type="number"] {
 }
 
 /* 🎯 أزرار التحكم */
+.control-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.control-btn:hover {
+  background-color: #5a6268;
+}
+
 button {
   font-family: inherit;
 }
