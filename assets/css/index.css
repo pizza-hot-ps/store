@@ -2,8 +2,11 @@
 body {
   margin: 0;
   font-family: 'Tajawal', sans-serif;
-  background: #1b1b1b url('../images/brand-pattern.png') repeat;
-  background-blend-mode: overlay;
+  background-color: #111;
+  background-image: url('../images/brand-pattern.png');
+  background-repeat: repeat;
+  background-size: auto;
+  background-blend-mode: normal;
   color: #fff;
   scroll-behavior: smooth;
   line-height: 1.8em;
@@ -18,7 +21,7 @@ body::before {
   width: 100%; height: 100%;
   background: url('../images/pizzahot-bg.jpg') no-repeat center center;
   background-size: cover;
-  opacity: 0.04;
+  opacity: 0.015;
   pointer-events: none;
   z-index: 0;
 }
@@ -75,7 +78,7 @@ h1 {
 .view-btn {
   display: inline-block;
   background: url('../images/bo-play.png'), linear-gradient(90deg, #00e676, #00c853);
-  background-blend-mode: overlay;
+  background-blend-mode: soft-light;
   background-size: cover;
   color: #111;
   font-weight: bold;
