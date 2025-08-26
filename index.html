@@ -5,133 +5,7 @@
   <title>PIZZA HOT – الصفحة الرئيسية</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: url('assets/images/wood_leaf_bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      scroll-behavior: smooth;
-      line-height: 1.8em;
-      font-size: clamp(1.1rem, 2.4vw, 1.3rem);
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.85);
-      display: flex;
-      justify-content: center;
-      padding: 14px 0;
-      border-bottom: 1px solid #444;
-      z-index: 1000;
-    }
-
-    header a {
-      color: #ffd700;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 0 14px;
-    }
-
-    header a:hover {
-      color: #fff;
-    }
-
-    .overlay {
-      padding-top: 90px;
-      background-color: rgba(0,0,0,0.75);
-      min-height: 100vh;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: clamp(2rem, 5.5vw, 2.8rem);
-      color: #ffd700;
-      margin: 35px 0 10px;
-    }
-
-    .cta-ribbon {
-      text-align: center;
-      margin: 0 auto 36px;
-    }
-
-    .cta-ribbon a {
-      display: inline-block;
-      background: linear-gradient(90deg, #00e676, #00c853);
-      color: #111;
-      font-weight: bold;
-      padding: 12px 30px;
-      border-radius: 50px;
-      font-size: 1.15rem;
-      text-decoration: none;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .cta-ribbon a:hover {
-      background: linear-gradient(90deg, #00c853, #00e676);
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    .main-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 24px;
-      gap: 20px;
-    }
-
-    .main-links a {
-      background-color: rgba(255, 255, 255, 0.08);
-      border: 1px solid #ffd700;
-      border-radius: 10px;
-      color: #fff;
-      padding: 14px 26px;
-      font-size: 1.1rem;
-      text-decoration: none;
-      width: 92%;
-      max-width: 400px;
-      text-align: center;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .main-links a:hover {
-      background-color: #ffd700;
-      color: #000;
-      font-weight: bold;
-      transform: scale(1.03);
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 0.95rem;
-      color: #ccc;
-      margin-top: 50px;
-      padding-bottom: 100px;
-      line-height: 1.6em;
-    }
-
-    @media (max-width: 480px) {
-      header a {
-        font-size: 1rem;
-        margin: 0 6px;
-      }
-
-      .main-links a {
-        font-size: 1rem;
-        padding: 12px 18px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
 
@@ -141,23 +15,25 @@
   <a href="promo_offer.html">🔥 العرض</a>
   <a href="poster_gallery.html">📸 البوسترات</a>
   <a href="account.html">👤 حسابي</a>
+  <a href="order_history.html">📜 سجل الطلبات</a>
+  <a href="admin_orders.html">🔐 الإدارة</a>
 </header>
 
 <div class="overlay">
   <h1>مرحبًا بكم في PIZZA HOT</h1>
 
   <div class="cta-ribbon">
-    <a href="store.html">
+    <a href="store.html" class="view-btn" aria-label="ابدأ الطلب من الكتالوج">
       🍕 ابدأ الطلب الآن من الكتالوج
     </a>
   </div>
 
   <div class="main-links">
-    <a href="promo_offer.html">🔥 عرض العائلة من PIZZA HOT</a>
-    <a href="poster_view_chicken.html">🍕 عرض بيتزا دجاج XL</a>
-    <a href="poster_view_wings.html">🍗 عرض أجنحة الدجاج</a>
-    <a href="poster_gallery.html">📸 استعرض البوسترات والعروض المصوّرة</a>
-    <a href="https://wa.me/972569788731" target="_blank">💬 اطلب عبر واتساب مباشرةً</a>
+    <a href="promo_offer.html" class="view-btn">🔥 عرض العائلة من PIZZA HOT</a>
+    <a href="poster_view_chicken.html" class="view-btn">🍕 عرض بيتزا دجاج XL</a>
+    <a href="poster_view_wings.html" class="view-btn">🍗 عرض أجنحة الدجاج</a>
+    <a href="poster_gallery.html" class="view-btn">📸 استعرض البوسترات والعروض المصوّرة</a>
+    <a href="https://wa.me/972569788731" target="_blank" class="view-btn">💬 اطلب عبر واتساب مباشرةً</a>
   </div>
 
   <div class="footer">
@@ -166,7 +42,6 @@
   </div>
 </div>
 
-<!-- ✅ إدراج وحدة السلة العائمة -->
 <script src="floatingCart.js"></script>
 
 </body>
