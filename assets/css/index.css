@@ -1,7 +1,7 @@
 /* 🧩 تنسيق عام للصفحة */
 body {
   font-family: "Cairo", sans-serif;
-  background-image: url("../images/storeassetsimagesbrand-pattern.png");
+  background-image: url("../images/storeassets/imagesbrand-pattern.png"); /* ✅ تم تصحيح المسار */
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
