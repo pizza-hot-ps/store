@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>🛒 متجر PIZZA HOT – نسخة جديدة</title>
+  <title>🛒 متجر PIZZA HOT – نسخة رمزية</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/store.css">
@@ -17,9 +17,8 @@
   <a href="promo_offer.html">🔥 العروض</a>
   <a href="store.html">🛒 المتجر</a>
 </header>
-
 <div class="overlay">
-  <h1>🛒 متجر PIZZA HOT – نسخة جديدة</h1>
+  <h1>🛒 متجر PIZZA HOT – نسخة رمزية</h1>
 
   <div class="updated-badge">
     🚀 تم تحديث نظام الخصومات رسميًا<br>
@@ -36,8 +35,6 @@
   <div id="auto-discount-alert" style="display:none">
     🎁 تم تفعيل خصم تلقائي اليوم — لا حاجة لإدخال كود.
   </div>
-
-  <!-- 🍕 قائمة البيتزا -->
   <div class="section">
     <h2>🍕 قائمة البيتزا</h2>
     <div class="table-wrapper">
@@ -49,8 +46,6 @@
       </table>
     </div>
   </div>
-
-  <!-- 🍟 أطباق جانبية -->
   <div class="section">
     <h2>🍟 أطباق جانبية</h2>
     <div class="table-wrapper">
@@ -62,68 +57,54 @@
       </table>
     </div>
   </div>
-
-  <!-- 🥤 مشروبات -->
   <div class="section">
     <h2>🥤 مشروبات</h2>
-    <div class="table-wrapper">
-      <table id="drinks-menu">
-        <thead>
-          <tr><th>المشروب</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    <div id="drinks-container"></div>
   </div>
-
-  <!-- 🛒 اختيار خاص -->
-  <div class="section">
-    <h2>🛒 اختيار خاص من السوبرماركت</h2>
-    <div class="table-wrapper">
-      <table id="custom-request">
-        <thead>
-          <tr><th>الوصف</th><th>السعر</th><th>الكمية</th><th>أضف</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="text" placeholder="📝 المنتج أو الوصف" id="custom-label"></td>
-            <td><input type="number" placeholder="₪" id="custom-price" min="0"></td>
-            <td><input type="number" value="1" min="1" id="custom-qty"></td>
-            <td><button onclick="addCustomItem()">أضف</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- 🧺 إدارة السلة -->
-  <div id="cart-manager">
-    <input id="user-name" placeholder="👤 اسمك (اختياري)" />
-    <input id="user-address" placeholder="📍 العنوان/هاتفك (اختياري)" />
-    <input id="user-coupon" placeholder="🎟️ كود الخصم الرئيسي" />
-    <input id="secondary-coupon" placeholder="🎟️ كود إضافي (ربع الخصم)" />
-
-    <button id="start-btn">☑ معاينة الطلب</button>
-    <button id="clear-cart">🗑️ تفريغ السلة</button>
-    <button id="send-wa">📤 إرسال الطلب</button>
-
-    <div id="cart-preview"></div>
-  </div>
-
-  <!-- 📎 إدخال يدوي -->
-  <div class="section">
-    <h2>📎 إدخال كود يدوي</h2>
-    <button onclick="insertCouponFromClipboard('primary')">📥 لصق كود في الحقل الأساسي</button>
-    <button onclick="insertCouponFromClipboard('secondary')">📥 لصق كود في الحقل الثانوي</button>
-  </div>
-
-  <!-- 🎁 الرموز التلقائية -->
-  <div class="section">
-    <h2>🎁 الرموز التلقائية المتاحة</h2>
-    <div id="auto-coupons"></div>
+<div class="section">
+  <h2>🛒 اختيار خاص من السوبرماركت</h2>
+  <div class="table-wrapper">
+    <table id="custom-request">
+      <thead>
+        <tr><th>الوصف</th><th>السعر</th><th>الكمية</th><th>أضف</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" placeholder="📝 المنتج أو الوصف" id="custom-label"></td>
+          <td><input type="number" placeholder="₪ (اختياري)" id="custom-price" min="0"></td>
+          <td><input type="number" value="1" min="1" id="custom-qty"></td>
+          <td><button onclick="addCustomItem()" class="add-btn">أضف</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button onclick="loadSupermarketCatalog()" class="control-btn">📦 عرض كتالوج السوبرماركت</button>
   </div>
 </div>
+<div id="cart-manager">
+  <input id="user-name" placeholder="👤 اسمك (اختياري)" />
+  <input id="user-address" placeholder="📍 العنوان/هاتفك (اختياري)" />
+  <input id="user-coupon" placeholder="🎟️ كود الخصم الرئيسي" />
+  <input id="secondary-coupon" placeholder="🎟️ كود إضافي (ربع الخصم)" />
 
+  <button id="start-btn" class="control-btn">☑ معاينة الطلب</button>
+  <button id="clear-cart" class="control-btn">🗑️ تفريغ السلة</button>
+  <button id="send-wa" class="control-btn">📤 إرسال الطلب</button>
+
+  <div id="cart-preview"></div>
+</div>
+<div class="section">
+  <h2>📎 إدخال كود يدوي</h2>
+  <button onclick="insertCouponFromClipboard('primary')" class="control-btn">📥 لصق كود في الحقل الأساسي</button>
+  <button onclick="insertCouponFromClipboard('secondary')" class="control-btn">📥 لصق كود في الحقل الثانوي</button>
+</div>
+
+<div class="section">
+  <h2>🎁 الرموز التلقائية المتاحة</h2>
+  <div id="auto-coupons"></div>
+</div>
+<div id="add-toast" style="display:none;position:fixed;bottom:20px;right:20px;background:#28a745;color:#fff;padding:10px;border-radius:5px;z-index:999;">
+  ✅ تمت إضافة المنتج إلى السلة
+</div>
 <div class="footer">
   📍 بلعين – شارع صفا – رام الله<br>
   © 2025 PIZZA HOT — جميع الحقوق محفوظة.
@@ -136,6 +117,5 @@
 <script src="assets/js/messageBuilder.js"></script>
 <script src="assets/js/dailyCoupon.js"></script>
 <script src="assets/js/store.js"></script>
-
 </body>
 </html>
