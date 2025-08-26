@@ -18,6 +18,7 @@ header {
   background: rgba(0,0,0,0.85);
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 14px 0;
   border-bottom: 1px solid #444;
   z-index: 1000;
@@ -27,7 +28,7 @@ header a {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 0 14px;
+  margin: 6px 14px;
 }
 header a:hover {
   color: #fff;
@@ -69,6 +70,9 @@ h1 {
   background: linear-gradient(90deg, #00c853, #00e676);
   color: #fff;
   transform: scale(1.05);
+}
+.cta-ribbon a:active {
+  transform: scale(0.97);
 }
 
 /* 🔗 روابط العرض */
@@ -119,6 +123,11 @@ h1 {
 }
 .card {
   perspective: 1000px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.02);
 }
 .card-inner {
   position: relative;
@@ -166,16 +175,40 @@ h1 {
 }
 
 /* 📱 استجابة للهاتف */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .cta-ribbon a {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .main-links a {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 20px 10px;
+  }
+
+  .card-inner {
+    height: 220px;
+  }
+
+  .card-back {
+    font-size: 1rem;
+    padding: 14px;
+  }
+}
+
 @media (max-width: 480px) {
   header a {
     font-size: 1rem;
     margin: 0 6px;
-  }
-  .main-links a {
-    font-size: 1rem;
-    padding: 12px 18px;
-  }
-  h1 {
-    font-size: 2rem;
   }
 }
