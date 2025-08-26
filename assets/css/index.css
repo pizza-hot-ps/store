@@ -1,11 +1,24 @@
 /* 🧩 تنسيق عام للصفحة */
 body {
   font-family: "Cairo", sans-serif;
-  background-color: #f9f9f9;
+  background-image: url("../images/storeassetsimagesbrand-pattern.png");
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
   margin: 0;
   padding: 20px;
   direction: rtl;
   color: #333;
+}
+
+/* 🖼️ شعار الصفحة */
+.logo-banner {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.logo-banner img {
+  width: 120px;
+  opacity: 0.9;
 }
 
 /* 🧾 الجداول */
@@ -14,17 +27,14 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
 }
-
 th, td {
   padding: 8px 12px;
   border: 1px solid #ddd;
   text-align: center;
 }
-
 thead {
   background-color: #f0f0f0;
 }
-
 .highlight-row {
   background-color: #ffeeba;
 }
@@ -36,7 +46,6 @@ thead {
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .drink-section {
   flex: 1 1 30%;
   background-color: #fff;
@@ -44,19 +53,16 @@ thead {
   padding: 10px;
   box-shadow: 0 0 5px rgba(0,0,0,0.05);
 }
-
 .drink-section h4 {
   margin-top: 0;
   color: #007bff;
   font-size: 16px;
   text-align: center;
 }
-
 .drink-table {
   width: 100%;
   font-size: 15px;
 }
-
 .drink-table th {
   background-color: #f8f9fa;
   font-weight: bold;
@@ -67,22 +73,18 @@ thead {
   .drink-section {
     flex: 1 1 100%;
   }
-
   table {
     font-size: 14px;
   }
-
   th, td {
     padding: 6px;
   }
 }
-
 @media (max-width: 480px) {
   #cart-preview {
     font-size: 14px;
     padding: 10px;
   }
-
   .copy-btn {
     width: 100%;
     margin-top: 15px;
@@ -99,16 +101,12 @@ thead {
   border-radius: 4px;
   transition: background-color 0.3s, transform 0.1s;
 }
-
 .add-btn:hover {
   background-color: #0056b3;
 }
-
 .add-btn:active {
   transform: scale(0.95);
 }
-
-/* ✅ تأثير الإضافة */
 .add-btn.success {
   background-color: #28a745 !important;
   color: #fff !important;
@@ -150,7 +148,6 @@ li[style*="background:#fff3cd"] {
   border-radius: 4px;
   margin-top: 10px;
 }
-
 .copy-btn:hover {
   background-color: #e0a800;
 }
@@ -175,11 +172,24 @@ input[type="text"], input[type="number"] {
   border-radius: 4px;
   margin: 5px;
 }
-
 .control-btn:hover {
   background-color: #5a6268;
 }
-
 button {
   font-family: inherit;
+}
+
+/* 🎮 أزرار العرض الرمزية */
+.view-btn {
+  display: inline-block;
+  background-image: url("../images/bo-play.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding: 10px 20px 10px 50px;
+  font-weight: bold;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
 }
