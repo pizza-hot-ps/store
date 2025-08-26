@@ -1,87 +1,230 @@
-/* 🍊 مستطيل برتقالي ترويجي بنقش خفيف */
-.orange-box {
-  background: linear-gradient(90deg, #ff914d, #ff6f00);
-  color: #fff;
-  padding: 14px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin: 20px auto;
-  max-width: 800px;
-  text-align: center;
-  font-size: 1.1rem;
-  background-image: url('../images/wood_leaf_bg.jpg');
-  background-repeat: repeat;
-  background-blend-mode: overlay;
-}
-
-/* 🧾 زر انتقال كبير بطابع عملي */
-.cta-button a {
-  display: inline-block;
-  background: linear-gradient(90deg, #ff5722, #e91e63);
-  color: #fff;
-  font-weight: bold;
-  padding: 14px 36px;
-  font-size: 1.2rem;
-  border-radius: 12px;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease-in-out;
-  background-image: url('../images/wood_leaf_bg.jpg');
-  background-blend-mode: soft-light;
-}
-
-.cta-button a:hover {
-  transform: scale(1.04);
-}
-
-/* 📦 بطاقات الطلبات */
-.order-box {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  background-image: url('../images/wood_leaf_bg.jpg');
-  background-repeat: repeat;
-  background-blend-mode: overlay;
-}
-
-/* 📋 زر نسخ */
-.copy-btn {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* 📜 زر عرض سجل الطلبات */
-.view-btn {
-  background: #2196f3;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* 🧠 خلفية الصفحة */
+/* 🧩 تنسيق عام للصفحة */
 body {
-  background: #f4f4f4 url('../images/wood_leaf_bg.jpg') repeat;
-  background-blend-mode: overlay;
-  font-family: 'Tajawal', sans-serif;
-  color: #2c3e50;
+  font-family: "Tajawal", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+  direction: rtl;
+  color: #333;
 }
 
-/* 🔴 تمييز الصفوف الخاصة مثل XL المميز */
-.highlight-row {
-  background-color: #ffe5e5;
-  border-right: 5px solid red;
+/* 🧭 رأس الصفحة */
+header {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* 🧾 الأقسام */
+.section {
+  background-color: #fff;
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.03);
+}
+
+.section h2 {
+  margin-top: 0;
+  color: #444;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+/* 🧃 تنسيق المشروبات */
+.drinks-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.drink-section {
+  flex: 1 1 30%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.drink-section h4 {
+  margin-top: 0;
+  color: #007bff;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* 📱 استجابة للهاتف */
+@media (max-width: 768px) {
+  .drink-section {
+    flex: 1 1 100%;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 6px;
+  }
+}
+/* 📋 الجداول */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+thead {
+  background-color: #f1f1f1;
+}
+
+.menu-table th {
+  background-color: #fafafa;
+  font-weight: bold;
+  color: #555;
+}
+
+/* 🧮 خلايا السعر والإجمالي */
+.price, .total-cell {
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* 🧠 خلايا غير مسعّرة */
+td.unspecified {
+  background-color: #fff3cd;
+  border-right: 4px solid orange;
+}
+
+/* 🧑‍💻 مدخلات الكمية والسعر */
+input.qty, input[type="number"], input[type="text"] {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80px;
+  text-align: center;
+}
+
+/* 🧾 أزرار التحكم */
+.control-btn, .add-btn, .copy-btn {
+  padding: 8px 14px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.control-btn:hover, .add-btn:hover, .copy-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ✅ زر "تمت الإضافة" */
+.add-btn.success {
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
+
+/* 📢 إشعار الإضافة */
+.toast-success {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 999;
+  font-weight: bold;
+}
+/* 📦 معاينة الطلب */
+.cart-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.cart-box h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.cart-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.cart-box li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+/* 🎁 الرموز التلقائية */
+#auto-coupons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#auto-coupons .coupon {
+  background-color: #f0f8ff;
+  border: 1px solid #007bff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* 📍 التذييل */
+.footer {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* 🧠 تنبيه الخصم التلقائي */
+#auto-discount-alert {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-weight: bold;
+  display: none;
 }
