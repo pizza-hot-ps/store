@@ -1,0 +1,113 @@
+/* 🧠 خلفية بنقش خفيف */
+body {
+  margin: 0;
+  font-family: 'Tajawal', sans-serif;
+  background: #1b1b1b url('../img/pattern-dark.png') repeat;
+  background-blend-mode: overlay;
+  color: #fff;
+  scroll-behavior: smooth;
+  line-height: 1.8em;
+  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+}
+
+/* 🧭 شريط التنقل */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #444;
+  z-index: 1000;
+}
+
+header a {
+  color: #ffd700;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 14px;
+}
+
+header a:hover {
+  color: #fff;
+}
+
+/* 🧱 طبقة التعتيم */
+.overlay {
+  padding-top: 90px;
+  background-color: rgba(0,0,0,0.75);
+  min-height: 100vh;
+}
+
+/* 🧩 العنوان الرئيسي */
+h1 {
+  text-align: center;
+  font-size: clamp(2rem, 5.5vw, 2.8rem);
+  color: #ffd700;
+  margin: 35px 0 10px;
+}
+
+/* 🎯 زر رئيسي */
+.cta-ribbon {
+  text-align: center;
+  margin: 0 auto 36px;
+}
+
+/* 📜 زر عرض موحد */
+.view-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #00e676, #00c853);
+  color: #111;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.15rem;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.view-btn:hover {
+  background: linear-gradient(90deg, #00c853, #00e676);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* 🧩 روابط رئيسية */
+.main-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 20px;
+}
+
+/* 🧾 التذييل */
+.footer {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 50px;
+  padding-bottom: 100px;
+  line-height: 1.6em;
+}
+
+/* 📱 دعم الجوال */
+@media (max-width: 480px) {
+  header a {
+    font-size: 1rem;
+    margin: 0 6px;
+  }
+
+  .view-btn {
+    font-size: 1rem;
+    padding: 12px 18px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
