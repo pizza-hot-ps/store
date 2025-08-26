@@ -58,20 +58,7 @@
         <thead>
           <tr><th>الصنف</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
         </thead>
-        <tbody>
-          <tr data-item="كريسبي صغير" data-price="12">
-            <td>كريسبي صغير</td><td>12₪</td>
-            <td><input class="qty" type="number" min="1" value="1"></td>
-            <td class="total">12₪</td>
-            <td><button class="add-btn">أضف</button></td>
-          </tr>
-          <tr data-item="كريسبي كبير" data-price="24">
-            <td>كريسبي كبير</td><td>24₪</td>
-            <td><input class="qty" type="number" min="1" value="1"></td>
-            <td class="total">24₪</td>
-            <td><button class="add-btn">أضف</button></td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
   </div>
@@ -82,9 +69,29 @@
     <div class="table-wrapper">
       <table id="drinks-menu">
         <thead>
-          <tr><th>المشروب</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
+          <tr><th>المشروب</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
         </thead>
         <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 🛒 اختيار خاص -->
+  <div class="section">
+    <h2>🛒 اختيار خاص من السوبرماركت</h2>
+    <div class="table-wrapper">
+      <table id="custom-request">
+        <thead>
+          <tr><th>الوصف</th><th>السعر</th><th>الكمية</th><th>أضف</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" placeholder="📝 المنتج أو الوصف" id="custom-label"></td>
+            <td><input type="number" placeholder="₪" id="custom-price" min="0"></td>
+            <td><input type="number" value="1" min="1" id="custom-qty"></td>
+            <td><button onclick="addCustomItem()">أضف</button></td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
