@@ -212,3 +212,7 @@ h1 {
     margin: 0 6px;
   }
 }
+.card-inner.flipped {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
