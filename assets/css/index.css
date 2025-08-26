@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 20px;
   direction: rtl;
-  color: #333;
+  color: #fff;
   font-size: clamp(1.1rem, 2.4vw, 1.3rem);
   line-height: 1.8em;
   scroll-behavior: smooth;
@@ -36,7 +36,8 @@ th, td {
   text-align: center;
 }
 thead {
-  background-color: #f0f0f0;
+  background-color: #222;
+  color: #ffd700;
 }
 .highlight-row {
   background-color: #ffeeba;
@@ -51,14 +52,14 @@ thead {
 }
 .drink-section {
   flex: 1 1 30%;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #111;
+  border: 1px solid #444;
   padding: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 .drink-section h4 {
   margin-top: 0;
-  color: #007bff;
+  color: #ffd700;
   font-size: 16px;
   text-align: center;
 }
@@ -67,8 +68,9 @@ thead {
   font-size: 15px;
 }
 .drink-table th {
-  background-color: #f8f9fa;
+  background-color: #333;
   font-weight: bold;
+  color: #ffd700;
 }
 
 /* 📱 استجابة للهاتف */
@@ -143,11 +145,12 @@ li[style*="background:#fff3cd"] {
 
 /* 📦 معاينة الطلب */
 #cart-preview {
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #111;
+  border: 1px solid #444;
   padding: 15px;
   margin-top: 30px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: #fff;
 }
 
 /* 🎁 تنبيه الخصم التلقائي */
@@ -206,13 +209,22 @@ button {
 .view-btn {
   display: inline-block;
   background-image: url("../images/bo-play.png");
-  background-size: contain;
+  background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: center left;
-  padding: 10px 20px 10px 50px;
+  padding: 14px 26px 14px 50px;
   font-weight: bold;
   color: #fff;
-  background-color: transparent;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid #ffd700;
+  border-radius: 10px;
+  text-align: center;
   text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  transition: background 0.3s, transform 0.2s;
+}
+.view-btn:hover {
+  background-color: #ffd700;
+  color: #000;
+  transform: scale(1.03);
 }
