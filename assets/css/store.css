@@ -10,7 +10,7 @@
   max-width: 800px;
   text-align: center;
   font-size: 1.1rem;
-  background-image: url('../img/pattern-light.png');
+  background-image: url('../images/wood_leaf_bg.jpg');
   background-repeat: repeat;
   background-blend-mode: overlay;
 }
@@ -27,7 +27,7 @@
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   transition: transform 0.2s ease-in-out;
-  background-image: url('../img/pattern-light.png');
+  background-image: url('../images/wood_leaf_bg.jpg');
   background-blend-mode: soft-light;
 }
 
@@ -43,7 +43,7 @@
   padding: 16px;
   margin-bottom: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  background-image: url('../img/pattern-light.png');
+  background-image: url('../images/wood_leaf_bg.jpg');
   background-repeat: repeat;
   background-blend-mode: overlay;
 }
@@ -74,8 +74,14 @@
 
 /* 🧠 خلفية الصفحة */
 body {
-  background: #f4f4f4 url('../img/pattern-light.png') repeat;
+  background: #f4f4f4 url('../images/wood_leaf_bg.jpg') repeat;
   background-blend-mode: overlay;
   font-family: 'Tajawal', sans-serif;
   color: #2c3e50;
+}
+
+/* 🔴 تمييز الصفوف الخاصة مثل XL المميز */
+.highlight-row {
+  background-color: #ffe5e5;
+  border-right: 5px solid red;
 }
