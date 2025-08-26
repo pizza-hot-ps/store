@@ -125,6 +125,10 @@ h1 {
   perspective: 1000px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInCard 0.8s ease forwards;
+  animation-delay: 0.2s;
 }
 .card:hover {
   transform: scale(1.02);
@@ -138,6 +142,10 @@ h1 {
 }
 .card:hover .card-inner {
   transform: rotateY(180deg);
+}
+.card-inner.flipped {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 .card-front, .card-back {
   position: absolute;
@@ -212,7 +220,11 @@ h1 {
     margin: 0 6px;
   }
 }
-.card-inner.flipped {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
+
+/* 🌀 حركة دخول للبطاقات */
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
