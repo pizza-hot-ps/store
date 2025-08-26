@@ -1,21 +1,19 @@
-// 🧩 تحميل الكتالوج الرسمي فقط لعرضه في store.html
 fetch("assets/data/catalog.json")
   .then(res => res.json())
   .then(data => {
     window.catalog = data;
     renderCatalog(); // عرض الكتالوج الرسمي فقط
   });
-let supermarketCatalog = [];
 
+let supermarketCatalog = [];
 function loadSupermarketCatalog() {
-  if (supermarketCatalog.length) return; // تم تحميله مسبقًا
+  if (supermarketCatalog.length) return;
 
   fetch("assets/data/supermarket.json")
     .then(res => res.json())
     .then(data => {
       supermarketCatalog = data;
-      // يمكن هنا فتح نافذة منبثقة أو عرض صفحة مستقلة
-      showSupermarketCatalog(data);
+      showSupermarketCatalog(data); // يمكن تخصيص العرض لاحقًا
     });
 }
 function renderCatalog() {
@@ -73,13 +71,13 @@ function renderSides(list) {
   });
 }
 function renderDrinks(list) {
-  const table = document.querySelector("#drinks-menu tbody");
-  table.innerHTML = "";
+  const container = document.getElementById("drinks-container");
+  container.innerHTML = "";
 
   const categories = {
-    "عصائر": [],
-    "كولا": [],
     "مياه": [],
+    "كولا": [],
+    "عصائر": [],
     "أخرى": []
   };
 
@@ -90,27 +88,29 @@ function renderDrinks(list) {
   });
 
   Object.entries(categories).forEach(([label, items]) => {
-    const headerRow = document.createElement("tr");
-    headerRow.innerHTML = `<td colspan="6"><strong>🧃 ${label}</strong></td>`;
-    table.appendChild(headerRow);
+    const section = document.createElement("div");
+    section.className = "drink-section";
 
-    items.forEach(item => {
-      const row = document.createElement("tr");
-      row.dataset.item = item.name;
-      row.dataset.price = item.price;
-      if (item.highlight) row.classList.add("highlight-row");
+    section.innerHTML = `
+      <h4>🧃 ${label}</h4>
+      <table class="drink-table">
+        <thead><tr><th>المنتج</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th></th></tr></thead>
+        <tbody>
+          ${items.map(item => `
+            <tr data-item="${item.name}" data-price="${item.price}">
+              <td>${item.name}</td>
+              <td>${item.size || "—"}</td>
+              <td><span class="price">${item.price}₪</span></td>
+              <td><input class="qty" type="number" min="1" value="1"></td>
+              <td class="total-cell">${item.price}₪</td>
+              <td><button class="add-btn">أضف</button></td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
 
-      row.innerHTML = `
-        <td>${item.name}</td>
-        <td>${item.size || "—"}</td>
-        <td><span class="price">${item.price}₪</span></td>
-        <td><input class="qty" type="number" min="1" value="1"></td>
-        <td class="total-cell">${item.price}₪</td>
-        <td><button class="add-btn">أضف</button></td>
-      `;
-
-      table.appendChild(row);
-    });
+    container.appendChild(section);
   });
 }
 function bindQuantityAndSizeEvents() {
@@ -146,6 +146,14 @@ function bindCartEvents() {
 
       addToCart(itemLabel, price, qty);
       renderCart();
+
+      // ✨ تأثير بصري مؤقت
+      btn.textContent = "✅ تمت الإضافة";
+      btn.classList.add("success");
+      setTimeout(() => {
+        btn.textContent = "أضف";
+        btn.classList.remove("success");
+      }, 1500);
     };
   });
 }
@@ -156,15 +164,13 @@ function addCustomItem() {
 
   let price = parseFloat(priceInput);
 
-  // فحص إن كان المنتج موجودًا مسبقًا في كتالوج السوبرماركت
   const known = supermarketCatalog.find(p => p.name === label);
   if (known && !priceInput) {
     price = known.price;
   }
 
-  // تعديل رمزي: السماح بإضافة المنتج حتى لو السعر غير معروف
   if (!label || isNaN(qty) || qty <= 0) {
-    alert("يرجى إدخال اسم المنتج وكمية صحيحة");
+    alert("⚠️ أدخل اسم المنتج وكمية أكبر من صفر لإضافته للسلة");
     return;
   }
 
@@ -279,13 +285,14 @@ function copyOrderMessage() {
   });
 }
 window.onload = () => {
-  loadDiscountRules();
-  initAutoDiscount();
-  restoreUserData();
-  enableEnterToSend();
-  enableCopyOnClick();
-  renderCart();
+  loadDiscountRules();         // تحميل قواعد الخصم
+  initAutoDiscount();          // تفعيل الخصومات التلقائية
+  restoreUserData();           // استرجاع اسم المستخدم والعنوان
+  enableEnterToSend();         // دعم الإرسال بزر Enter
+  enableCopyOnClick();         // دعم النسخ بالضغط
+  renderCart();                // عرض السلة الحالية
 
+  // حفظ اسم المستخدم والعنوان تلقائيًا
   document.getElementById("user-name").addEventListener("input", e => {
     localStorage.setItem("userName", e.target.value.trim());
   });
@@ -294,11 +301,13 @@ window.onload = () => {
     localStorage.setItem("userAddress", e.target.value.trim());
   });
 
+  // استرجاع القيم المحفوظة
   const savedName = localStorage.getItem("userName");
   const savedAddress = localStorage.getItem("userAddress");
   if (savedName) document.getElementById("user-name").value = savedName;
   if (savedAddress) document.getElementById("user-address").value = savedAddress;
 
+  // ربط الأزرار
   document.getElementById("start-btn").onclick = renderCart;
   document.getElementById("send-wa").onclick = sendOrder;
   document.getElementById("clear-cart").onclick = () => {
