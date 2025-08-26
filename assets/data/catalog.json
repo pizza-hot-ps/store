@@ -1,20 +1,20 @@
 {
   "pizza": [
-    { "name": "بيتزا دجاج", "sizes": { "XL": 65, "L": 45, "M": 33, "S": 17 }, "enabled": true },
-    { "name": "بيتزا خضار", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 14 }, "enabled": true },
-    { "name": "بيتزا سلامي", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 15 }, "enabled": true },
-    { "name": "بيتزا نقانق", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 15 }, "enabled": true },
-    { "name": "بيتزا تونة", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 15 }, "enabled": true },
-    { "name": "بيتزا مارجريتا", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 14 }, "enabled": true },
-    { "name": "كلزوني", "sizes": { "XL": 60, "L": 40, "M": 32, "S": 16 }, "enabled": true }
+    { "name": "بيتزا دجاج", "sizes": { "XL": 65, "L": 45, "M": 33, "S": 18 }, "enabled": true },
+    { "name": "بيتزا خضار", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 }, "enabled": true },
+    { "name": "بيتزا سلامي", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true },
+    { "name": "بيتزا نقانق", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true },
+    { "name": "بيتزا تونة", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true },
+    { "name": "بيتزا مارجريتا", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 }, "enabled": true },
+    { "name": "كلزوني", "sizes": { "XL": 60, "L": 40, "M": 32, "S": 17 }, "enabled": true }
   ],
 
   "sides": [
     { "name": "بطاطا صغير", "price": 5, "enabled": true },
     { "name": "بطاطا كبير", "price": 10, "enabled": true },
-    { "name": "زنجر صغير", "price": 12, "enabled": true },
+    { "name": "زنجر صغير", "price": 13, "enabled": true },
     { "name": "زنجر كبير", "price": 25, "enabled": true },
-    { "name": "أجنحة جنان صغير", "price": 12, "enabled": true },
+    { "name": "أجنحة جنان صغير", "price": 13, "enabled": true },
     { "name": "أجنحة دجاج كبير", "price": 24, "enabled": true }
   ],
 
