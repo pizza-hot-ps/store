@@ -17,6 +17,7 @@
   <a href="promo_offer.html">🔥 العروض</a>
   <a href="store.html">🛒 المتجر</a>
 </header>
+
 <div class="overlay">
   <h1>🛒 متجر PIZZA HOT – نسخة رمزية</h1>
 
@@ -27,44 +28,43 @@
 
   <div class="note-box">
     🎟️ الكود اليومي: <span id="daily-coupon-box">—</span><br>
-    <button onclick="insertCoupon(document.getElementById('daily-coupon-box').textContent.trim(), 'primary')">
+    <button class="control-btn" onclick="insertCoupon(document.getElementById('daily-coupon-box').textContent.trim(), 'primary')">
       📥 نسخ الكود اليومي إلى الحقل الأساسي
     </button>
   </div>
 
-  <div id="auto-discount-alert" style="display:none">
+  <div id="auto-discount-alert" class="auto-discount-alert">
     🎁 تم تفعيل خصم تلقائي اليوم — لا حاجة لإدخال كود.
   </div>
+
   <div class="section">
     <h2>🍕 قائمة البيتزا</h2>
-    <div class="table-wrapper">
-      <table id="pizza-menu">
-        <thead>
-          <tr><th>النوع</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    <table id="pizza-menu" class="menu-table">
+      <thead>
+        <tr><th>النوع</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </div>
+
   <div class="section">
     <h2>🍟 أطباق جانبية</h2>
-    <div class="table-wrapper">
-      <table id="sides-menu">
-        <thead>
-          <tr><th>الصنف</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    <table id="sides-menu" class="menu-table">
+      <thead>
+        <tr><th>الصنف</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>أضف</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </div>
+
   <div class="section">
     <h2>🥤 مشروبات</h2>
-    <div id="drinks-container"></div>
+    <div id="drinks-container" class="drinks-grid"></div>
   </div>
-<div class="section">
-  <h2>🛒 اختيار خاص من السوبرماركت</h2>
-  <div class="table-wrapper">
-    <table id="custom-request">
+
+  <div class="section">
+    <h2>🛒 اختيار خاص من السوبرماركت</h2>
+    <table id="custom-request" class="menu-table">
       <thead>
         <tr><th>الوصف</th><th>السعر</th><th>الكمية</th><th>أضف</th></tr>
       </thead>
@@ -79,35 +79,42 @@
     </table>
     <button onclick="loadSupermarketCatalog()" class="control-btn">📦 عرض كتالوج السوبرماركت</button>
   </div>
-</div>
-<div id="cart-manager">
-  <input id="user-name" placeholder="👤 اسمك (اختياري)" />
-  <input id="user-address" placeholder="📍 العنوان/هاتفك (اختياري)" />
-  <input id="user-coupon" placeholder="🎟️ كود الخصم الرئيسي" />
-  <input id="secondary-coupon" placeholder="🎟️ كود إضافي (ربع الخصم)" />
 
-  <button id="start-btn" class="control-btn">☑ معاينة الطلب</button>
-  <button id="clear-cart" class="control-btn">🗑️ تفريغ السلة</button>
-  <button id="send-wa" class="control-btn">📤 إرسال الطلب</button>
+  <div class="section">
+    <h2>📦 إدارة السلة</h2>
+    <div id="cart-manager">
+      <input id="user-name" placeholder="👤 اسمك (اختياري)" />
+      <input id="user-address" placeholder="📍 العنوان/هاتفك (اختياري)" />
+      <input id="user-coupon" placeholder="🎟️ كود الخصم الرئيسي" />
+      <input id="secondary-coupon" placeholder="🎟️ كود إضافي (ربع الخصم)" />
 
-  <div id="cart-preview"></div>
-</div>
-<div class="section">
-  <h2>📎 إدخال كود يدوي</h2>
-  <button onclick="insertCouponFromClipboard('primary')" class="control-btn">📥 لصق كود في الحقل الأساسي</button>
-  <button onclick="insertCouponFromClipboard('secondary')" class="control-btn">📥 لصق كود في الحقل الثانوي</button>
-</div>
+      <button id="start-btn" class="control-btn">☑ معاينة الطلب</button>
+      <button id="clear-cart" class="control-btn">🗑️ تفريغ السلة</button>
+      <button id="send-wa" class="control-btn">📤 إرسال الطلب</button>
 
-<div class="section">
-  <h2>🎁 الرموز التلقائية المتاحة</h2>
-  <div id="auto-coupons"></div>
-</div>
-<div id="add-toast" style="display:none;position:fixed;bottom:20px;right:20px;background:#28a745;color:#fff;padding:10px;border-radius:5px;z-index:999;">
-  ✅ تمت إضافة المنتج إلى السلة
-</div>
-<div class="footer">
-  📍 بلعين – شارع صفا – رام الله<br>
-  © 2025 PIZZA HOT — جميع الحقوق محفوظة.
+      <div id="cart-preview" class="cart-box"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📎 إدخال كود يدوي</h2>
+    <button onclick="insertCouponFromClipboard('primary')" class="control-btn">📥 لصق كود في الحقل الأساسي</button>
+    <button onclick="insertCouponFromClipboard('secondary')" class="control-btn">📥 لصق كود في الحقل الثانوي</button>
+  </div>
+
+  <div class="section">
+    <h2>🎁 الرموز التلقائية المتاحة</h2>
+    <div id="auto-coupons"></div>
+  </div>
+
+  <div id="add-toast" class="toast-success" style="display:none;">
+    ✅ تمت إضافة المنتج إلى السلة
+  </div>
+
+  <div class="footer">
+    📍 بلعين – شارع صفا – رام الله<br>
+    © 2025 PIZZA HOT — جميع الحقوق محفوظة.
+  </div>
 </div>
 
 <!-- ✅ تحميل السكربتات -->
