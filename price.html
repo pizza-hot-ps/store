@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>🔧 معالجة الطلبات غير المسعّرة – PIZZA HOT</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Tajawal", sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    input[type="number"] {
+      width: 80px;
+      padding: 5px;
+    }
+    .btn {
+      padding: 8px 14px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔧 معالجة الطلب رقم <span id="order-id">—</span></h1>
+  <p>👤 الزبون: <span id="user-name">—</span></p>
+  <table id="items-table">
+    <thead>
+      <tr><th>المنتج</th><th>الكمية</th><th>السعر الجديد</th><th>تثبيت في الكتالوج</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button class="btn" onclick="processPriceUpdate()">✅ تأكيد الأسعار وإرسال الطلب</button>
+
+  <div class="footer">
+    📍 PIZZA HOT – إدارة الطلبات<br>
+    © 2025 جميع الحقوق محفوظة.
+  </div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const orderId = params.get("id");
+  document.getElementById("order-id").textContent = orderId;
+
+  const pending = JSON.parse(localStorage.getItem("pendingOrders") || "[]");
+  const order = pending.find(o => o.orderId == orderId);
+
+  if (!order) {
+    alert("❌ لم يتم العثور على الطلب");
+  } else {
+    document.getElementById("user-name").textContent = order.userName;
+    const tbody = document.querySelector("#items-table tbody");
+
+    order.items.forEach(item => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.item}</td>
+        <td>${item.qty}</td>
+        <td><input type="number" min="0" data-label="${item.item}" /></td>
+        <td><input type="checkbox" data-save="${item.item}" /></td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function processPriceUpdate() {
+    const inputs = document.querySelectorAll("input[type='number']");
+    const updatedItems = [];
+
+    inputs.forEach(input => {
+      const label = input.dataset.label;
+      const price = parseFloat(input.value);
+      const qty = order.items.find(i => i.item === label)?.qty || 1;
+      if (!isNaN(price) && price > 0) {
+        updatedItems.push({ item: label, price, qty });
+        const save = document.querySelector(`input[data-save="${label}"]`).checked;
+        if (save) saveToSupermarket(label, price);
+      }
+    });
+
+    if (!updatedItems.length) {
+      alert("يرجى إدخال سعر واحد على الأقل");
+      return;
+    }
+
+    const message = `
+✅ تم تعديل طلبك رقم ${orderId}
+${updatedItems.map(i => `• ${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}₪`).join("\n")}
+💰 الإجمالي الجديد: ${updatedItems.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2)}₪
+شكراً لاختيارك PIZZA HOT 🍕
+    `;
+
+    const encoded = encodeURIComponent(message);
+    const phone = "972599123456"; // رقم واتساب الإداري أو الزبون
+    window.open(`https://wa.me/${phone}?text=${encoded}`, "_blank");
+  }
+
+  function saveToSupermarket(name, price) {
+    const existing = JSON.parse(localStorage.getItem("supermarketCatalog") || "[]");
+    existing.push({ name, price });
+    localStorage.setItem("supermarketCatalog", JSON.stringify(existing));
+  }
+</script>
+</body>
+</html>
