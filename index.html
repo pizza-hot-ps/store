@@ -1,59 +1,277 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <title>PIZZA HOT – الصفحة الرئيسية</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+/* 🧩 تنسيق عام للصفحة */
+body {
+  font-family: "Cairo", sans-serif;
+  background-image: url("../images/storeassetsimagesbrand-pattern.png");
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  margin: 0;
+  padding: 20px;
+  direction: rtl;
+  color: #fff;
+  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+  line-height: 1.8em;
+  scroll-behavior: smooth;
+}
 
-  <!-- تحميل خط Cairo من Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+/* 🧭 الهيدر */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid #444;
+  padding: 14px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 1000;
+}
+header a {
+  color: #ffd700;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+header a:hover {
+  background-color: #ffd700;
+  color: #000;
+}
 
-  <!-- تحميل ملف التنسيق الخارجي -->
-  <link rel="stylesheet" href="assets/css/index.css">
-</head>
-<body>
+/* 🖼️ شعار الصفحة */
+.logo-banner {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.logo-banner img {
+  width: 120px;
+  opacity: 0.9;
+}
 
-<!-- 🖼️ شعار رمزي في الأعلى -->
-<div class="logo-banner">
-  <img src="assets/images/logo.png" alt="PIZZA HOT Logo">
-</div>
+/* 🎯 زر مميز للطلب من الكتالوج */
+.cta-ribbon .view-btn {
+  background-color: #00c853;
+  background-image: url("../images/bo-play.png");
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  padding: 16px 30px 16px 60px;
+  font-size: 1.2rem;
+  font-weight: 900;
+  border-radius: 50px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background-color 0.3s;
+}
+.cta-ribbon .view-btn:hover {
+  background-color: #00e676;
+  transform: scale(1.05);
+  color: #fff;
+}
 
-<header>
-  <a href="index.html">🏠</a>
-  <a href="store.html">🛒 القائمة</a>
-  <a href="promo_offer.html">🔥 العرض</a>
-  <a href="poster_gallery.html">📸 البوسترات</a>
-  <a href="account.html">👤 حسابي</a>
-  <a href="order_history.html">📜 سجل الطلبات</a>
-  <a href="admin_orders.html">🔐 الإدارة</a>
-</header>
+/* 🧾 الجداول */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+thead {
+  background-color: #222;
+  color: #ffd700;
+}
+.highlight-row {
+  background-color: #ffeeba;
+}
 
-<div class="overlay">
-  <h1>مرحبًا بكم في PIZZA HOT</h1>
+/* 🧃 أقسام المشروبات */
+#drinks-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.drink-section {
+  flex: 1 1 30%;
+  background-color: #111;
+  border: 1px solid #444;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.drink-section h4 {
+  margin-top: 0;
+  color: #ffd700;
+  font-size: 16px;
+  text-align: center;
+}
+.drink-table {
+  width: 100%;
+  font-size: 15px;
+}
+.drink-table th {
+  background-color: #333;
+  font-weight: bold;
+  color: #ffd700;
+}
 
-  <div class="cta-ribbon">
-    <a href="store.html" class="view-btn" aria-label="ابدأ الطلب من الكتالوج">
-      🍕 ابدأ الطلب الآن من الكتالوج
-    </a>
-  </div>
+/* 📱 استجابة للهاتف */
+@media (max-width: 768px) {
+  .drink-section {
+    flex: 1 1 100%;
+  }
+  table {
+    font-size: 14px;
+  }
+  th, td {
+    padding: 6px;
+  }
+  .view-btn {
+    font-size: 1rem;
+    padding: 10px 16px 10px 40px;
+  }
+}
 
-  <div class="main-links">
-    <a href="promo_offer.html" class="view-btn">🔥 عرض العائلة من PIZZA HOT</a>
-    <a href="poster_view_chicken.html" class="view-btn">🍕 عرض بيتزا دجاج XL</a>
-    <a href="poster_view_wings.html" class="view-btn">🍗 عرض أجنحة الدجاج</a>
-    <a href="poster_gallery.html" class="view-btn">📸 استعرض البوسترات والعروض المصوّرة</a>
-    <a href="https://wa.me/972569788731" target="_blank" class="view-btn">💬 اطلب عبر واتساب مباشرةً</a>
-  </div>
+@media (max-width: 480px) {
+  header a {
+    font-size: 1rem;
+    margin: 0 6px;
+  }
+  .main-links a {
+    font-size: 1rem;
+    padding: 12px 18px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  #cart-preview {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .copy-btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .footer {
+    font-size: 0.85rem;
+    padding-bottom: 60px;
+  }
+}
 
-  <div class="footer">
-    بلعين – شارع صفا – رام الله<br>
-    &copy; 2025 PIZZA HOT – جميع الحقوق محفوظة
-  </div>
-</div>
+/* 🛒 زر الإضافة */
+.add-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.1s;
+}
+.add-btn:hover {
+  background-color: #0056b3;
+}
+.add-btn:active {
+  transform: scale(0.95);
+}
+.add-btn.success {
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
 
-<!-- تحميل سكربت السلة العائمة -->
-<script src="floatingCart.js"></script>
+/* 🔺 تمييز المنتجات غير المسعّرة */
+li[style*="background:#fff3cd"] {
+  font-weight: bold;
+  color: #d9534f;
+}
 
-</body>
-</html>
+/* 📦 معاينة الطلب */
+#cart-preview {
+  background-color: #111;
+  border: 1px solid #444;
+  padding: 15px;
+  margin-top: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: #fff;
+}
 
+/* 🎁 تنبيه الخصم التلقائي */
+#auto-discount-alert {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #c3e6cb;
+  display: none;
+  border-radius: 4px;
+}
+
+/* 📋 زر النسخ */
+.copy-btn {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.copy-btn:hover {
+  background-color: #e0a800;
+}
+
+/* 🧠 مدخلات الزبون */
+input[type="text"], input[type="number"] {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* 🎯 أزرار التحكم */
+.control-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 5px;
+}
+.control-btn:hover {
+  background-color: #5a6268;
+}
+button {
+  font-family: inherit;
+}
+
+/* 🎮 أزرار العرض الرمزية */
+.view-btn {
+  display: inline-block;
+  background-image: url("../images/bo-play.png");
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  padding: 14px 26px 14px 50px;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid #ffd700;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  transition: background 0.3s, transform 0.2s;
+}
+.view-btn:hover {
+  background-color: #ffd700;
+  color: #000;
+  transform: scale(1.03);
+}
