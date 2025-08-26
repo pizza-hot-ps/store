@@ -82,10 +82,13 @@ function getCartData() {
 
 function saveOrderSnapshot(orderText) {
   const history = JSON.parse(localStorage.getItem("orderHistory") || "[]");
-  history.push({ date: new Date().toISOString(), content: orderText });
+  history.push({
+    id: Date.now(),
+    date: new Date().toISOString(),
+    content: orderText
+  });
   localStorage.setItem("orderHistory", JSON.stringify(history));
 }
-
 // 📦 معاينة الطلب
 function renderCart() {
   const cartData = getCartData();
@@ -124,8 +127,8 @@ function renderCart() {
     <ul>
       ${cartData.map(i => `<li>${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}₪</li>`).join("")}
     </ul>
-    <button onclick="copyOrderMessage()" style="margin-top: 12px; background: #4caf50; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold;">📋 نسخ الطلب</button>
-    <button onclick="window.location.href='order_history.html'" style="margin-top: 8px; background: #2196f3; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">📜 عرض سجل الطلبات</button>
+    <button class="copy-btn" aria-label="نسخ الطلب إلى الحافظة" onclick="copyOrderMessage()">📋 نسخ الطلب</button>
+    <button class="view-btn" aria-label="عرض سجل الطلبات" onclick="window.location.href='order_history.html'">📜 عرض سجل الطلبات</button>
   `;
 
   const previewBtn = document.getElementById("start-btn");
@@ -144,7 +147,6 @@ function copyOrderMessage() {
     alert("📋 تم نسخ الطلب إلى الحافظة");
   });
 }
-
 // 📤 إرسال الطلب عبر واتساب
 function sendOrder() {
   const cartData = getCartData();
@@ -189,5 +191,24 @@ ${breakdown.map(b => `- ${b}`).join("\n")}
   const waLink = `https://wa.me/${phone}?text=${encoded}`;
   window.open(waLink, "_blank");
 
-  saveOrderSnapshot(message); // حفظ نسخة الطلب في سجل الإدارة
+  saveOrderSnapshot(message);
 }
+
+// 🚀 تهيئة الصفحة عند التحميل
+window.onload = () => {
+  renderCatalog();
+  loadDiscountRules();
+  initAutoDiscount();
+  restoreUserData();
+  enableEnterToSend();
+  enableCopyOnClick();
+  renderCart();
+
+  // حفظ تلقائي للاسم والعنوان
+  document.getElementById("user-name").addEventListener("input", e => {
+    localStorage.setItem("userName", e.target.value.trim());
+  });
+  document.getElementById("user-address").addEventListener("input", e => {
+    localStorage.setItem("userAddress", e.target.value.trim());
+  });
+};
