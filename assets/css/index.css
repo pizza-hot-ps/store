@@ -238,3 +238,18 @@ h1 {
     transform: translateY(0);
   }
 }
+.go-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.go-btn:hover {
+  background-color: #fff176;
+}
