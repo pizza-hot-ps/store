@@ -1,255 +1,146 @@
-/* 🧩 تنسيق عام للصفحة */
+/* ✅ الخط العام */
 body {
-  margin: 0;
   font-family: 'Tajawal', sans-serif;
-  background: url("../images/wood_leaf_bg.jpg") no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  scroll-behavior: smooth;
-  line-height: 1.8em;
-  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+  background: #fdfdfd;
+  color: #222;
+  margin: 0;
+  padding: 0;
 }
 
-/* 🧭 الهيدر */
+/* ✅ رأس الصفحة */
 header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 14px 0;
-  border-bottom: 1px solid #444;
-  z-index: 1000;
-}
-header a {
-  color: #ffd700;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 6px 14px;
-}
-header a:hover {
+  background: #ff914d;
   color: #fff;
-}
-
-/* 🧱 طبقة التعتيم */
-.overlay {
-  padding-top: 90px;
-  background-color: rgba(0,0,0,0.75);
-  min-height: 100vh;
-}
-
-/* 🏷️ العنوان الرئيسي */
-h1 {
-  text-align: center;
-  font-size: clamp(2rem, 5.5vw, 2.8rem);
-  color: #ffd700;
-  margin: 35px 0 10px;
-}
-
-/* 🎯 زر الطلب */
-.cta-ribbon {
-  text-align: center;
-  margin: 0 auto 36px;
-}
-.cta-ribbon a {
-  display: inline-block;
-  background: linear-gradient(90deg, #00e676, #00c853);
-  color: #111;
-  font-weight: bold;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-size: 1.15rem;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-  transition: transform 0.3s, background 0.3s;
-}
-.cta-ribbon a:hover {
-  background: linear-gradient(90deg, #00c853, #00e676);
-  color: #fff;
-  transform: scale(1.05);
-}
-.cta-ribbon a:active {
-  transform: scale(0.97);
-}
-
-/* 🔗 روابط العرض */
-.main-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px;
-  gap: 20px;
-}
-.main-links a {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid #ffd700;
-  border-radius: 10px;
-  color: #fff;
-  padding: 14px 26px;
-  font-size: 1.1rem;
-  text-decoration: none;
-  width: 92%;
-  max-width: 400px;
-  text-align: center;
-  transition: background 0.3s, transform 0.2s;
-}
-.main-links a:hover {
-  background-color: #ffd700;
-  color: #000;
-  font-weight: bold;
-  transform: scale(1.03);
-}
-
-/* 💬 زر واتساب بطابع زخرفي */
-.main-links a.whatsapp {
-  background-image: url("../images/bo-play.png");
-  background-repeat: no-repeat;
-  background-position: 12px center;
-  background-size: 28px 28px;
-  padding-left: 50px;
-}
-
-/* 🖼️ البطاقات المتحركة */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 40px;
-  max-width: 1000px;
-  width: 100%;
-}
-
-.card {
-  perspective: 1000px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInCard 0.8s ease forwards;
-}
-
-/* 🌀 تدرج رمزي حسب ترتيب البطاقة */
-.card:nth-child(1) { animation-delay: 0.2s; }
-.card:nth-child(2) { animation-delay: 0.4s; }
-.card:nth-child(3) { animation-delay: 0.6s; }
-.card:nth-child(4) { animation-delay: 0.8s; }
-.card:nth-child(5) { animation-delay: 1s; }
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-.card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-.card-inner.flipped {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.card-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.card-back {
-  background: linear-gradient(135deg, #222, #444);
-  color: #ffd700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
   padding: 20px;
   text-align: center;
-  transform: rotateY(180deg);
 }
 
-/* 📜 الفوتر */
-.footer {
-  text-align: center;
-  font-size: 0.95rem;
-  color: #ccc;
-  margin-top: 50px;
-  padding-bottom: 100px;
-  line-height: 1.6em;
+.logo {
+  height: 60px;
+  margin-bottom: 10px;
 }
 
-/* 📱 استجابة للهاتف */
-@media (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  .cta-ribbon a {
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
-
-  .main-links a {
-    font-size: 1rem;
-    padding: 10px 16px;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-    margin: 20px 10px;
-  }
-
-  .card-inner {
-    height: 220px;
-  }
-
-  .card-back {
-    font-size: 1rem;
-    padding: 14px;
-  }
+/* ✅ الأقسام */
+section {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
 }
 
-@media (max-width: 480px) {
-  header a {
-    font-size: 1rem;
-    margin: 0 6px;
-  }
+section h2 {
+  color: #ff914d;
+  margin-bottom: 10px;
 }
 
-/* 🌀 حركة دخول للبطاقات */
-@keyframes fadeInCard {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ✅ الحقول */
+label {
+  display: block;
+  margin: 8px 0 4px;
+  font-weight: bold;
 }
-.go-btn {
-  margin-top: 12px;
-  padding: 8px 16px;
-  background-color: #ffd700;
-  color: #000;
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+/* ✅ الأزرار */
+button {
+  background: #25d366;
+  color: #fff;
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
-.go-btn:hover {
-  background-color: #fff176;
+button:hover {
+  background: #1ebc5a;
+}
+
+/* ✅ معاينة السلة */
+.cart-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-section li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+/* ✅ تنبيه الخصم التلقائي */
+#auto-discount-alert {
+  background: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* ✅ الجداول */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+thead {
+  background: #f8f8f8;
+}
+
+/* ✅ بطاقات المشروبات */
+.drink-section {
+  margin-bottom: 30px;
+}
+
+.drink-section h4 {
+  color: #ff914d;
+  margin-bottom: 10px;
+}
+
+/* ✅ تمييز المنتجات غير المسعّرة */
+li[style*="background:#fff3cd"] {
+  font-weight: bold;
+  color: #856404;
+}
+
+/* ✅ استجابة الهاتف */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .drink-section h4 {
+    font-size: 1rem;
+  }
 }
