@@ -1,0 +1,52 @@
+[
+  {
+    "name": "خصم الطلب المسبق",
+    "type": "percentage",
+    "value": 0.12,
+    "code": null,
+    "condition": "isTomorrow(orderDate)",
+    "priority": 90,
+    "source": "auto",
+    "active": true
+  },
+  {
+    "name": "خصم الاستلام من المحل",
+    "type": "percentage",
+    "value": 0.10,
+    "code": null,
+    "condition": "channel === 'instore'",
+    "priority": 80,
+    "source": "auto",
+    "active": true
+  },
+  {
+    "name": "عرض بيتزا دجاج XL",
+    "type": "fixed",
+    "value": 9,
+    "code": "CHICKENXL",
+    "condition": "cart.some(i => i.item === 'عرض بيتزا دجاج XL')",
+    "priority": 70,
+    "source": "poster",
+    "active": true
+  },
+  {
+    "name": "عرض الحجم العائلي",
+    "type": "fixed",
+    "value": 19,
+    "code": "FAMILYSET",
+    "condition": "cart.some(i => i.item === 'العرض العائلي XL')",
+    "priority": 60,
+    "source": "poster",
+    "active": true
+  },
+  {
+    "name": "عرض أجنحة الدجاج",
+    "type": "fixed",
+    "value": 7,
+    "code": "WINGSDEAL",
+    "condition": "cart.some(i => i.item === 'عرض أجنحة الدجاج')",
+    "priority": 50,
+    "source": "poster",
+    "active": true
+  }
+]
