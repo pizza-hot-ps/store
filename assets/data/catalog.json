@@ -19,28 +19,36 @@
   ],
 
   "drinks": [
-    { "name": "كولا 1.25 لتر", "price": 4, "enabled": true, "image": "cola-1.25.png" },
-    { "name": "كولا 2 لتر", "price": 6, "enabled": true, "image": "cola-2.png" },
-    { "name": "عصير مانجو", "price": 5, "enabled": true, "image": "mango.png" },
-    { "name": "مياه معدنية", "price": 3, "enabled": true, "image": "water.png" }
+    { "name": "كولا 1.25 لتر", "price": 4, "size": "1.25 لتر", "type": "كولا", "enabled": true, "image": "cola-1.25.png" },
+    { "name": "كولا 2 لتر", "price": 6, "size": "2 لتر", "type": "كولا", "enabled": true, "image": "cola-2.png" },
+    { "name": "عصير مانجو", "price": 5, "size": "كوب", "type": "عصائر", "enabled": true, "image": "mango.png" },
+    { "name": "مياه معدنية", "price": 3, "size": "500ml", "type": "مياه", "enabled": true, "image": "water.png" },
+
+    { "name": "كابي عنب كبير", "price": 6, "size": "كبير", "type": "عصائر", "enabled": true, "image": "kabi-grape-large.png" },
+    { "name": "كابي عنب صغير", "price": 2, "size": "صغير", "type": "عصائر", "enabled": true, "image": "kabi-grape-small.png" },
+    { "name": "كابي تفاح كبير", "price": 6, "size": "كبير", "type": "عصائر", "enabled": true, "image": "kabi-apple-large.png" },
+    { "name": "كابي تفاح صغير", "price": 2, "size": "صغير", "type": "عصائر", "enabled": true, "image": "kabi-apple-small.png" },
+    { "name": "كابي برتقال كبير", "price": 6, "size": "كبير", "type": "عصائر", "enabled": true, "image": "kabi-orange-large.png" },
+    { "name": "كابي برتقال صغير", "price": 2, "size": "صغير", "type": "عصائر", "enabled": true, "image": "kabi-orange-small.png" },
+    { "name": "كابي خوخ كبير", "price": 6, "size": "كبير", "type": "عصائر", "enabled": true, "image": "kabi-peach-large.png" },
+    { "name": "كابي خوخ صغير", "price": 2, "size": "صغير", "type": "عصائر", "enabled": true, "image": "kabi-peach-small.png" },
+    { "name": "كابي مانجا كبير", "price": 6, "size": "كبير", "type": "عصائر", "enabled": true, "image": "kabi-mango-large.png" },
+    { "name": "كابي مانجا صغير", "price": 2, "size": "صغير", "type": "عصائر", "enabled": true, "image": "kabi-mango-small.png" },
+    { "name": "كابي إستوائي كبير", "price": 6, "size": "كبير", "type": "عصائر", "enabled": true, "image": "kabi-tropical-large.png" },
+    { "name": "كابي إستوائي صغير", "price": 2, "size": "صغير", "type": "عصائر", "enabled": true, "image": "kabi-tropical-small.png" },
+    { "name": "كابي فراولة وموز كبير", "price": 6, "size": "كبير", "type": "عصائر", "enabled": true, "image": "kabi-strawberry-banana-large.png" },
+    { "name": "كابي فراولة وموز صغير", "price": 2, "size": "صغير", "type": "عصائر", "enabled": true, "image": "kabi-strawberry-banana-small.png" },
+
+    { "name": "هايبي 330ml", "price": 2, "size": "330ml", "type": "مشروبات غازية", "enabled": true, "image": "haypi.png" },
+    { "name": "بلو 330ml", "price": 3, "size": "330ml", "type": "مشروبات غازية", "enabled": true, "image": "blue.png" },
+    { "name": "اكس ال 330ml", "price": 4, "size": "330ml", "type": "مشروبات غازية", "enabled": true, "image": "xl.png" },
+    { "name": "اكس ال 330ml (علامة حمراء)", "price": 5, "size": "330ml", "type": "مشروبات غازية", "enabled": true, "image": "xl-red.png" },
+
+    { "name": "ريو – قهوة باردة", "price": 4, "size": "صغير", "type": "قهوة باردة", "enabled": true, "image": "rio-coffee.png" }
   ],
 
   "cocktails": {
-    "enabled": false,
+    "enabled": true,
     "items": [
       { "name": "موهيتو كلاسيك", "description": "نعناع + ليمون + سفن أب", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-classic.png" },
       { "name": "موهيتو رمان", "description": "نعناع + ليمون + رمان + سفن أب", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-pomegranate.png" },
-      { "name": "موهيتو بلو", "description": "نعناع + ليمون + بلو", "size": "220ml", "price": 6, "type": "كوكتيلات غازية", "enabled": false, "image": "mojito-blue.png" },
-      { "name": "كوكتيل كولا نعناع", "description": "كولا + نعناع + ليمون", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "cola-mint.png" },
-      { "name": "كوكتيل كولا رمان", "description": "كولا + رمان + نعناع", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": false, "image": "cola-pomegranate.png" }
-    ]
-  },
-
-  "naturalJuices": {
-    "enabled": false,
-    "items": [
-      { "name": "عصير برتقال طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false, "image": "orange.png" },
-      { "name": "عصير جزر طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false, "image": "carrot.png" }
-    ]
-  }
-}
