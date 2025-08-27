@@ -3,204 +3,96 @@ fetch("assets/data/catalog.json")
   .then(res => res.json())
   .then(data => {
     window.catalog = data;
-    renderCatalog();
+    renderCatalog(); // ← سنكتبها لاحقًا
   });
-
-// 🛒 تحميل كتالوج السوبرماركت عند الحاجة
-let supermarketCatalog = [];
-function loadSupermarketCatalog() {
-  if (supermarketCatalog.length) return;
-  fetch("assets/data/supermarket.json")
-    .then(res => res.json())
-    .then(data => {
-      supermarketCatalog = data;
-      showSupermarketCatalog(data);
-    });
-}
 
 // 🧠 تحميل قواعد الخصم وتفعيلها
 fetch("assets/data/rules.json")
   .then(res => res.json())
   .then(data => {
     DiscountEngine.loadRulesFrom(data);
-    console.log(`✅ تم تحميل ${data.length} قاعدة خصم`);
-    renderCart(); // تفعيل الخصومات مباشرة بعد التحميل
+    renderCart(); // ← سنكتبها لاحقًا
   });
-function renderCatalog() {
-  renderPizza(catalog.pizza);
-  renderSides(catalog.sides);
-  renderDrinks(catalog.drinks);
-
-  if (catalog.cocktails?.enabled) renderCocktails(catalog.cocktails.items);
-  if (catalog.naturalJuices?.enabled) renderNaturalJuices(catalog.naturalJuices.items);
-
-  bindCartEvents();
-  bindQuantityAndSizeEvents();
-}
-function renderPizza(list) {
-  const table = document.querySelector("#pizza-menu tbody");
-  table.innerHTML = "";
-
-  list.forEach(item => {
-    if (item.enabled === false) return;
-
-    const [defaultLabel, defaultPrice] = Object.entries(item.sizes)[0];
-    const row = document.createElement("tr");
-    row.dataset.item = item.name;
-
-    row.innerHTML = `
-      <td>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <img src="assets/images/${item.image}" alt="${item.name}" style="height:40px;border-radius:4px;">
-          <span>${item.name}</span>
-        </div>
-      </td>
-      <td>
-        <select class="size">
-          ${Object.entries(item.sizes).map(([label, price]) =>
-            `<option value="${price}">${label} – ${price}${config.currency}</option>`
-          ).join("")}
-        </select>
-      </td>
-      <td><span class="price">${defaultPrice}${config.currency}</span></td>
-      <td><input class="qty" type="number" min="1" value="1"></td>
-      <td class="total-cell">${defaultPrice}${config.currency}</td>
-      <td><button class="add-btn">أضف</button></td>
-    `;
-    table.appendChild(row);
-  });
-}
-function renderSides(list) {
-  const table = document.querySelector("#sides-menu tbody");
-  table.innerHTML = "";
-
-  list.forEach(item => {
-    if (item.enabled === false) return;
-
-    const row = document.createElement("tr");
-    row.dataset.item = item.name;
-    row.dataset.price = item.price;
-
-    row.innerHTML = `
-      <td>${item.name}</td>
-      <td><span class="price">${item.price}${config.currency}</span></td>
-      <td><input class="qty" type="number" min="1" value="1"></td>
-      <td class="total-cell">${item.price}${config.currency}</td>
-      <td><button class="add-btn">أضف</button></td>
-    `;
-    table.appendChild(row);
-  });
-}
-function renderDrinks(list) {
-  const container = document.getElementById("drinks-container");
+function renderGenericTable(label, items, containerId) {
+  const container = document.getElementById(containerId);
   container.innerHTML = "";
 
-  const categories = { "مياه": [], "كولا": [], "عصائر": [], "أخرى": [] };
+  const section = document.createElement("div");
+  section.className = "drink-section";
 
-  list.forEach(item => {
-    if (item.enabled === false) return;
-    const type = item.type || "أخرى";
-    if (!categories[type]) categories[type] = [];
-    categories[type].push(item);
-  });
+  section.innerHTML = `
+    <h4>${label}</h4>
+    <table class="drink-table menu-table">
+      <thead>
+        <tr><th>المنتج</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th></th></tr>
+      </thead>
+      <tbody>
+        ${items.filter(i => i.enabled !== false).map(item => {
+          const defaultSize = item.sizes ? Object.keys(item.sizes)[0] : item.size || "—";
+          const defaultPrice = item.sizes ? item.sizes[defaultSize] : item.price;
 
-  Object.entries(categories).forEach(([label, items]) => {
-    const section = document.createElement("div");
-    section.className = "drink-section";
-
-    section.innerHTML = `
-      <h4>🧃 ${label}</h4>
-      <table class="drink-table">
-        <thead><tr><th>المنتج</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th></th></tr></thead>
-        <tbody>
-          ${items.map(item => `
-            <tr data-item="${item.name}" data-price="${item.price}">
-              <td>${item.name}</td>
-              <td>${item.size || "—"}</td>
-              <td><span class="price">${item.price}${config.currency}</span></td>
+          return `
+            <tr data-item="${item.name}">
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <img src="assets/images/${item.image}" alt="${item.name}" style="height:40px;border-radius:4px;">
+                  <span>${item.name}</span>
+                </div>
+              </td>
+              <td>
+                ${item.sizes
+                  ? `<select class="size">
+                      ${Object.entries(item.sizes).map(([label, price]) =>
+                        `<option value="${price}">${label} – ${price}${config.currency}</option>`
+                      ).join("")}
+                    </select>`
+                  : item.size || "—"}
+              </td>
+              <td><span class="price">${defaultPrice}${config.currency}</span></td>
               <td><input class="qty" type="number" min="1" value="1"></td>
-              <td class="total-cell">${item.price}${config.currency}</td>
+              <td class="total-cell">${defaultPrice}${config.currency}</td>
               <td><button class="add-btn">أضف</button></td>
             </tr>
-          `).join("")}
-        </tbody>
-      </table>
-    `;
-    container.appendChild(section);
-  });
-}
-function renderCocktails(list) {
-  const container = document.getElementById("cocktails-container");
-  container.innerHTML = "";
-
-  const activeItems = list.filter(item => item.enabled !== false);
-  if (!activeItems.length) return;
-
-  const section = document.createElement("div");
-  section.className = "drink-section";
-
-  section.innerHTML = `
-    <h4>🍸 كوكتيلات غازية</h4>
-    <table class="drink-table">
-      <thead><tr><th>المنتج</th><th>الوصف</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th></th></tr></thead>
-      <tbody>
-        ${activeItems.map(item => `
-          <tr data-item="${item.name}" data-price="${item.price}">
-            <td>${item.name}</td>
-            <td>${item.description || "—"}</td>
-            <td>${item.size}</td>
-            <td><span class="price">${item.price}${config.currency}</span></td>
-            <td><input class="qty" type="number" min="1" value="1"></td>
-            <td class="total-cell">${item.price}${config.currency}</td>
-            <td><button class="add-btn">أضف</button></td>
-          </tr>
-        `).join("")}
+          `;
+        }).join("")}
       </tbody>
     </table>
   `;
   container.appendChild(section);
 }
-function renderNaturalJuices(list) {
-  const container = document.getElementById("natural-juices-container");
-  container.innerHTML = "";
+function renderCatalog() {
+  renderGenericTable("🍕 قائمة البيتزا", catalog.pizza, "pizza-menu");
+  renderGenericTable("🍟 أطباق جانبية", catalog.sides, "sides-menu");
+  renderGenericTable("🥤 مشروبات", catalog.drinks, "drinks-container");
+  renderGenericTable("🍸 كوكتيلات", catalog.cocktails.items, "cocktails-container");
+  renderGenericTable("🍹 عصائر طبيعية", catalog.naturalJuices.items, "natural-juices-container");
 
-  const activeItems = list.filter(item => item.enabled !== false);
-  if (!activeItems.length) return;
-
-  const section = document.createElement("div");
-  section.className = "drink-section";
-
-  section.innerHTML = `
-    <h4>🍹 عصائر طبيعية</h4>
-    <table class="drink-table">
-      <thead><tr><th>المنتج</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th></th></tr></thead>
-      <tbody>
-        ${activeItems.map(item => `
-          <tr data-item="${item.name}" data-price="${item.price}">
-            <td>${item.name}</td>
-            <td>${item.size}</td>
-            <td><span class="price">${item.price}${config.currency}</span></td>
-            <td><input class="qty" type="number" min="1" value="1"></td>
-            <td class="total-cell">${item.price}${config.currency}</td>
-            <td><button class="add-btn">أضف</button></td>
-          </tr>
-        `).join("")}
-      </tbody>
-    </table>
-  `;
-  container.appendChild(section);
+  bindCartEvents();              // ← سنكتبها في الجزء الرابع
+  bindQuantityAndSizeEvents();  // ← سنكتبها في الجزء الخامس
 }
 function bindCartEvents() {
   document.querySelectorAll(".add-btn").forEach(btn => {
     btn.onclick = () => {
       const row = btn.closest("tr");
       const item = row.dataset.item;
-      const price = parseFloat(row.querySelector(".price").textContent);
+      const sizeSelect = row.querySelector(".size");
       const qty = parseInt(row.querySelector(".qty").value || "1");
 
-      CartCore.add(item, price, qty);
+      let price;
+      let label = item;
+
+      if (sizeSelect) {
+        const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+        price = parseFloat(selectedOption.value);
+        const sizeLabel = selectedOption.text.split(" –")[0];
+        label = `${item} (${sizeLabel})`;
+      } else {
+        price = parseFloat(row.querySelector(".price").textContent);
+      }
+
+      CartCore.add(label, price, qty);
       showAddToast();
-      renderFloatingCart?.(); // إذا كانت السلة العائمة مفعّلة
+      renderCart(); // ← سنكتبه في الجزء السادس
     };
   });
 }
@@ -220,7 +112,7 @@ function bindQuantityAndSizeEvents() {
 
     if (sizeSelect) sizeSelect.onchange = updateTotal;
     if (qtyInput) qtyInput.oninput = updateTotal;
-    updateTotal();
+    updateTotal(); // ← تفعيل الحساب مباشرة عند التحميل
   });
 }
 function renderCart() {
@@ -286,7 +178,7 @@ function sendOrder() {
   const coupon2 = document.getElementById("secondary-coupon").value.trim();
 
   const rawTotal = cartData.reduce((sum, item) => sum + item.price * item.qty, 0);
-  const { total, applied, breakdown } = DiscountEngine.apply(
+  const { total, applied } = DiscountEngine.apply(
     rawTotal, cartData, userName, coupon1, coupon2,
     "instore", new Date().toISOString(), "whatsapp", new Date().getHours()
   );
@@ -316,12 +208,13 @@ function savePendingOrder(order) {
   localStorage.setItem("orderHistory", JSON.stringify(history));
 }
 window.onload = () => {
-  renderCatalog();
-  renderCart();
-  bindCartEvents();
-  bindQuantityAndSizeEvents();
+  renderCatalog(); // عرض كل الفئات
+  renderCart();    // عرض السلة ومعاينتها
 
+  // ربط زر الإرسال
   document.getElementById("send-order-btn").onclick = sendOrder;
+
+  // ربط الحقول بتحديث السلة تلقائيًا
   document.getElementById("user-name").oninput = renderCart;
   document.getElementById("user-coupon").oninput = renderCart;
   document.getElementById("secondary-coupon").oninput = renderCart;
