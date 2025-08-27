@@ -180,6 +180,14 @@ thead {
   vertical-align: middle;
 }
 
+/* ✨ تمييز الصف عند المرور */
+.menu-table tbody tr:hover,
+.drink-table tbody tr:hover {
+  background-color: #f0f8ff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 /* 🧮 خلايا السعر والإجمالي */
 .price, .total-cell {
   font-weight: bold;
