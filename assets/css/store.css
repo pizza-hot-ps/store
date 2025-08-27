@@ -54,12 +54,22 @@ header a:hover {
   background-position: center;
 }
 
+.section::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #eee;
+  margin-top: 20px;
+}
+
 /* ✨ تأثير دخول متدرج */
 .section:nth-child(1) { animation-delay: 0.2s; }
 .section:nth-child(2) { animation-delay: 0.4s; }
 .section:nth-child(3) { animation-delay: 0.6s; }
 .section:nth-child(4) { animation-delay: 0.8s; }
 .section:nth-child(5) { animation-delay: 1s; }
+.section:nth-child(6) { animation-delay: 1.2s; }
+.section:nth-child(7) { animation-delay: 1.4s; }
 
 @keyframes fadeInUp {
   to {
@@ -185,6 +195,15 @@ input.qty, input[type="number"], input[type="text"] {
 .add-btn.success {
   background-color: #28a745 !important;
   color: #fff !important;
+}
+
+.copy-btn {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.copy-btn:hover {
+  background-color: #e0a800;
 }
 
 /* 📢 إشعار الإضافة */
