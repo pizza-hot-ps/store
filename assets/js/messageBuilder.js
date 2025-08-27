@@ -22,24 +22,27 @@ const MessageBuilder = (() => {
     const merged = merge(cart);
 
     merged.forEach(({ item, price, qty, note }) => {
-      const line = `${item} ×${qty} = ${price * qty}₪` + (note ? ` [${note}]` : "");
+      const line = `• ${item} ×${qty} = ${price * qty}₪` + (note ? ` [ملاحظة: ${note}]` : "");
       sections[classify(item)].push(line);
     });
 
-    let msg = `طلب جديد من ${userName || "ضيف"}\n`;
-    if (userAddr) msg += `العنوان: ${userAddr}\n`;
-    msg += `\nالطلب:\n`;
+    let msg = `🍕 PIZZA HOT – طلب جديد\n------------------\n`;
+    msg += `👤 الاسم: ${userName || "ضيف"}\n`;
+    if (userAddr) msg += `📍 العنوان: ${userAddr}\n`;
+    msg += `\n📦 محتوى الطلب:\n`;
 
-    if (sections.pizza.length) msg += `\nبيتزا:\n` + sections.pizza.join("\n");
-    if (sections.sides.length) msg += `\n\nجانبي:\n` + sections.sides.join("\n");
-    if (sections.drinks.length) msg += `\n\nمشروبات:\n` + sections.drinks.join("\n");
-    if (sections.other.length) msg += `\n\nأخرى:\n` + sections.other.join("\n");
+    if (sections.pizza.length) msg += `\n🍕 بيتزا:\n` + sections.pizza.join("\n");
+    if (sections.sides.length) msg += `\n\n🍟 جانبي:\n` + sections.sides.join("\n");
+    if (sections.drinks.length) msg += `\n\n🥤 مشروبات:\n` + sections.drinks.join("\n");
+    if (sections.other.length) msg += `\n\n📦 أخرى:\n` + sections.other.join("\n");
 
-    msg += `\n\nالإجمالي قبل الخصم: ${rawTotal}₪`;
-    msg += `\nالإجمالي بعد الخصم: ${finalTotal}₪`;
+    msg += `\n\n------------------\n📦 قبل الخصم: ${rawTotal}₪`;
+    msg += `\n📦 بعد الخصم: ${finalTotal}₪`;
 
-    if (discounts?.length) msg += `\nالخصومات المفعّلة: ${discounts.join(", ")}`;
-    if (breakdown?.length) msg += `\nتفاصيل الخصومات:\n` + breakdown.join("\n");
+    if (discounts?.length) msg += `\n💸 خصومات مفعّلة: ${discounts.join(", ")}`;
+    if (breakdown?.length) msg += `\n📊 تفاصيل الخصومات:\n` + breakdown.join("\n");
+
+    msg += `\n\n🙏 شكرًا لاختياركم PIZZA HOT`;
 
     return msg;
   }
