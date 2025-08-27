@@ -20,12 +20,87 @@
 <div class="overlay">
   <h1>🍕 لحظة التحمير... استعد للعرض</h1>
 
+  <!-- 🎯 زر الطلب -->
   <div class="cta-ribbon">
-    <a href="store.html">
-      🍕 ابدأ الطلب الآن من الكتالوج
-    </a>
+    <a href="store.html">🍕 ابدأ الطلب الآن من الكتالوج</a>
   </div>
 
+  <!-- 🖼️ البطاقات الترويجية -->
+  <div class="card-grid">
+
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/pizza_closeup_main.png" alt="بيتزا قريبة">
+        </div>
+        <div class="card-back">
+          <div>
+            بيتزا نابولي الأصلية – جاهزة للطلب<br>
+            <button onclick="event.stopPropagation(); location.href='poster_view_chicken.html'" class="go-btn">🔍 عرض التفاصيل</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/french_fries_main.jpg" alt="بطاطا مقلية">
+        </div>
+        <div class="card-back">
+          <div>
+            بطاطا مقلية ذهبية – الجانب المثالي لكل وجبة<br>
+            <button onclick="event.stopPropagation(); location.href='poster_view_family.html'" class="go-btn">🔍 عرض التفاصيل</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/grilled_chicken_plate.jpg" alt="دجاج مشوي">
+        </div>
+        <div class="card-back">
+          <div>
+            دجاج مشوي بتتبيلة رمزية – نكهة لا تُقاوم<br>
+            <button onclick="event.stopPropagation(); location.href='poster_view_wings.html'" class="go-btn">🔍 عرض التفاصيل</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/pizzahot-bg.jpg" alt="شعار PIZZA HOT">
+        </div>
+        <div class="card-back">
+          <div>
+            أهلاً بك في PIZZA HOT – نكهة، هوية، وتجربة لا تُنسى<br>
+            <button onclick="event.stopPropagation(); location.href='promo_offer.html'" class="go-btn">🔍 عرض التفاصيل</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="assets/images/Mixed-Berry-Mojito.jpg" alt="موهيتو توت مشكل">
+        </div>
+        <div class="card-back">
+          <div>
+            مشروب منعش بنكهة التوت – تجربة رمزية من عالم PIZZA HOT<br>
+            <button onclick="event.stopPropagation(); location.href='poster_gallery.html'" class="go-btn">🔍 عرض التفاصيل</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 🔗 روابط العرض -->
   <div class="main-links">
     <a href="promo_offer.html">🔥 عرض العائلة من PIZZA HOT</a>
     <a href="poster_view_chicken.html">🍕 عرض بيتزا دجاج XL</a>
@@ -34,65 +109,7 @@
     <a href="https://wa.me/972569788731" target="_blank" class="whatsapp">💬 اطلب عبر واتساب مباشرةً</a>
   </div>
 
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="assets/images/pizza_closeup_main.png" alt="بيتزا قريبة">
-        </div>
-        <div class="card-back">
-          بيتزا نابولي الأصلية – جاهزة للطلب
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="assets/images/french_fries_main.jpg" alt="بطاطا مقلية">
-        </div>
-        <div class="card-back">
-          بطاطا مقلية ذهبية – الجانب المثالي لكل وجبة
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="assets/images/grilled_chicken_plate.jpg" alt="دجاج مشوي">
-        </div>
-        <div class="card-back">
-          دجاج مشوي بتتبيلة رمزية – نكهة لا تُقاوم
-        </div>
-      </div>
-    </div>
-
-    <!-- 🧠 بطاقة شعار PIZZA HOT -->
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="assets/images/pizzahot-bg.jpg" alt="شعار PIZZA HOT">
-        </div>
-        <div class="card-back">
-          أهلاً بك في PIZZA HOT – نكهة، هوية، وتجربة لا تُنسى
-        </div>
-      </div>
-    </div>
-
-    <!-- 🧃 بطاقة الموهيتو -->
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="assets/images/Mixed-Berry-Mojito.jpg" alt="موهيتو توت مشكل">
-        </div>
-        <div class="card-back">
-          مشروب منعش بنكهة التوت – تجربة رمزية من عالم PIZZA HOT
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!-- 📜 الفوتر -->
   <div class="footer">
     بلعين – شارع صفا – رام الله<br>
     &copy; 2025 PIZZA HOT – جميع الحقوق محفوظة
