@@ -1,4 +1,3 @@
-// ✅ تحميل إعدادات الكتالوج
 fetch("assets/data/catalog.json")
   .then(res => res.json())
   .then(data => {
@@ -6,7 +5,6 @@ fetch("assets/data/catalog.json")
     renderCatalog();
   });
 
-// ✅ تحميل كتالوج السوبرماركت
 let supermarketCatalog = [];
 function loadSupermarketCatalog() {
   if (supermarketCatalog.length) return;
@@ -22,13 +20,8 @@ function renderCatalog() {
   renderSides(catalog.sides);
   renderDrinks(catalog.drinks);
 
-  if (catalog.cocktails?.enabled) {
-    renderCocktails(catalog.cocktails.items);
-  }
-
-  if (catalog.naturalJuices?.enabled) {
-    renderNaturalJuices(catalog.naturalJuices.items);
-  }
+  if (catalog.cocktails?.enabled) renderCocktails(catalog.cocktails.items);
+  if (catalog.naturalJuices?.enabled) renderNaturalJuices(catalog.naturalJuices.items);
 
   bindCartEvents();
   bindQuantityAndSizeEvents();
@@ -45,7 +38,12 @@ function renderPizza(list) {
     row.dataset.item = item.name;
 
     row.innerHTML = `
-      <td>${item.name}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <img src="assets/images/${item.image}" alt="${item.name}" style="height:40px;border-radius:4px;">
+          <span>${item.name}</span>
+        </div>
+      </td>
       <td>
         <select class="size">
           ${Object.entries(item.sizes).map(([label, price]) =>
@@ -61,7 +59,6 @@ function renderPizza(list) {
     table.appendChild(row);
   });
 }
-
 function renderSides(list) {
   const table = document.querySelector("#sides-menu tbody");
   table.innerHTML = "";
@@ -87,12 +84,7 @@ function renderDrinks(list) {
   const container = document.getElementById("drinks-container");
   container.innerHTML = "";
 
-  const categories = {
-    "مياه": [],
-    "كولا": [],
-    "عصائر": [],
-    "أخرى": []
-  };
+  const categories = { "مياه": [], "كولا": [], "عصائر": [], "أخرى": [] };
 
   list.forEach(item => {
     if (item.enabled === false) return;
@@ -188,50 +180,6 @@ function renderNaturalJuices(list) {
     </table>
   `;
   container.appendChild(section);
-}
-function bindQuantityAndSizeEvents() {
-  document.querySelectorAll("tr[data-item]").forEach(row => {
-    const sizeSelect = row.querySelector(".size");
-    const qtyInput = row.querySelector(".qty");
-    const priceCell = row.querySelector(".price");
-    const totalCell = row.querySelector(".total-cell");
-
-    function updateRowTotal() {
-      const price = sizeSelect ? parseFloat(sizeSelect.value) : parseFloat(row.dataset.price);
-      const qty = parseInt(qtyInput.value || "1");
-      priceCell.textContent = `${price}${config.currency}`;
-      totalCell.textContent = `${(price * qty).toFixed(2)}${config.currency}`;
-    }
-
-    if (sizeSelect) sizeSelect.onchange = updateRowTotal;
-    if (qtyInput) qtyInput.oninput = updateRowTotal;
-    updateRowTotal();
-  });
-}
-function bindCartEvents() {
-  document.querySelectorAll(".add-btn").forEach(btn => {
-    btn.onclick = () => {
-      const row = btn.closest("tr");
-      const item = row.dataset.item;
-      const qty = parseInt(row.querySelector(".qty").value || "1");
-      const sizeSelect = row.querySelector(".size");
-      const price = sizeSelect ? parseFloat(sizeSelect.value) : parseFloat(row.dataset.price || row.querySelector(".price")?.textContent);
-      const sizeLabel = sizeSelect ? sizeSelect.selectedOptions[0].text : "";
-      const itemLabel = sizeSelect ? `${item} (${sizeLabel})` : item;
-
-      addToCart(itemLabel, price, qty);
-      renderCart();
-
-      if (config.enableCartToast) {
-        btn.textContent = "✅ تمت الإضافة";
-        btn.classList.add("success");
-        setTimeout(() => {
-          btn.textContent = "أضف";
-          btn.classList.remove("success");
-        }, 1500);
-      }
-    };
-  });
 }
 function getCartData() {
   return JSON.parse(localStorage.getItem("cart") || "[]");
@@ -329,6 +277,26 @@ ${breakdown.map(b => `- ${b}`).join("\n")}
   const encoded = encodeURIComponent(message);
   const phone = config.whatsappNumber;
   window.open(`https://wa.me/${phone}?text=${encoded}`, "_blank");
+}
+function savePendingOrder(orderId, cartData, userName) {
+  const pending = JSON.parse(localStorage.getItem("pendingOrders") || "[]");
+
+  pending.push({
+    orderId,
+    userName,
+    createdAt: new Date().toISOString(),
+    items: cartData.filter(i => !i.price || i.price === 0),
+    status: "pending"
+  });
+
+  localStorage.setItem("pendingOrders", JSON.stringify(pending));
+}
+
+function copyOrderMessage() {
+  const msg = document.getElementById("cart-preview").textContent;
+  navigator.clipboard.writeText(msg).then(() => {
+    alert("📋 تم نسخ الطلب إلى الحافظة");
+  });
 }
 window.onload = () => {
   loadDiscountRules();
