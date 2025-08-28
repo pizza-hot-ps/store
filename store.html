@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,7 +5,7 @@
   <title>🛒 متجر PIZZA HOT – الطلب الرمزي</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/store.css">
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/css/store.css">
   <style>
     .countdown-box {
       background-color: #ffcc80;
@@ -24,7 +23,7 @@
 <body>
 
 <header>
-  <img src="assets/images/logo.png" alt="PIZZA HOT" class="logo">
+  <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/logo.png" alt="PIZZA HOT" class="logo">
   <a href="index.html">🏠 الرئيسية</a>
   <a href="promo_offer.html">🔥 العروض</a>
   <a href="store.html">🛒 المتجر</a>
@@ -139,21 +138,21 @@
   </div>
 
   <div class="footer">
-    <img src="assets/images/brands/logo_pizzahot_norepeat_clean.png" alt="PIZZA HOT"><br>
+    <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/brands/logo_pizzahot_norepeat_clean.png" alt="PIZZA HOT"><br>
     📍 بلعين – شارع صفا – رام الله<br>
     © 2025 PIZZA HOT — جميع الحقوق محفوظة.
   </div>
 </div>
 
-<script src="assets/js/config.js"></script>
-<script src="assets/js/catalog.js"></script>
-<script src="assets/js/cart.js"></script>
-<script src="assets/js/messageBuilder.js"></script>
-<script src="assets/js/discountRules.js"></script>
-<script src="assets/js/discountEngine.js"></script>
-<script src="assets/js/dailyCoupon.js"></script>
-<script src="assets/js/store.js"></script>
-<script src="assets/js/floatingCart.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/config.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/catalog.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/cart.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/messageBuilder.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/discountRules.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/discountEngine.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/dailyCoupon.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/store.js"></script>
+<script src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/js/floatingCart.js"></script>
 <script>
   function startCountdown(hours = 12) {
     const timerBox = document.getElementById("countdown-timer");
@@ -163,16 +162,19 @@
       const m = String(Math.floor((remaining % 3600) / 60)).padStart(2, "0");
       const s = String(remaining % 60).padStart(2, "0");
       timerBox.textContent = `${h}:${m}:${s}`;
+      
       if (remaining <= 0) {
         clearInterval(interval);
         timerBox.textContent = "✅ تم تفعيل العروض";
-        // DiscountEngine.activate(); ← يمكن تفعيل العروض هنا لاحقًا
+        document.getElementById("auto-discount-alert").style.display = "block";
+        if (typeof DiscountEngine !== "undefined" && typeof DiscountEngine.activate === "function") {
+          DiscountEngine.activate(); // ← تفعيل العروض الرمزية تلقائيًا
+        }
       }
+
       remaining--;
     }, 1000);
   }
-  startCountdown();
-</script>
 
-</body>
-</html>
+  startCountdown(); // ← بدء العد التنازلي عند تحميل الصفحة
+</script>
