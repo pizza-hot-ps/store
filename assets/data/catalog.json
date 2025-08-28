@@ -1,57 +1,279 @@
 {
-  "pizza": [
-    { "name": "بيتزا دجاج", "sizes": { "XL": 65, "L": 45, "M": 33, "S": 18 }, "enabled": true, "image": "chicken.png" },
-    { "name": "بيتزا خضار", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 }, "enabled": true, "image": "veggie.png" },
-    { "name": "بيتزا سلامي", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "salami.png" },
-    { "name": "بيتزا نقانق", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "sausage.png" },
-    { "name": "بيتزا تونة", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "tuna.png" },
-    { "name": "بيتزا مارجريتا", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 14 }, "enabled": true, "image": "margherita.png" },
-    { "name": "كلزوني", "sizes": { "XL": 60, "L": 40, "M": 32, "S": 17 }, "enabled": true, "image": "calzone.png" }
-  ],
-
-  "sides": [
-    { "name": "بطاطا صغير", "price": 5, "enabled": true, "image": "fries-small.png" },
-    { "name": "بطاطا كبير", "price": 10, "enabled": true, "image": "fries-large.png" },
-    { "name": "زنجر صغير", "price": 13, "enabled": true, "image": "zinger-small.png" },
-    { "name": "زنجر كبير", "price": 25, "enabled": true, "image": "zinger-large.png" },
-    { "name": "أجنحة جنان صغير", "price": 13, "enabled": true, "image": "wings-small.png" },
-    { "name": "أجنحة دجاج كبير", "price": 24, "enabled": true, "image": "wings-large.png" }
-  ],
-
-  "drinks": [
-    { "name": "كولا", "sizes": { "L": 6, "S": 4 }, "type": "كولا", "enabled": true, "image": "cola.png" },
-    { "name": "مياه معدنية", "sizes": { "S": 3 }, "type": "مياه", "enabled": true, "image": "water.png" },
-
-    { "name": "كابي عنب", "sizes": { "L": 6, "S": 2 }, "type": "عصائر", "enabled": true, "image": "kabi-grape.png" },
-    { "name": "كابي تفاح", "sizes": { "L": 6, "S": 2 }, "type": "عصائر", "enabled": true, "image": "kabi-apple.png" },
-    { "name": "كابي برتقال", "sizes": { "L": 6, "S": 2 }, "type": "عصائر", "enabled": true, "image": "kabi-orange.png" },
-    { "name": "كابي خوخ", "sizes": { "L": 6, "S": 2 }, "type": "عصائر", "enabled": true, "image": "kabi-peach.png" },
-    { "name": "كابي مانجا", "sizes": { "L": 6, "S": 2 }, "type": "عصائر", "enabled": true, "image": "kabi-mango.png" },
-    { "name": "كابي إستوائي", "sizes": { "L": 6, "S": 2 }, "type": "عصائر", "enabled": true, "image": "kabi-tropical.png" },
-    { "name": "كابي فراولة وموز", "sizes": { "L": 6, "S": 2 }, "type": "عصائر", "enabled": true, "image": "kabi-strawberry-banana.png" },
-
-    { "name": "Haypi", "sizes": { "S": 2 }, "type": "مشروبات غازية", "enabled": true, "image": "haypi.png" },
-    { "name": "Blue", "sizes": { "S": 3 }, "type": "مشروبات غازية", "enabled": true, "image": "blue.png" },
-    { "name": "XL", "sizes": { "S": 4 }, "type": "مشروبات غازية", "enabled": true, "image": "xl.png" },
-    { "name": "XL (Red Label)", "sizes": { "S": 5 }, "type": "مشروبات غازية", "enabled": true, "image": "xl-red.png" },
-
-    { "name": "Rio Iced Coffee", "sizes": { "S": 4 }, "type": "قهوة باردة", "enabled": true, "image": "rio-coffee.png" }
-  ],
-
-  "cocktails": {
-    "enabled": true,
-    "items": [
-      { "name": "موهيتو كلاسيك", "description": "نعناع + ليمون + سفن أب", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-classic.png" },
-      { "name": "موهيتو رمان", "description": "نعناع + ليمون + رمان + سفن أب", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-pomegranate.png" },
-      { "name": "كوكتيل كولا نعناع", "description": "كولا + نعناع + ليمون", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "cola-mint.png" }
+  "foods": {
+    "pizza": [
+      {
+        "name": "بيتزا دجاج",
+        "sizes": { "XL": 65, "L": 45, "M": 33, "S": 18 },
+        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
+        "customization": ["حار", "عادي", "بدون جبنة"],
+        "enabled": true,
+        "image": "chicken.png"
+      },
+      {
+        "name": "بيتزا خضار",
+        "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 },
+        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
+        "customization": ["عادي", "بدون جبنة"],
+        "enabled": true,
+        "image": "veggie.png"
+      },
+      {
+        "name": "بيتزا سلامي",
+        "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 },
+        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
+        "enabled": true,
+        "image": "salami.png"
+      },
+      {
+        "name": "بيتزا نقانق",
+        "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 },
+        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
+        "enabled": true,
+        "image": "sausage.png"
+      },
+      {
+        "name": "بيتزا تونة",
+        "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 },
+        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
+        "enabled": true,
+        "image": "tuna.png"
+      },
+      {
+        "name": "بيتزا مارجريتا",
+        "sizes": { "XL": 50, "L": 38, "M": 20, "S": 14 },
+        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
+        "enabled": true,
+        "image": "margherita.png"
+      },
+      {
+        "name": "كلزوني",
+        "sizes": { "XL": 60, "L": 40, "M": 32, "S": 17 },
+        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
+        "enabled": true,
+        "image": "calzone.png"
+      }
+    ],
+    "sides": [
+      {
+        "name": "بطاطا صغير",
+        "price": 5,
+        "portionRatio": 1,
+        "enabled": true,
+        "image": "fries-small.png"
+      },
+      {
+        "name": "بطاطا كبير",
+        "price": 10,
+        "portionRatio": 3,
+        "valueNote": "3x الكمية بسعر أقل من 3 وحدات",
+        "enabled": true,
+        "image": "fries-large.png"
+      },
+      {
+        "name": "زنجر صغير",
+        "price": 13,
+        "enabled": true,
+        "image": "zinger-small.png"
+      },
+      {
+        "name": "زنجر كبير",
+        "price": 25,
+        "enabled": true,
+        "image": "zinger-large.png"
+      },
+      {
+        "name": "أجنحة جنان صغير",
+        "price": 13,
+        "enabled": true,
+        "image": "wings-small.png"
+      },
+      {
+        "name": "أجنحة دجاج كبير",
+        "price": 24,
+        "enabled": true,
+        "image": "wings-large.png"
+      }
     ]
   },
-
+"drinks": {
+  "carbonated": [
+    {
+      "name": "كولا",
+      "sizes": { "L": 6, "S": 4 },
+      "volume": "330ml",
+      "type": "كولا",
+      "enabled": true,
+      "image": "cola.png"
+    },
+    {
+      "name": "Haypi",
+      "sizes": { "S": 2 },
+      "volume": "330ml",
+      "type": "مشروبات غازية",
+      "enabled": true,
+      "image": "haypi.png"
+    },
+    {
+      "name": "Blue",
+      "sizes": { "S": 3 },
+      "volume": "330ml",
+      "type": "مشروبات غازية",
+      "enabled": true,
+      "image": "blue.png"
+    },
+    {
+      "name": "XL",
+      "label": "عادي",
+      "sizes": { "S": 4 },
+      "volume": "330ml",
+      "type": "مشروبات غازية",
+      "enabled": true,
+      "image": "xl.png"
+    },
+    {
+      "name": "XL",
+      "label": "Red Label",
+      "sizes": { "S": 5 },
+      "volume": "330ml",
+      "type": "مشروبات غازية",
+      "enabled": true,
+      "image": "xl-red.png"
+    }
+  ],
+  "juices": [
+    {
+      "name": "كابي",
+      "flavor": "عنب",
+      "sizes": { "L": 6, "S": 2 },
+      "type": "عصائر",
+      "enabled": true,
+      "image": "kabi-grape.png"
+    },
+    {
+      "name": "كابي",
+      "flavor": "تفاح",
+      "sizes": { "L": 6, "S": 2 },
+      "type": "عصائر",
+      "enabled": true,
+      "image": "kabi-apple.png"
+    },
+    {
+      "name": "كابي",
+      "flavor": "برتقال",
+      "sizes": { "L": 6, "S": 2 },
+      "type": "عصائر",
+      "enabled": true,
+      "image": "kabi-orange.png"
+    },
+    {
+      "name": "كابي",
+      "flavor": "خوخ",
+      "sizes": { "L": 6, "S": 2 },
+      "type": "عصائر",
+      "enabled": true,
+      "image": "kabi-peach.png"
+    },
+    {
+      "name": "كابي",
+      "flavor": "مانجا",
+      "sizes": { "L": 6, "S": 2 },
+      "type": "عصائر",
+      "enabled": true,
+      "image": "kabi-mango.png"
+    },
+    {
+      "name": "كابي",
+      "flavor": "إستوائي",
+      "sizes": { "L": 6, "S": 2 },
+      "type": "عصائر",
+      "enabled": true,
+      "image": "kabi-tropical.png"
+    },
+    {
+      "name": "كابي",
+      "flavor": "فراولة وموز",
+      "sizes": { "L": 6, "S": 2 },
+      "type": "عصائر",
+      "enabled": true,
+      "image": "kabi-strawberry-banana.png"
+    }
+  ],
   "naturalJuices": {
     "enabled": true,
     "items": [
-      { "name": "عصير برتقال طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": true, "image": "orange.png" },
-      { "name": "عصير جزر طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": true, "image": "carrot.png" }
+      {
+        "name": "عصير برتقال طبيعي",
+        "size": "كوب",
+        "price": 4,
+        "type": "عصائر طبيعية",
+        "enabled": true,
+        "image": "orange.png"
+      },
+      {
+        "name": "عصير جزر طبيعي",
+        "size": "كوب",
+        "price": 4,
+        "type": "عصائر طبيعية",
+        "enabled": true,
+        "image": "carrot.png"
+      }
     ]
-  }
+  },
+  "cocktails": {
+    "gas": [
+      {
+        "name": "موهيتو كلاسيك",
+        "description": "نعناع + ليمون + سفن أب",
+        "size": "330ml",
+        "price": 5,
+        "type": "كوكتيلات غازية",
+        "enabled": true,
+        "image": "mojito-classic.png"
+      },
+      {
+        "name": "موهيتو رمان",
+        "description": "نعناع + ليمون + رمان + سفن أب",
+        "size": "1 لتر",
+        "price": 10,
+        "type": "كوكتيلات غازية",
+        "enabled": true,
+        "image": "mojito-pomegranate.png"
+      }
+    ],
+    "juice": [
+      {
+        "name": "كوكتيل كولا نعناع",
+        "description": "كولا + نعناع + ليمون",
+        "size": "330ml",
+        "price": 5,
+        "type": "كوكتيلات عصائر",
+        "enabled": true,
+        "image": "cola-mint.png"
+      }
+    ]
+  },
+  "other": [
+    {
+      "name": "Rio Iced Coffee",
+      "sizes": { "S": 4 },
+      "volume": "330ml",
+      "type": "قهوة باردة",
+      "enabled": true,
+      "image": "rio-coffee.png"
+    },
+    {
+      "name": "مياه معدنية",
+      "sizes": {
+        "S": 2,
+        "L": 3
+      },
+      "volume": {
+        "S": "330ml",
+        "L": "1.25L"
+      },
+      "type": "مياه",
+      "enabled": true,
+      "image": "water.png"
+    }
+  ]
 }
