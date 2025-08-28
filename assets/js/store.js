@@ -186,4 +186,18 @@ function sendOrder() {
 🧺 طلب جديد من ${userName || "—"}:
 ${cartData.map(i => `• ${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}₪`).join("\n")}
 
-💰 الإجمالي قبل الخصم: ${rawTotal.toFixed(
+💰 الإجمالي قبل الخصم: ${rawTotal.toFixed(2)}₪
+🎯 الخصومات: ${applied.join(", ") || "—"}
+💸 الإجمالي بعد الخصم: ${total.toFixed(2)}₪
+
+🎟️ كود 1: ${coupon1 || "—"}
+🎟️ كود 2: ${coupon2 || "—"}
+📦 تم الإرسال من صفحة الطلب
+  `.trim();
+
+  const encoded = encodeURIComponent(message);
+  const link = `https://wa.me/${config.whatsappNumber}?text=${encoded}`;
+  window.open(link, "_blank");
+
+  savePendingOrder({ userName, cartData, total, coupon1, coupon2 });
+}
