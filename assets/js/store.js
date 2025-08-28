@@ -1,18 +1,11 @@
-// 📦 تحميل الكتالوج الأساسي
-fetch("assets/data/catalog.json")
-  .then(res => res.json())
-  .then(data => {
-    window.catalog = data;
-    renderCatalog(); // ← سنكتبها لاحقًا
-  });
-
 // 🧠 تحميل قواعد الخصم وتفعيلها
-fetch("assets/data/rules.json")
+fetch("https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/data/rules.json")
   .then(res => res.json())
   .then(data => {
     DiscountEngine.loadRulesFrom(data);
     renderCart(); // ← سنكتبها لاحقًا
   });
+
 function renderGenericTable(label, items, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
@@ -35,7 +28,7 @@ function renderGenericTable(label, items, containerId) {
             <tr data-item="${item.name}">
               <td>
                 <div style="display:flex;align-items:center;gap:8px;">
-                  <img src="assets/images/${item.image}" alt="${item.name}" style="height:40px;border-radius:4px;">
+                  <img src="${item.image}" alt="${item.name}" style="height:40px;border-radius:4px;">
                   <span>${item.name}</span>
                 </div>
               </td>
@@ -60,6 +53,7 @@ function renderGenericTable(label, items, containerId) {
   `;
   container.appendChild(section);
 }
+
 function renderCatalog() {
   renderGenericTable("🍕 قائمة البيتزا", catalog.pizza, "pizza-menu");
   renderGenericTable("🍟 أطباق جانبية", catalog.sides, "sides-menu");
@@ -67,9 +61,10 @@ function renderCatalog() {
   renderGenericTable("🍸 كوكتيلات", catalog.cocktails.items, "cocktails-container");
   renderGenericTable("🍹 عصائر طبيعية", catalog.naturalJuices.items, "natural-juices-container");
 
-  bindCartEvents();              // ← سنكتبها في الجزء الرابع
-  bindQuantityAndSizeEvents();  // ← سنكتبها في الجزء الخامس
+  bindCartEvents();
+  bindQuantityAndSizeEvents();
 }
+
 function bindCartEvents() {
   document.querySelectorAll(".add-btn").forEach(btn => {
     btn.onclick = () => {
@@ -92,10 +87,11 @@ function bindCartEvents() {
 
       CartCore.add(label, price, qty);
       showAddToast();
-      renderCart(); // ← سنكتبه في الجزء السادس
+      renderCart();
     };
   });
 }
+
 function bindQuantityAndSizeEvents() {
   document.querySelectorAll("tr[data-item]").forEach(row => {
     const sizeSelect = row.querySelector(".size");
@@ -112,9 +108,10 @@ function bindQuantityAndSizeEvents() {
 
     if (sizeSelect) sizeSelect.onchange = updateTotal;
     if (qtyInput) qtyInput.oninput = updateTotal;
-    updateTotal(); // ← تفعيل الحساب مباشرة عند التحميل
+    updateTotal();
   });
 }
+
 function renderCart() {
   const cartData = CartCore.get();
   const userName = document.getElementById("user-name").value.trim();
@@ -165,12 +162,14 @@ function renderCart() {
     <button class="copy-btn" onclick="copyOrderMessage()">📋 نسخ الطلب</button>
   `;
 }
+
 function copyOrderMessage() {
   const msg = document.getElementById("cart-preview").textContent;
   navigator.clipboard.writeText(msg).then(() => {
     alert("📋 تم نسخ الطلب إلى الحافظة");
   });
 }
+
 function sendOrder() {
   const cartData = CartCore.get();
   const userName = document.getElementById("user-name").value.trim();
@@ -187,35 +186,4 @@ function sendOrder() {
 🧺 طلب جديد من ${userName || "—"}:
 ${cartData.map(i => `• ${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}₪`).join("\n")}
 
-💰 الإجمالي قبل الخصم: ${rawTotal.toFixed(2)}₪
-🎯 الخصومات: ${applied.join(", ") || "—"}
-💸 الإجمالي بعد الخصم: ${total.toFixed(2)}₪
-
-🎟️ كود 1: ${coupon1 || "—"}
-🎟️ كود 2: ${coupon2 || "—"}
-📦 تم الإرسال من صفحة الطلب
-  `.trim();
-
-  const encoded = encodeURIComponent(message);
-  const link = `https://wa.me/${config.whatsappNumber}?text=${encoded}`;
-  window.open(link, "_blank");
-
-  savePendingOrder({ userName, cartData, total, coupon1, coupon2 });
-}
-function savePendingOrder(order) {
-  const history = JSON.parse(localStorage.getItem("orderHistory") || "[]");
-  history.push({ ...order, time: new Date().toISOString() });
-  localStorage.setItem("orderHistory", JSON.stringify(history));
-}
-window.onload = () => {
-  renderCatalog(); // عرض كل الفئات
-  renderCart();    // عرض السلة ومعاينتها
-
-  // ربط زر الإرسال
-  document.getElementById("send-order-btn").onclick = sendOrder;
-
-  // ربط الحقول بتحديث السلة تلقائيًا
-  document.getElementById("user-name").oninput = renderCart;
-  document.getElementById("user-coupon").oninput = renderCart;
-  document.getElementById("secondary-coupon").oninput = renderCart;
-};
+💰 الإجمالي قبل الخصم: ${rawTotal.toFixed(
