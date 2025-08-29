@@ -3,15 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>PIZZA HOT – النسخة الاحتياطية</title>
-  <link rel="stylesheet" href="assets/css/store.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box }
     body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
       background: #f4f4f4 url('https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/wood_leaf_bg.jpg') repeat;
       background-blend-mode: overlay;
-      font-family: 'Tajawal', sans-serif;
       color: #2c3e50;
-      margin: 0;
+      line-height: 1.6;
       padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 12px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    header img {
+      height: 60px;
+    }
+    h1 {
+      margin: 10px 0;
+      font-size: 1.8rem;
+      color: #b22222;
     }
     .catalog-section {
       margin-bottom: 40px;
@@ -20,8 +39,18 @@
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
+    .catalog-section h2 {
+      text-align: center;
+      color: #8b4513;
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+    .catalog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     .catalog-card {
-      display: inline-block;
       width: 180px;
       margin: 10px;
       padding: 12px;
@@ -51,6 +80,12 @@
       font-weight: bold;
       margin: 4px 0;
     }
+    .catalog-card select, .catalog-card input {
+      margin: 4px 0;
+      padding: 4px;
+      width: 100%;
+      font-size: 0.9rem;
+    }
     .catalog-card button {
       background-color: #ff5722;
       color: white;
@@ -59,6 +94,7 @@
       border-radius: 4px;
       cursor: pointer;
       font-weight: bold;
+      margin-top: 6px;
     }
     .order-box {
       background: #fff;
@@ -78,7 +114,7 @@
       font-weight: bold;
       margin-top: 10px;
     }
-    input {
+    input, textarea {
       font-family: 'Tajawal', sans-serif;
       padding: 6px;
       margin-top: 10px;
@@ -90,112 +126,46 @@
 </head>
 <body>
 
-  <header>
-    <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/logo.png" class="logo" alt="PIZZA HOT Logo" style="height:60px;">
-    <h1>🍕 PIZZA HOT – النسخة الاحتياطية</h1>
-  </header>
+<header>
+  <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/logo.png" alt="PIZZA HOT Logo">
+  <h1>🍕 PIZZA HOT – النسخة الاحتياطية</h1>
+</header>
+<!-- 🍕 قسم البيتزا -->
+<div class="catalog-section">
+  <h2>🍕 قائمة البيتزا</h2>
+  <div id="pizza-container" class="catalog-container"></div>
+</div>
 
-  <div class="catalog-section">
-    <h2>🍕 بيتزا</h2>
-    <div class="catalog-card">
-      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/chicken.png" alt="بيتزا دجاج">
-      <h3>بيتزا دجاج XL</h3>
-      <p>65₪</p>
-      <button onclick="addToCart('بيتزا دجاج XL', 65)">أضف إلى السلة</button>
-    </div>
-    <div class="catalog-card">
-      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/margherita.png" alt="مارجريتا">
-      <h3>مارجريتا M</h3>
-      <p>20₪</p>
-      <button onclick="addToCart('مارجريتا M', 20)">أضف إلى السلة</button>
-    </div>
-  </div>
+<!-- 🍟 قسم الجوانب -->
+<div class="catalog-section">
+  <h2>🍟 أطباق جانبية</h2>
+  <div id="sides-container" class="catalog-container"></div>
+</div>
 
-  <div class="catalog-section">
-    <h2>🍟 جانبي</h2>
-    <div class="catalog-card">
-      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/fries-large.png" alt="بطاطا كبير">
-      <h3>بطاطا كبير</h3>
-      <p>10₪</p>
-      <button onclick="addToCart('بطاطا كبير', 10)">أضف إلى السلة</button>
-    </div>
-  </div>
+<!-- 🥤 قسم المشروبات -->
+<div class="catalog-section">
+  <h2>🥤 مشروبات</h2>
+  <div id="drinks-container" class="catalog-container"></div>
+</div>
 
-  <div class="catalog-section">
-    <h2>🥤 مشروبات</h2>
-    <div class="catalog-card">
-      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/cola.png" alt="كولا">
-      <h3>كولا 330ml</h3>
-      <p>4₪</p>
-      <button onclick="addToCart('كولا 330ml', 4)">أضف إلى السلة</button>
-    </div>
-  </div>
+<!-- 🛒 السلة -->
+<div class="order-box">
+  <h2>🛒 السلة</h2>
+  <ul id="cart-list"></ul>
+  <input id="coupon-code" placeholder="🎟️ كود الخصم (اختياري)">
+  <p><strong>الخصم:</strong> <span id="cart-discount">0</span>₪</p>
+  <p><strong>الإجمالي:</strong> <span id="cart-total">0</span>₪</p>
+  <button class="copy-btn" onclick="generateMessage()">📋 توليد الرسالة</button>
+</div>
 
-  <div class="order-box">
-    <h2>🛒 السلة</h2>
-    <ul id="cart-list"></ul>
-    <input id="coupon-code" placeholder="🎟️ كود الخصم (اختياري)">
-    <p><strong>الخصم:</strong> <span id="cart-discount">0</span>₪</p>
-    <p><strong>الإجمالي:</strong> <span id="cart-total">0</span>₪</p>
-    <button class="copy-btn" onclick="generateMessage()">📋 توليد الرسالة</button>
-  </div>
+<!-- 📩 الرسالة -->
+<div class="order-box">
+  <h2>📩 الرسالة</h2>
+  <textarea id="order-message" rows="8" style="width:100%;"></textarea>
+</div>
+<script>
+const cart = [];
 
-  <div class="order-box">
-    <h2>📩 الرسالة</h2>
-    <textarea id="order-message" rows="8" style="width:100%;"></textarea>
-  </div>
-
-  <script>
-    const cart = [];
-
-    function addToCart(item, price) {
-      cart.push({ item, price });
-      renderCart();
-    }
-
-    function getDiscount(code) {
-      switch (code.toUpperCase()) {
-        case "CHICKENXL": return 9;
-        case "FAMILYSET": return 19;
-        case "WINGSDEAL": return 7;
-        default: return 0;
-      }
-    }
-
-    function renderCart() {
-      const list = document.getElementById("cart-list");
-      const total = document.getElementById("cart-total");
-      const discountBox = document.getElementById("cart-discount");
-      list.innerHTML = "";
-      let sum = 0;
-      cart.forEach(({ item, price }) => {
-        sum += price;
-        const li = document.createElement("li");
-        li.textContent = `• ${item} – ${price}₪`;
-        list.appendChild(li);
-      });
-      const coupon = document.getElementById("coupon-code").value.trim();
-      const discount = getDiscount(coupon);
-      discountBox.textContent = discount;
-      total.textContent = sum - discount;
-    }
-
-    function generateMessage() {
-      const coupon = document.getElementById("coupon-code").value.trim();
-      const discount = getDiscount(coupon);
-      let msg = `🍕 PIZZA HOT – طلب جديد\n------------------\n📦 محتوى الطلب:\n`;
-      cart.forEach(({ item, price }) => {
-        msg += `• ${item} – ${price}₪\n`;
-      });
-      const rawTotal = cart.reduce((s, i) => s + i.price, 0);
-      msg += `\n📦 الإجمالي قبل الخصم: ${rawTotal}₪`;
-      msg += `\n🎟️ كود الخصم: ${coupon || "—"}`;
-      msg += `\n🔻 الخصم المطبق: ${discount}₪`;
-      msg += `\n✅ الإجمالي بعد الخصم: ${rawTotal - discount}₪`;
-      msg += `\n🙏 شكرًا لاختياركم PIZZA HOT`;
-      document.getElementById("order-message").value = msg;
-    }
-  </script>
 const catalog = {
   pizza: [
     { name: "بيتزا دجاج", sizes: { XL: 65, L: 45, M: 33, S: 18 }, image: "chicken.png" },
@@ -221,22 +191,119 @@ const catalog = {
     { name: "XL عادي", size: "330ml", price: 4, image: "xl.png" },
     { name: "XL Red Label", size: "330ml", price: 5, image: "xl-red.png" },
     { name: "كابي عنب", size: "330ml", price: 2, image: "kabi-grape.png" },
-    { name: "كابي تفاح", size: "330ml", price: 2, image: "kabi-apple.png" },
-    { name: "كابي برتقال", size: "330ml", price: 2, image: "kabi-orange.png" },
-    { name: "كابي خوخ", size: "330ml", price: 2, image: "kabi-peach.png" },
-    { name: "كابي مانجا", size: "330ml", price: 2, image: "kabi-mango.png" },
-    { name: "كابي استوائي", size: "330ml", price: 2, image: "kabi-tropical.png" },
-    { name: "كابي فراولة وموز", size: "330ml", price: 2, image: "kabi-strawberry-banana.png" },
     { name: "عصير برتقال طبيعي", size: "كوب", price: 4, image: "orange.png" },
-    { name: "عصير جزر طبيعي", size: "كوب", price: 4, image: "carrot.png" },
     { name: "موهيتو كلاسيك", size: "330ml", price: 5, image: "mojito-classic.png" },
-    { name: "موهيتو رمان", size: "1 لتر", price: 10, image: "mojito-pomegranate.png" },
-    { name: "كوكتيل كولا نعناع", size: "330ml", price: 5, image: "cola-mint.png" },
     { name: "Rio Iced Coffee", size: "330ml", price: 4, image: "rio-coffee.png" },
-    { name: "مياه معدنية صغيرة", size: "330ml", price: 2, image: "water.png" },
-    { name: "مياه معدنية كبيرة", size: "1.25L", price: 3, image: "water.png" }
+    { name: "مياه معدنية صغيرة", size: "330ml", price: 2, image: "water.png" }
   ]
 };
 
+function renderPizzaMenu() {
+  const container = document.getElementById("pizza-container");
+  catalog.pizza.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "catalog-card";
+    card.innerHTML = `
+      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/${p.image}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <select class="size">
+        ${Object.entries(p.sizes).map(([size, price]) => `<option value="${price}">${size} – ${price}₪</option>`).join("")}
+      </select>
+      <input type="number" class="qty" min="1" value="1">
+      <button onclick="addToCart('${p.name}', this)">أضف إلى السلة</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderSidesMenu() {
+  const container = document.getElementById("sides-container");
+  catalog.sides.forEach(s => {
+    const card = document.createElement("div");
+    card.className = "catalog-card";
+    card.innerHTML = `
+      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/${s.image}" alt="${s.name}">
+      <h3>${s.name}</h3>
+      <p>${s.price}₪</p>
+      <input type="number" class="qty" min="1" value="1">
+      <button onclick="addToCart('${s.name}', this, ${s.price})">أضف إلى السلة</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderDrinksMenu() {
+  const container = document.getElementById("drinks-container");
+  catalog.drinks.forEach(d => {
+    const card = document.createElement("div");
+    card.className = "catalog-card";
+    card.innerHTML = `
+      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/${d.image}" alt="${d.name}">
+      <h3>${d.name} ${d.size}</h3>
+      <p>${d.price}₪</p>
+      <input type="number" class="qty" min="1" value="1">
+      <button onclick="addToCart('${d.name} ${d.size}', this, ${d.price})">أضف إلى السلة</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function addToCart(name, btn, fixedPrice = null) {
+  const card = btn.closest(".catalog-card");
+  const qty = +card.querySelector(".qty").value;
+  const price = fixedPrice ?? +card.querySelector(".size").value;
+  cart.push({ item: name, price, qty });
+  renderCart();
+}
+
+function getDiscount(code) {
+  switch (code.toUpperCase()) {
+    case "CHICKENXL": return 9;
+    case "FAMILYSET": return 19;
+    case "WINGSDEAL": return 7;
+    default: return 0;
+  }
+}
+
+function renderCart() {
+  const list = document.getElementById("cart-list");
+  const total = document.getElementById("cart-total");
+  const discountBox = document.getElementById("cart-discount");
+  list.innerHTML = "";
+  let sum = 0;
+  cart.forEach(({ item, price, qty }) => {
+    sum += price * qty;
+    const li = document.createElement("li");
+    li.textContent = `• ${item} × ${qty} = ${price * qty}₪`;
+    list.appendChild(li);
+  });
+  const coupon = document.getElementById("coupon-code").value.trim();
+  const discount = getDiscount(coupon);
+  discountBox.textContent = discount;
+  total.textContent = sum - discount;
+}
+
+function generateMessage() {
+  const coupon = document.getElementById("coupon-code").value.trim();
+  const discount = getDiscount(coupon);
+  const rawTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  let msg = `🍕 PIZZA HOT – طلب جديد\n------------------\n📦 محتوى الطلب:\n`;
+  cart.forEach(({ item, price, qty }) => {
+    msg += `• ${item} × ${qty} = ${price * qty}₪\n`;
+  });
+  msg += `\n📦 الإجمالي قبل الخصم: ${rawTotal}₪`;
+  msg += `\n🎟️ كود الخصم: ${coupon || "—"}`;
+  msg += `\n🔻 الخصم المطبق: ${discount}₪`;
+  msg += `\n✅ الإجمالي بعد الخصم: ${rawTotal - discount}₪`;
+  msg += `\n🙏 شكرًا لاختياركم PIZZA HOT`;
+  document.getElementById("order-message").value = msg;
+}
+
+window.onload = function() {
+  renderPizzaMenu();
+  renderSidesMenu();
+  renderDrinksMenu();
+};
+</script>
 </body>
 </html>
