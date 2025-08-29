@@ -1,316 +1,77 @@
-/* 🧩 تنسيق عام للصفحة */
-body {
-  font-family: "Tajawal", sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 20px;
-  direction: rtl;
-  color: #333;
-  background-image: url("../images/pizza_bg_pattern.png");
-  background-repeat: repeat;
-  background-size: 120px;
-  background-attachment: fixed;
-}
-
-/* 🧭 رأس الصفحة */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  background-color: #fff;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-header img.logo {
-  height: 60px;
-  margin-left: 12px;
-}
-
-header a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-
-header a:hover {
-  text-decoration: underline;
-}
-
-/* 🧾 الأقسام */
-.section {
-  background-color: #fff;
-  border: 1px solid #eee;
+/* 🧩 أقسام الكتالوج */
+.catalog-section {
+  margin-bottom: 40px;
   padding: 15px;
-  margin-bottom: 30px;
-  border-radius: 6px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.03);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease forwards;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  animation: fadeInUp 0.5s ease forwards;
   background-image: url("../images/storeassetsimagesbrand-pattern.png");
   background-repeat: repeat;
   background-size: 100px;
   background-position: center;
 }
 
-.section::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background-color: #eee;
-  margin-top: 20px;
-}
-
-/* ✨ تأثير دخول متدرج */
-.section:nth-child(1) { animation-delay: 0.2s; }
-.section:nth-child(2) { animation-delay: 0.4s; }
-.section:nth-child(3) { animation-delay: 0.6s; }
-.section:nth-child(4) { animation-delay: 0.8s; }
-.section:nth-child(5) { animation-delay: 1s; }
-.section:nth-child(6) { animation-delay: 1.2s; }
-.section:nth-child(7) { animation-delay: 1.4s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.section h2 {
-  margin-top: 0;
-  color: #444;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-}
-
-/* 📋 الجداول */
-.menu-table, .drink-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  font-size: 15px;
-  overflow: hidden;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-}
-
-thead {
-  background-color: #f1f1f1;
-}
-
-.menu-table th, .drink-table th {
-  background-color: #fafafa;
-  font-weight: bold;
+.catalog-section h2 {
+  font-size: 20px;
   color: #d32f2f;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  text-align: right;
 }
 
-.menu-table td img, .drink-table td img {
-  height: 48px;
-  border-radius: 6px;
-  margin-left: 8px;
-  vertical-align: middle;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-}
-
-/* ✨ تمييز الصف عند المرور */
-.menu-table tbody tr:hover,
-.drink-table tbody tr:hover {
-  background-color: #e3f2fd;
-  box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* 🧮 خلايا السعر والإجمالي */
-.price, .total-cell {
-  font-weight: bold;
-  color: #28a745;
-}
-
-/* 🧠 خلايا غير مسعّرة */
-td.unspecified {
-  background-color: #fff3cd;
-  border-right: 4px solid orange;
-}
-
-/* 🧑‍💻 مدخلات الكمية والسعر */
-input.qty, input[type="number"], input[type="text"] {
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 80px;
+/* 🧁 بطاقة المنتج */
+.catalog-card {
+  display: inline-block;
+  width: 180px;
+  margin: 10px;
+  padding: 12px;
+  background-color: #fff8f0;
+  border: 1px solid #eee;
+  border-radius: 8px;
   text-align: center;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 📦 معاينة الطلب */
-.cart-box {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 6px;
-  margin-top: 20px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
-}
-
-.cart-box h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.cart-box ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
-}
-
-.cart-box li {
-  padding: 6px 0;
-  border-bottom: 1px dashed #eee;
-}
-
-/* 🧾 أزرار التحكم */
-.control-btn, .add-btn, .copy-btn {
-  padding: 10px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.control-btn:hover, .add-btn:hover, .copy-btn:hover {
-  background-color: #0056b3;
-}
-
-.add-btn.success {
-  background-color: #28a745 !important;
-  color: #fff !important;
-}
-
-.copy-btn {
-  background-color: #ffc107;
-  color: #333;
-}
-
-.copy-btn:hover {
-  background-color: #e0a800;
-}
-
-/* 📢 إشعار الإضافة */
-.toast-success {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #28a745;
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 6px;
+.catalog-card:hover {
+  transform: scale(1.05);
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  z-index: 999;
-  font-weight: bold;
 }
 
-/* 🎁 الرموز التلقائية */
-#auto-coupons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-#auto-coupons .coupon {
-  background-color: #f0f8ff;
-  border: 1px solid #007bff;
-  padding: 8px 12px;
+.catalog-card img {
+  width: 100%;
   border-radius: 6px;
-  font-weight: bold;
-  color: #007bff;
+  margin-bottom: 8px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.05);
 }
 
-/* 📍 التذييل */
-.footer {
-  text-align: center;
+.catalog-card h3 {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #333;
+}
+
+.catalog-card p {
   font-size: 14px;
-  color: #777;
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
-}
-
-.footer img {
-  height: 60px;
-  margin-bottom: 10px;
-}
-
-/* 🧠 تنبيه الخصم التلقائي */
-#auto-discount-alert {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 10px;
+  color: #28a745;
   font-weight: bold;
-  display: none;
+  margin: 4px 0;
 }
 
-/* 📱 تحسين العرض على الهاتف */
-@media (max-width: 768px) {
-  .menu-table {
-    display: block;
-    overflow-x: auto;
-    width: 100%;
-  }
-
-  .drink-section {
-    flex: 1 1 100%;
-  }
-
-  table {
-    font-size: 14px;
-  }
-
-  th, td {
-    padding: 6px;
-  }
-
-  input[type="text"], input[type="number"] {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .control-btn, .add-btn {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
+/* 🧑‍🍳 زر الإضافة إلى السلة */
+.catalog-card button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-@media (max-width: 480px) {
-  table {
-    font-size: 13px;
-  }
-
-  th, td {
-    padding: 4px;
-  }
-
-  .control-btn, .add-btn {
-    padding: 6px 10px;
-    font-size: 13px;
-  }
+.catalog-card button:hover {
+  background-color: #e64a19;
 }
