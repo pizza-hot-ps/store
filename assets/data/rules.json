@@ -20,32 +20,62 @@
     "active": true
   },
   {
-    "name": "عرض بيتزا دجاج XL + بطاطا + كولا",
+    "name": "عرض بيتزا دجاج XL (رئيسي)",
     "type": "fixed",
     "value": 9,
     "code": "CHICKENXL",
-    "condition": "cart.some(i => i.item.includes('بيتزا دجاج') && i.item.includes('XL')) && cart.some(i => i.item.includes('بطاطا')) && cart.some(i => i.item.includes('كولا'))",
+    "condition": "coupon1 === 'CHICKENXL'",
     "priority": 70,
     "source": "poster",
     "active": true
   },
   {
-    "name": "العرض العائلي XL + بطاطا + كولا",
+    "name": "عرض بيتزا دجاج XL (ثانوي)",
+    "type": "fixed",
+    "value": 2.25,
+    "code": "CHICKENXL",
+    "condition": "coupon2 === 'CHICKENXL'",
+    "priority": 30,
+    "source": "poster",
+    "active": true
+  },
+  {
+    "name": "العرض العائلي XL (رئيسي)",
     "type": "fixed",
     "value": 19,
     "code": "FAMILYSET",
-    "condition": "cart.some(i => i.item.includes('بيتزا') && i.item.includes('XL')) && cart.some(i => i.item.includes('بطاطا')) && cart.some(i => i.item.includes('كولا'))",
+    "condition": "coupon1 === 'FAMILYSET'",
     "priority": 60,
     "source": "poster",
     "active": true
   },
   {
-    "name": "عرض أجنحة الدجاج + بطاطا كبير",
+    "name": "العرض العائلي XL (ثانوي)",
+    "type": "fixed",
+    "value": 4.75,
+    "code": "FAMILYSET",
+    "condition": "coupon2 === 'FAMILYSET'",
+    "priority": 20,
+    "source": "poster",
+    "active": true
+  },
+  {
+    "name": "عرض أجنحة الدجاج (رئيسي)",
     "type": "fixed",
     "value": 7,
     "code": "WINGSDEAL",
-    "condition": "cart.some(i => i.item.includes('أجنحة')) && cart.some(i => i.item.includes('بطاطا') && i.item.includes('كبير'))",
+    "condition": "coupon1 === 'WINGSDEAL'",
     "priority": 50,
+    "source": "poster",
+    "active": true
+  },
+  {
+    "name": "عرض أجنحة الدجاج (ثانوي)",
+    "type": "fixed",
+    "value": 1.75,
+    "code": "WINGSDEAL",
+    "condition": "coupon2 === 'WINGSDEAL'",
+    "priority": 10,
     "source": "poster",
     "active": true
   }
