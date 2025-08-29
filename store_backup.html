@@ -78,6 +78,14 @@
       font-weight: bold;
       margin-top: 10px;
     }
+    input {
+      font-family: 'Tajawal', sans-serif;
+      padding: 6px;
+      margin-top: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
@@ -126,6 +134,8 @@
   <div class="order-box">
     <h2>🛒 السلة</h2>
     <ul id="cart-list"></ul>
+    <input id="coupon-code" placeholder="🎟️ كود الخصم (اختياري)">
+    <p><strong>الخصم:</strong> <span id="cart-discount">0</span>₪</p>
     <p><strong>الإجمالي:</strong> <span id="cart-total">0</span>₪</p>
     <button class="copy-btn" onclick="generateMessage()">📋 توليد الرسالة</button>
   </div>
@@ -143,9 +153,19 @@
       renderCart();
     }
 
+    function getDiscount(code) {
+      switch (code.toUpperCase()) {
+        case "CHICKENXL": return 9;
+        case "FAMILYSET": return 19;
+        case "WINGSDEAL": return 7;
+        default: return 0;
+      }
+    }
+
     function renderCart() {
       const list = document.getElementById("cart-list");
       const total = document.getElementById("cart-total");
+      const discountBox = document.getElementById("cart-discount");
       list.innerHTML = "";
       let sum = 0;
       cart.forEach(({ item, price }) => {
@@ -154,15 +174,25 @@
         li.textContent = `• ${item} – ${price}₪`;
         list.appendChild(li);
       });
-      total.textContent = sum;
+      const coupon = document.getElementById("coupon-code").value.trim();
+      const discount = getDiscount(coupon);
+      discountBox.textContent = discount;
+      total.textContent = sum - discount;
     }
 
     function generateMessage() {
+      const coupon = document.getElementById("coupon-code").value.trim();
+      const discount = getDiscount(coupon);
       let msg = `🍕 PIZZA HOT – طلب جديد\n------------------\n📦 محتوى الطلب:\n`;
       cart.forEach(({ item, price }) => {
         msg += `• ${item} – ${price}₪\n`;
       });
-      msg += `\n📦 الإجمالي: ${cart.reduce((s, i) => s + i.price, 0)}₪\n🙏 شكرًا لاختياركم PIZZA HOT`;
+      const rawTotal = cart.reduce((s, i) => s + i.price, 0);
+      msg += `\n📦 الإجمالي قبل الخصم: ${rawTotal}₪`;
+      msg += `\n🎟️ كود الخصم: ${coupon || "—"}`;
+      msg += `\n🔻 الخصم المطبق: ${discount}₪`;
+      msg += `\n✅ الإجمالي بعد الخصم: ${rawTotal - discount}₪`;
+      msg += `\n🙏 شكرًا لاختياركم PIZZA HOT`;
       document.getElementById("order-message").value = msg;
     }
   </script>
