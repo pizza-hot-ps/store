@@ -1,7 +1,8 @@
 {
   "pizza": [
-    { "name": "بيتزا دجاج", "sizes": { "S": 19, "M": 33, "L": 45, "XL": 65 }, "enabled": true, "image": "chicken.png" },
+    { "name": "بيتزا دجاج", "sizes": { "S": 18, "M": 33, "L": 45, "XL": 65 }, "enabled": true, "image": "chicken.png" },
     { "name": "بيتزا خضار", "sizes": { "S": 15, "M": 20, "L": 38, "XL": 50 }, "enabled": true, "image": "veggie.png" },
+    { "name": "بيتزا سلامي", "sizes": { "S": 16, "M": 23, "L": 40, "XL": 55 }, "enabled": true, "image": "salami.png" },
     { "name": "بيتزا نقانق", "sizes": { "S": 16, "M": 23, "L": 40, "XL": 55 }, "enabled": true, "image": "sausage.png" },
     { "name": "بيتزا تونة", "sizes": { "S": 16, "M": 23, "L": 40, "XL": 55 }, "enabled": true, "image": "tuna.png" },
     { "name": "بيتزا مارجريتا", "sizes": { "S": 14, "M": 20, "L": 38, "XL": 50 }, "enabled": true, "image": "margherita.png" },
@@ -10,8 +11,7 @@
 
   "sides": [
     { "name": "بطاطا", "sizes": { "صغير": 5, "كبير": 10 }, "enabled": true, "image": "fries.png" },
-    { "name": "زنجر", "sizes": { "صغير": 12, "كبير": 25 }, "enabled": true, "image": "zinger.png" },
-    { "name": "أجنحة", "sizes": { "صغير": 12, "كبير": 24 }, "enabled": true, "image": "wings.png" }
+    { "name": "زنجر", "sizes": { "صغير": 12, "كبير": 25 }, "enabled": true, "image": "zinger.png" }
   ],
 
   "drinks": [
@@ -22,60 +22,15 @@
       "enabled": true,
       "image": "kabi.png"
     },
-    {
-      "name": "هايبي",
-      "sizes": { "صغير": 2 },
-      "enabled": true,
-      "image": "haypi.png"
-    },
-    {
-      "name": "بلو",
-      "sizes": { "صغير": 3 },
-      "enabled": true,
-      "image": "blue.png"
-    },
-    {
-      "name": "لايون",
-      "sizes": { "صغير": 1 },
-      "enabled": true,
-      "image": "lion.png"
-    },
-    {
-      "name": "كوكا كولا بلاستيك",
-      "sizes": { "صغير": 1 },
-      "enabled": true,
-      "image": "coca-small.png"
-    },
-    {
-      "name": "سبرايت بلاستيك",
-      "sizes": { "صغير": 1 },
-      "enabled": true,
-      "image": "sprite-small.png"
-    },
-    {
-      "name": "شات كوكا كولا",
-      "sizes": { "صغير": 1 },
-      "enabled": true,
-      "image": "coca-shot.png"
-    },
-    {
-      "name": "كوكا كولا زيرو",
-      "sizes": { "صغير": 2, "1.25 لتر": 4, "2 لتر": 6 },
-      "enabled": true,
-      "image": "coca-zero.png"
-    },
-    {
-      "name": "كوكا كولا",
-      "sizes": { "1.25 لتر": 4, "2 لتر": 6 },
-      "enabled": true,
-      "image": "coca.png"
-    },
-    {
-      "name": "سبرايت",
-      "sizes": { "1.25 لتر": 4, "2 لتر": 6 },
-      "enabled": true,
-      "image": "sprite.png"
-    },
+    { "name": "هايبي", "sizes": { "صغير": 2 }, "enabled": true, "image": "haypi.png" },
+    { "name": "بلو", "sizes": { "صغير": 3 }, "enabled": true, "image": "blue.png" },
+    { "name": "لايون", "sizes": { "صغير": 1 }, "enabled": true, "image": "lion.png" },
+    { "name": "كوكا كولا بلاستيك", "sizes": { "صغير": 1 }, "enabled": true, "image": "coca-small.png" },
+    { "name": "سبرايت بلاستيك", "sizes": { "صغير": 1 }, "enabled": true, "image": "sprite-small.png" },
+    { "name": "شات كوكا كولا", "sizes": { "صغير": 1 }, "enabled": true, "image": "coca-shot.png" },
+    { "name": "كوكا كولا زيرو", "sizes": { "صغير": 2, "1.25 لتر": 4, "2 لتر": 6 }, "enabled": true, "image": "coca-zero.png" },
+    { "name": "كوكا كولا", "sizes": { "1.25 لتر": 4, "2 لتر": 6 }, "enabled": true, "image": "coca.png" },
+    { "name": "سبرايت", "sizes": { "1.25 لتر": 4, "2 لتر": 6 }, "enabled": true, "image": "sprite.png" },
     {
       "name": "XL",
       "flavors": ["عادي", "Red Label"],
@@ -83,17 +38,7 @@
       "enabled": true,
       "image": "xl.png"
     },
-    {
-      "name": "مياه معدنية",
-      "sizes": { "صغير": 2, "كبير": 3 },
-      "enabled": true,
-      "image": "water.png"
-    },
-    {
-      "name": "قهوة باردة – ريو",
-      "sizes": { "صغير": 4 },
-      "enabled": true,
-      "image": "rio-coffee.png"
-    }
+    { "name": "مياه معدنية", "sizes": { "صغير": 2, "كبير": 3 }, "enabled": true, "image": "water.png" },
+    { "name": "قهوة باردة – ريو", "sizes": { "صغير": 4 }, "enabled": true, "image": "rio-coffee.png" }
   ]
 }
