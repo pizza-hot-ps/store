@@ -2,46 +2,170 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>نسخة احتياطية – PIZZA HOT Store</title>
+  <title>PIZZA HOT – النسخة الاحتياطية</title>
   <link rel="stylesheet" href="assets/css/store.css">
   <style>
     body {
-      background-color: #fffbe6;
+      background: #f4f4f4 url('https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/wood_leaf_bg.jpg') repeat;
+      background-blend-mode: overlay;
+      font-family: 'Tajawal', sans-serif;
+      color: #2c3e50;
+      margin: 0;
+      padding: 20px;
     }
-    .section {
-      margin-top: 30px;
+    .catalog-section {
+      margin-bottom: 40px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .catalog-card {
+      display: inline-block;
+      width: 180px;
+      margin: 10px;
+      padding: 12px;
+      background-color: #fff8f0;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .catalog-card:hover {
+      transform: scale(1.05);
+    }
+    .catalog-card img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .catalog-card h3 {
+      font-size: 16px;
+      margin: 6px 0;
+      color: #333;
+    }
+    .catalog-card p {
+      font-size: 14px;
+      color: #28a745;
+      font-weight: bold;
+      margin: 4px 0;
+    }
+    .catalog-card button {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .order-box {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .copy-btn {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="assets/images/logo.png" class="logo" alt="PIZZA HOT Logo">
+    <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/logo.png" class="logo" alt="PIZZA HOT Logo" style="height:60px;">
     <h1>🍕 PIZZA HOT – النسخة الاحتياطية</h1>
   </header>
 
-  <div class="section">
-    <h2>📦 الكتالوج</h2>
-    <p>هذه الصفحة تُستخدم في حال تعطل الصفحة الرئيسية أو لاختبار التصميمات الجديدة.</p>
-    <div id="catalog"></div>
+  <div class="catalog-section">
+    <h2>🍕 بيتزا</h2>
+    <div class="catalog-card">
+      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/chicken.png" alt="بيتزا دجاج">
+      <h3>بيتزا دجاج XL</h3>
+      <p>65₪</p>
+      <button onclick="addToCart('بيتزا دجاج XL', 65)">أضف إلى السلة</button>
+    </div>
+    <div class="catalog-card">
+      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/margherita.png" alt="مارجريتا">
+      <h3>مارجريتا M</h3>
+      <p>20₪</p>
+      <button onclick="addToCart('مارجريتا M', 20)">أضف إلى السلة</button>
+    </div>
   </div>
 
-  <div class="section">
+  <div class="catalog-section">
+    <h2>🍟 جانبي</h2>
+    <div class="catalog-card">
+      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/fries-large.png" alt="بطاطا كبير">
+      <h3>بطاطا كبير</h3>
+      <p>10₪</p>
+      <button onclick="addToCart('بطاطا كبير', 10)">أضف إلى السلة</button>
+    </div>
+  </div>
+
+  <div class="catalog-section">
+    <h2>🥤 مشروبات</h2>
+    <div class="catalog-card">
+      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/cola.png" alt="كولا">
+      <h3>كولا 330ml</h3>
+      <p>4₪</p>
+      <button onclick="addToCart('كولا 330ml', 4)">أضف إلى السلة</button>
+    </div>
+  </div>
+
+  <div class="order-box">
     <h2>🛒 السلة</h2>
-    <div id="cart"></div>
+    <ul id="cart-list"></ul>
+    <p><strong>الإجمالي:</strong> <span id="cart-total">0</span>₪</p>
+    <button class="copy-btn" onclick="generateMessage()">📋 توليد الرسالة</button>
   </div>
 
-  <footer class="footer">
-    <p>تم توليد هذه الصفحة كنسخة احتياطية من النظام الرمزي – جميع الحقوق محفوظة لـ PIZZA HOT</p>
-  </footer>
+  <div class="order-box">
+    <h2>📩 الرسالة</h2>
+    <textarea id="order-message" rows="8" style="width:100%;"></textarea>
+  </div>
 
-  <!-- سكربتات التشغيل -->
-  <script src="assets/js/cart.js"></script>
-  <script src="assets/js/messageBuilder.js"></script>
-  <script src="assets/js/floatingCart.js"></script>
-  <script src="assets/js/catalog.js"></script>
-  <script src="assets/js/catalogRenderer.js"></script>
+  <script>
+    const cart = [];
+
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      renderCart();
+    }
+
+    function renderCart() {
+      const list = document.getElementById("cart-list");
+      const total = document.getElementById("cart-total");
+      list.innerHTML = "";
+      let sum = 0;
+      cart.forEach(({ item, price }) => {
+        sum += price;
+        const li = document.createElement("li");
+        li.textContent = `• ${item} – ${price}₪`;
+        list.appendChild(li);
+      });
+      total.textContent = sum;
+    }
+
+    function generateMessage() {
+      let msg = `🍕 PIZZA HOT – طلب جديد\n------------------\n📦 محتوى الطلب:\n`;
+      cart.forEach(({ item, price }) => {
+        msg += `• ${item} – ${price}₪\n`;
+      });
+      msg += `\n📦 الإجمالي: ${cart.reduce((s, i) => s + i.price, 0)}₪\n🙏 شكرًا لاختياركم PIZZA HOT`;
+      document.getElementById("order-message").value = msg;
+    }
+  </script>
 
 </body>
 </html>
-
