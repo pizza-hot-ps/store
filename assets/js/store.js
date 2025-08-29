@@ -29,6 +29,7 @@ function renderPizzaMenu(pizzaList) {
     tbody.appendChild(row);
   });
 }
+
 // 🍟 توليد قائمة الجوانب
 function renderSidesMenu(sidesList) {
   const tbody = document.querySelector("#sides-menu tbody");
@@ -66,6 +67,7 @@ function renderDrinksMenu(drinksList) {
     container.appendChild(box);
   });
 }
+
 // 🛒 إضافة المنتج إلى السلة
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("add-btn")) {
@@ -107,6 +109,7 @@ function renderCart() {
   html += `</ul><p><strong>الإجمالي: ${total.toFixed(2)}₪</strong></p>`;
   cartBox.innerHTML = html;
 }
+
 // 🧼 إدارة السلة
 const CartCore = {
   items: [],
@@ -142,6 +145,7 @@ function insertCoupon(code, target) {
   }
   renderCart();
 }
+
 // 🎯 تفعيل الكود الترويجي تلقائيًا من الكود اليومي
 function activatePrimaryCoupon(code) {
   const input = document.getElementById("user-coupon");
@@ -156,6 +160,7 @@ function activateSecondaryCoupon(code) {
   document.getElementById("secondary-coupon").value = code;
   renderCart();
 }
+
 // ⏱️ عد تنازلي حقيقي يبدأ من وقت ثابت
 function startRealCountdown(startTimestamp, durationHours = 3) {
   const timerBox = document.getElementById("countdown-timer");
@@ -182,6 +187,7 @@ function startRealCountdown(startTimestamp, durationHours = 3) {
     timerBox.textContent = `${h}:${m}:${s}`;
   }, 1000);
 }
-const launchTime = new Date("2025-08-29T07:30:00+03:00").getTime();
 
- 
+// ⏱️ بدء العد التنازلي من الآن
+const launchTime = Date.now(); // ← وقت إطلاق النظام الحقيقي
+startRealCountdown(launchTime, 3); // ← تفعيل بعد 3 ساعات فعلية
