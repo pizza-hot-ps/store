@@ -137,25 +137,21 @@
     <h1>🍕 PIZZA HOT – اختر بطاقتك</h1>
   </header>
 
-  <!-- 🍕 قسم البيتزا -->
   <div class="catalog-section">
     <h2>🍕 بيتزا</h2>
     <div id="pizza-container" class="catalog-container"></div>
   </div>
 
-  <!-- 🍟 قسم الجوانب -->
   <div class="catalog-section">
     <h2>🍟 جوانب</h2>
     <div id="sides-container" class="catalog-container"></div>
   </div>
 
-  <!-- 🥤 قسم المشروبات -->
   <div class="catalog-section">
     <h2>🥤 مشروبات</h2>
     <div id="drinks-container" class="catalog-container"></div>
   </div>
 
-  <!-- 🛒 السلة -->
   <div class="order-box">
     <h2>🛒 السلة</h2>
     <ul id="cart-list"></ul>
@@ -166,10 +162,10 @@
     <button onclick="sendWhatsApp()">📤 إرسال الطلب عبر واتساب</button>
     <textarea id="order-message" rows="6"></textarea>
   </div>
+
 <script>
 const cart = [];
 
-// ✅ الكتالوج الكامل (مبسط من ملف catalog.json)
 const catalog = {
   pizza: [
     { name: "بيتزا دجاج", sizes: { XL: 65, L: 45, M: 33, S: 18 }, image: "chicken.png" },
@@ -192,7 +188,7 @@ const catalog = {
     { name: "كولا", price: 4, image: "cola.png" },
     { name: "Haypi", price: 2, image: "haypi.png" },
     { name: "Blue", price: 3, image: "blue.png" },
-    { name: "XL عادي", price: 4, image: "xl.png" },
+        { name: "XL عادي", price: 4, image: "xl.png" },
     { name: "XL Red Label", price: 5, image: "xl-red.png" }
   ]
 };
@@ -208,7 +204,7 @@ function renderSection(containerId, items, isPizza = false) {
     const front = document.createElement("div");
     front.className = "card-front";
     front.innerHTML = `
-      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/${item.image}" alt="${item.name}">
+      <img src="assets/images/${item.image}" alt="${item.name}">
       <strong>${item.name}</strong>
       ${isPizza ? `
         <select class="size">
@@ -225,7 +221,7 @@ function renderSection(containerId, items, isPizza = false) {
     const back = document.createElement("div");
     back.className = "card-back";
     back.innerHTML = `
-      <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/${item.image}" alt="عرض ${item.name}">
+      <img src="assets/images/${item.image}" alt="عرض ${item.name}">
       <button onclick="event.stopPropagation(); sendDirectWhatsApp('${item.name}', this${isPizza ? '' : `, ${item.price}`})">📤 إرسال مباشر</button>
     `;
 
@@ -237,7 +233,7 @@ function renderSection(containerId, items, isPizza = false) {
     container.appendChild(card);
   });
 }
-<script>
+
 function addToCart(name, btn, fixedPrice = null) {
   const card = btn.closest(".card");
   const qty = +card.querySelector(".qty").value;
@@ -307,16 +303,6 @@ function sendDirectWhatsApp(name, btn, fixedPrice = null) {
   window.open("https://wa.me/972569788731?text=" + encodeURIComponent(msg), "_blank");
 }
 
-function pasteCoupon() {
-  navigator.clipboard.readText().then(text => {
-    document.getElementById("coupon-code").value = text.trim();
-    renderCart();
-  }).catch(() => {
-    alert("⚠️ لم أتمكن من قراءة الكود من الحافظة.");
-  });
-}
-
-// ✨ رقم عائم عند الإضافة
 function showFloatingNumber(text, target) {
   const float = document.createElement("div");
   float.textContent = text;
