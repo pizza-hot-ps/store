@@ -1,46 +1,61 @@
 {
   "pizza": [
-    { "name": "بيتزا دجاج", "sizes": { "XL": 65, "L": 45, "M": 33, "S": 18 }, "enabled": true, "image": "chicken.png" },
-    { "name": "بيتزا خضار", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 }, "enabled": true, "image": "veggie.png" },
-    { "name": "بيتزا سلامي", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "salami.png" },
-    { "name": "بيتزا نقانق", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "sausage.png" },
-    { "name": "بيتزا تونة", "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 }, "enabled": true, "image": "tuna.png" },
-    { "name": "بيتزا مارجريتا", "sizes": { "XL": 50, "L": 38, "M": 20, "S": 14 }, "enabled": true, "image": "margherita.png" },
-    { "name": "كلزوني", "sizes": { "XL": 60, "L": 40, "M": 32, "S": 17 }, "enabled": true, "image": "calzone.png" }
+    { "name": "بيتزا هوت", "sizes": { "S": 18, "M": 33, "L": 45, "XL": 55 } },
+    { "name": "بيتزا خضار", "sizes": { "S": 15, "M": 30, "L": 40, "XL": 50 } },
+    { "name": "بيتزا دجاج", "sizes": { "S": 18, "M": 30, "L": 40, "XL": 50 } },
+    { "name": "بيتزا لحم", "sizes": { "S": 16, "M": 30, "L": 40, "XL": 50 } },
+    { "name": "بيتزا تونة", "sizes": { "S": 16, "M": 30, "L": 40, "XL": 50 } },
+    { "name": "بيتزا مشكلة", "sizes": { "S": 16, "M": 30, "L": 40, "XL": 50 } },
+    { "name": "بيتزا جبنة", "sizes": { "S": 16, "M": 30, "L": 40, "XL": 50 } },
+    { "name": "بيتزا بيبروني", "sizes": { "S": 16, "M": 30, "L": 40, "XL": 50 } },
+    { "name": "بيتزا مارجريتا", "sizes": { "S": 14, "M": 20, "L": 38, "XL": 50 } },
+    { "name": "كلزوني", "sizes": { "S": 17, "M": 32, "L": 40, "XL": 60 } }
   ],
 
   "sides": [
-    { "name": "بطاطا صغير", "price": 5, "enabled": true, "image": "fries-small.png" },
-    { "name": "بطاطا كبير", "price": 10, "enabled": true, "image": "fries-large.png" },
-    { "name": "زنجر صغير", "price": 13, "enabled": true, "image": "zinger-small.png" },
-    { "name": "زنجر كبير", "price": 25, "enabled": true, "image": "zinger-large.png" },
-    { "name": "أجنحة جنان صغير", "price": 13, "enabled": true, "image": "wings-small.png" },
-    { "name": "أجنحة دجاج كبير", "price": 24, "enabled": true, "image": "wings-large.png" }
+    { "name": "بطاطا صغير", "price": 5 },
+    { "name": "بطاطا كبير", "price": 10 },
+    { "name": "بطاطا جبنة", "price": 12 },
+    { "name": "بطاطا مشكلة", "price": 13 },
+    { "name": "أجنحة جنان صغير", "price": 12 },
+    { "name": "أجنحة دجاج كبير", "price": 24 },
+    { "name": "كريسبي صغير", "price": 13 },
+    { "name": "كريسبي كبير", "price": 24 }
   ],
 
   "drinks": [
-    { "name": "كولا 1.25 لتر", "price": 4, "enabled": true, "image": "cola-1.25.png" },
-    { "name": "كولا 2 لتر", "price": 6, "enabled": true, "image": "cola-2.png" },
-    { "name": "عصير مانجو", "price": 5, "enabled": true, "image": "mango.png" },
-    { "name": "مياه معدنية", "price": 3, "enabled": true, "image": "water.png" }
-  ],
+    { "name": "مياه معدنية", "size": "صغير", "price": 2 },
+    { "name": "مياه معدنية", "size": "كبير", "price": 3 },
+    { "name": "قهوة باردة – ريو", "size": "صغير", "price": 4 },
 
-  "cocktails": {
-    "enabled": false,
-    "items": [
-      { "name": "موهيتو كلاسيك", "description": "نعناع + ليمون + سفن أب", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-classic.png" },
-      { "name": "موهيتو رمان", "description": "نعناع + ليمون + رمان + سفن أب", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": true, "image": "mojito-pomegranate.png" },
-      { "name": "موهيتو بلو", "description": "نعناع + ليمون + بلو", "size": "220ml", "price": 6, "type": "كوكتيلات غازية", "enabled": false, "image": "mojito-blue.png" },
-      { "name": "كوكتيل كولا نعناع", "description": "كولا + نعناع + ليمون", "size": "330ml", "price": 5, "type": "كوكتيلات غازية", "enabled": true, "image": "cola-mint.png" },
-      { "name": "كوكتيل كولا رمان", "description": "كولا + رمان + نعناع", "size": "1 لتر", "price": 10, "type": "كوكتيلات غازية", "enabled": false, "image": "cola-pomegranate.png" }
-    ]
-  },
+    { "name": "كابي عنب", "size": "صغير", "price": 2 },
+    { "name": "كابي عنب", "size": "كبير", "price": 6 },
+    { "name": "كابي تفاح", "size": "صغير", "price": 2 },
+    { "name": "كابي تفاح", "size": "كبير", "price": 6 },
+    { "name": "كابي برتقال", "size": "صغير", "price": 2 },
+    { "name": "كابي برتقال", "size": "كبير", "price": 6 },
+    { "name": "كابي جريب فروت", "size": "صغير", "price": 2 },
+    { "name": "كابي جريب فروت", "size": "كبير", "price": 6 },
+    { "name": "كابي خوخ", "size": "صغير", "price": 2 },
+    { "name": "كابي خوخ", "size": "كبير", "price": 6 },
+    { "name": "كابي استوائي", "size": "صغير", "price": 2 },
+    { "name": "كابي استوائي", "size": "كبير", "price": 6 },
 
-  "naturalJuices": {
-    "enabled": false,
-    "items": [
-      { "name": "عصير برتقال طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false, "image": "orange.png" },
-      { "name": "عصير جزر طبيعي", "size": "كوب", "price": 4, "type": "عصائر طبيعية", "enabled": false, "image": "carrot.png" }
-    ]
-  }
+    { "name": "هايبي", "size": "صغير", "price": 2 },
+    { "name": "بلو", "size": "صغير", "price": 3 },
+    { "name": "XL", "size": "صغير", "price": 4 },
+    { "name": "XL (مميز)", "size": "صغير", "price": 5 },
+    { "name": "لايون", "size": "صغير", "price": 1 },
+    { "name": "كوكا كولا بلاستيك", "size": "صغير", "price": 1 },
+    { "name": "سبرايت بلاستيك", "size": "صغير", "price": 1 },
+    { "name": "شات كوكا كولا (نكهات)", "size": "صغير", "price": 1 },
+    { "name": "كوكا كولا زيرو", "size": "صغير", "price": 2 },
+
+    { "name": "كوكا كولا", "size": "1.25 لتر", "price": 4 },
+    { "name": "كوكا كولا", "size": "2 لتر", "price": 6 },
+    { "name": "سبرايت", "size": "1.25 لتر", "price": 4 },
+    { "name": "سبرايت", "size": "2 لتر", "price": 6 },
+    { "name": "كوكا كولا زيرو", "size": "1.25 لتر", "price": 4 },
+    { "name": "كوكا كولا زيرو", "size": "2 لتر", "price": 6 }
+  ]
 }
