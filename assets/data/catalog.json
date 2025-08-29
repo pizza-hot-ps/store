@@ -23,18 +23,46 @@
       "image": "kabi.png"
     },
     {
-      "name": "مشروبات غازية صغيرة",
-      "flavors": ["هايبي", "بلو", "لايون", "كوكا كولا بلاستيك", "سبرايت بلاستيك", "شات كوكا كولا", "كوكا كولا زيرو"],
-      "sizes": { "صغير": 1 },
+      "name": "هايبي",
+      "sizes": { "صغير": 2 },
       "enabled": true,
-      "image": "soda-small.png"
+      "image": "haypi.png"
     },
     {
-      "name": "XL",
-      "flavors": ["عادي", "Red Label"],
-      "sizes": { "صغير": 4, "Red Label": 5 },
+      "name": "بلو",
+      "sizes": { "صغير": 3 },
       "enabled": true,
-      "image": "xl.png"
+      "image": "blue.png"
+    },
+    {
+      "name": "لايون",
+      "sizes": { "صغير": 1 },
+      "enabled": true,
+      "image": "lion.png"
+    },
+    {
+      "name": "كوكا كولا بلاستيك",
+      "sizes": { "صغير": 1 },
+      "enabled": true,
+      "image": "coca-small.png"
+    },
+    {
+      "name": "سبرايت بلاستيك",
+      "sizes": { "صغير": 1 },
+      "enabled": true,
+      "image": "sprite-small.png"
+    },
+    {
+      "name": "شات كوكا كولا",
+      "sizes": { "صغير": 1 },
+      "enabled": true,
+      "image": "coca-shot.png"
+    },
+    {
+      "name": "كوكا كولا زيرو",
+      "sizes": { "صغير": 2, "1.25 لتر": 4, "2 لتر": 6 },
+      "enabled": true,
+      "image": "coca-zero.png"
     },
     {
       "name": "كوكا كولا",
@@ -49,10 +77,11 @@
       "image": "sprite.png"
     },
     {
-      "name": "كوكا كولا زيرو",
-      "sizes": { "1.25 لتر": 4, "2 لتر": 6 },
+      "name": "XL",
+      "flavors": ["عادي", "Red Label"],
+      "sizes": { "عادي": 4, "Red Label": 5 },
       "enabled": true,
-      "image": "coca-zero.png"
+      "image": "xl.png"
     },
     {
       "name": "مياه معدنية",
