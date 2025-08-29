@@ -5,6 +5,20 @@
 const DiscountEngine = (() => {
   let rules = [];
 
+  // 🧩 دوال الشروط الثابتة
+  const Conditions = {
+    isChickenPizza: (cart) => cart.some(item => item.label.includes("دجاج")),
+    isFamilyOrder: (cart) => cart.length >= 4,
+    hasWings: (cart) => cart.some(item => item.label.includes("أجنحة")),
+    alwaysTrue: () => true
+  };
+
+  // 🧮 دوال الحساب الثابتة
+  const ApplyFns = {
+    applyPercentage: (total, rule) => total * rule.value,
+    applyFixed: (total, rule) => rule.value
+  };
+
   // 🧩 تحميل القواعد النشطة فقط
   function loadRulesFrom(rulesArray) {
     rules = rulesArray.filter(rule => rule.active);
@@ -29,24 +43,18 @@ const DiscountEngine = (() => {
     // 🔄 تطبيق كل قاعدة حسب الشرط
     for (const rule of sorted) {
       try {
-        if (typeof rule.condition !== "string" || rule.condition.length > 200) continue;
-
-        const conditionFn = new Function("cart", "total", "user", "coupon1", "coupon2", "channel", "orderDate", "bookedVia", "desiredHour", `
-          return ${rule.condition};
-        `);
+        const conditionFn = Conditions[rule.condition];
+        if (!conditionFn || typeof conditionFn !== "function") continue;
 
         const ok = conditionFn(cart, finalTotal, user, coupon1, coupon2, channel, orderDate, bookedVia, desiredHour);
         if (!ok) continue;
 
-        const applyFn = rule.applyFn
-          ? new Function("total", "cart", "user", "coupon1", "coupon2", "channel", "orderDate", "bookedVia", "desiredHour", `
-              return ${rule.applyFn};
-            `)
-          : rule.type === "percentage"
-            ? (t => t * rule.value)
-            : (_ => rule.value);
+        const applyFn = ApplyFns[rule.applyFn] ||
+          (rule.type === "percentage"
+            ? ((t) => t * rule.value)
+            : ((_) => rule.value));
 
-        const value = applyFn(finalTotal, cart, user, coupon1, coupon2, channel, orderDate, bookedVia, desiredHour);
+        const value = applyFn(finalTotal, rule);
         const rounded = Math.round(value);
 
         const isCouponRule = !!rule.code;
