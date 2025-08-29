@@ -1,279 +1,334 @@
-{
-  "foods": {
-    "pizza": [
-      {
-        "name": "بيتزا دجاج",
-        "sizes": { "XL": 65, "L": 45, "M": 33, "S": 18 },
-        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
-        "customization": ["حار", "عادي", "بدون جبنة"],
-        "enabled": true,
-        "image": "chicken.png"
-      },
-      {
-        "name": "بيتزا خضار",
-        "sizes": { "XL": 50, "L": 38, "M": 20, "S": 15 },
-        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
-        "customization": ["عادي", "بدون جبنة"],
-        "enabled": true,
-        "image": "veggie.png"
-      },
-      {
-        "name": "بيتزا سلامي",
-        "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 },
-        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
-        "enabled": true,
-        "image": "salami.png"
-      },
-      {
-        "name": "بيتزا نقانق",
-        "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 },
-        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
-        "enabled": true,
-        "image": "sausage.png"
-      },
-      {
-        "name": "بيتزا تونة",
-        "sizes": { "XL": 55, "L": 40, "M": 23, "S": 16 },
-        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
-        "enabled": true,
-        "image": "tuna.png"
-      },
-      {
-        "name": "بيتزا مارجريتا",
-        "sizes": { "XL": 50, "L": 38, "M": 20, "S": 14 },
-        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
-        "enabled": true,
-        "image": "margherita.png"
-      },
-      {
-        "name": "كلزوني",
-        "sizes": { "XL": 60, "L": 40, "M": 32, "S": 17 },
-        "boxSizes": { "XL": 42, "L": 36, "M": 28, "S": 24 },
-        "enabled": true,
-        "image": "calzone.png"
-      }
-    ],
-    "sides": [
-      {
-        "name": "بطاطا صغير",
-        "price": 5,
-        "portionRatio": 1,
-        "enabled": true,
-        "image": "fries-small.png"
-      },
-      {
-        "name": "بطاطا كبير",
-        "price": 10,
-        "portionRatio": 3,
-        "valueNote": "3x الكمية بسعر أقل من 3 وحدات",
-        "enabled": true,
-        "image": "fries-large.png"
-      },
-      {
-        "name": "زنجر صغير",
-        "price": 13,
-        "enabled": true,
-        "image": "zinger-small.png"
-      },
-      {
-        "name": "زنجر كبير",
-        "price": 25,
-        "enabled": true,
-        "image": "zinger-large.png"
-      },
-      {
-        "name": "أجنحة جنان صغير",
-        "price": 13,
-        "enabled": true,
-        "image": "wings-small.png"
-      },
-      {
-        "name": "أجنحة دجاج كبير",
-        "price": 24,
-        "enabled": true,
-        "image": "wings-large.png"
-      }
-    ]
-  },
-"drinks": {
-  "carbonated": [
-    {
-      "name": "كولا",
-      "sizes": { "L": 6, "S": 4 },
-      "volume": "330ml",
-      "type": "كولا",
-      "enabled": true,
-      "image": "cola.png"
-    },
-    {
-      "name": "Haypi",
-      "sizes": { "S": 2 },
-      "volume": "330ml",
-      "type": "مشروبات غازية",
-      "enabled": true,
-      "image": "haypi.png"
-    },
-    {
-      "name": "Blue",
-      "sizes": { "S": 3 },
-      "volume": "330ml",
-      "type": "مشروبات غازية",
-      "enabled": true,
-      "image": "blue.png"
-    },
-    {
-      "name": "XL",
-      "label": "عادي",
-      "sizes": { "S": 4 },
-      "volume": "330ml",
-      "type": "مشروبات غازية",
-      "enabled": true,
-      "image": "xl.png"
-    },
-    {
-      "name": "XL",
-      "label": "Red Label",
-      "sizes": { "S": 5 },
-      "volume": "330ml",
-      "type": "مشروبات غازية",
-      "enabled": true,
-      "image": "xl-red.png"
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>PIZZA HOT – الطلب الرمزي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: url("https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/wood_leaf_bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      scroll-behavior: smooth;
+      font-size: 1.1rem;
     }
+    header {
+      text-align: center;
+      padding: 16px;
+      background: rgba(0,0,0,0.85);
+      border-bottom: 1px solid #444;
+    }
+    header img {
+      height: 60px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #ffd700;
+      margin: 30px 0 10px;
+    }
+    .catalog-section {
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    .catalog-section h2 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+    .catalog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      width: 200px;
+      perspective: 1000px;
+      position: relative;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.7);
+      padding: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .card-front img, .card-back img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .card select, .card input {
+      margin: 6px 0;
+      padding: 6px;
+      width: 90%;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      border: none;
+    }
+    .card button {
+      margin-top: 8px;
+      padding: 6px 12px;
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .order-box {
+      background: #fff;
+      color: #000;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 40px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .order-box input, .order-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .order-box button {
+      margin-top: 12px;
+      padding: 10px 20px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/images/logo.png" alt="PIZZA HOT Logo">
+    <h1>🍕 PIZZA HOT – اختر بطاقتك</h1>
+  </header>
+
+  <div class="catalog-section">
+    <h2>🍕 بيتزا</h2>
+    <div id="pizza-container" class="catalog-container"></div>
+  </div>
+
+  <div class="catalog-section">
+    <h2>🍟 جوانب</h2>
+    <div id="sides-container" class="catalog-container"></div>
+  </div>
+
+  <div class="catalog-section">
+    <h2>🥤 مشروبات</h2>
+    <div id="drinks-container" class="catalog-container"></div>
+  </div>
+
+  <div class="order-box">
+    <h2>🛒 السلة</h2>
+    <ul id="cart-list"></ul>
+    <input id="coupon-code" placeholder="🎟️ كود الخصم (اختياري)">
+    <p><strong>الخصم:</strong> <span id="cart-discount">0</span>₪</p>
+    <p><strong>الإجمالي:</strong> <span id="cart-total">0</span>₪</p>
+    <button onclick="generateMessage()">📋 توليد الرسالة</button>
+    <button onclick="sendWhatsApp()">📤 إرسال الطلب عبر واتساب</button>
+    <textarea id="order-message" rows="6"></textarea>
+  </div>
+
+<script>
+const cart = [];
+
+const catalog = {
+  pizza: [
+    { name: "بيتزا دجاج", sizes: { XL: 65, L: 45, M: 33, S: 18 }, image: "chicken.png" },
+    { name: "بيتزا خضار", sizes: { XL: 50, L: 38, M: 20, S: 15 }, image: "veggie.png" },
+    { name: "بيتزا سلامي", sizes: { XL: 55, L: 40, M: 23, S: 16 }, image: "salami.png" },
+    { name: "بيتزا نقانق", sizes: { XL: 55, L: 40, M: 23, S: 16 }, image: "sausage.png" },
+    { name: "بيتزا تونة", sizes: { XL: 55, L: 40, M: 23, S: 16 }, image: "tuna.png" },
+    { name: "بيتزا مارجريتا", sizes: { XL: 50, L: 38, M: 20, S: 14 }, image: "margherita.png" },
+    { name: "كلزوني", sizes: { XL: 60, L: 40, M: 32, S: 17 }, image: "calzone.png" }
   ],
-  "juices": [
-    {
-      "name": "كابي",
-      "flavor": "عنب",
-      "sizes": { "L": 6, "S": 2 },
-      "type": "عصائر",
-      "enabled": true,
-      "image": "kabi-grape.png"
-    },
-    {
-      "name": "كابي",
-      "flavor": "تفاح",
-      "sizes": { "L": 6, "S": 2 },
-      "type": "عصائر",
-      "enabled": true,
-      "image": "kabi-apple.png"
-    },
-    {
-      "name": "كابي",
-      "flavor": "برتقال",
-      "sizes": { "L": 6, "S": 2 },
-      "type": "عصائر",
-      "enabled": true,
-      "image": "kabi-orange.png"
-    },
-    {
-      "name": "كابي",
-      "flavor": "خوخ",
-      "sizes": { "L": 6, "S": 2 },
-      "type": "عصائر",
-      "enabled": true,
-      "image": "kabi-peach.png"
-    },
-    {
-      "name": "كابي",
-      "flavor": "مانجا",
-      "sizes": { "L": 6, "S": 2 },
-      "type": "عصائر",
-      "enabled": true,
-      "image": "kabi-mango.png"
-    },
-    {
-      "name": "كابي",
-      "flavor": "إستوائي",
-      "sizes": { "L": 6, "S": 2 },
-      "type": "عصائر",
-      "enabled": true,
-      "image": "kabi-tropical.png"
-    },
-    {
-      "name": "كابي",
-      "flavor": "فراولة وموز",
-      "sizes": { "L": 6, "S": 2 },
-      "type": "عصائر",
-      "enabled": true,
-      "image": "kabi-strawberry-banana.png"
-    }
+  sides: [
+    { name: "بطاطا صغير", price: 5, image: "fries-small.png" },
+    { name: "بطاطا كبير", price: 10, image: "fries-large.png" },
+    { name: "زنجر صغير", price: 13, image: "zinger-small.png" },
+    { name: "زنجر كبير", price: 25, image: "zinger-large.png" },
+    { name: "أجنحة جنان صغير", price: 13, image: "wings-small.png" },
+    { name: "أجنحة دجاج كبير", price: 24, image: "wings-large.png" }
   ],
-  "naturalJuices": {
-    "enabled": true,
-    "items": [
-      {
-        "name": "عصير برتقال طبيعي",
-        "size": "كوب",
-        "price": 4,
-        "type": "عصائر طبيعية",
-        "enabled": true,
-        "image": "orange.png"
-      },
-      {
-        "name": "عصير جزر طبيعي",
-        "size": "كوب",
-        "price": 4,
-        "type": "عصائر طبيعية",
-        "enabled": true,
-        "image": "carrot.png"
-      }
-    ]
-  },
-  "cocktails": {
-    "gas": [
-      {
-        "name": "موهيتو كلاسيك",
-        "description": "نعناع + ليمون + سفن أب",
-        "size": "330ml",
-        "price": 5,
-        "type": "كوكتيلات غازية",
-        "enabled": true,
-        "image": "mojito-classic.png"
-      },
-      {
-        "name": "موهيتو رمان",
-        "description": "نعناع + ليمون + رمان + سفن أب",
-        "size": "1 لتر",
-        "price": 10,
-        "type": "كوكتيلات غازية",
-        "enabled": true,
-        "image": "mojito-pomegranate.png"
-      }
-    ],
-    "juice": [
-      {
-        "name": "كوكتيل كولا نعناع",
-        "description": "كولا + نعناع + ليمون",
-        "size": "330ml",
-        "price": 5,
-        "type": "كوكتيلات عصائر",
-        "enabled": true,
-        "image": "cola-mint.png"
-      }
-    ]
-  },
-  "other": [
-    {
-      "name": "Rio Iced Coffee",
-      "sizes": { "S": 4 },
-      "volume": "330ml",
-      "type": "قهوة باردة",
-      "enabled": true,
-      "image": "rio-coffee.png"
-    },
-    {
-      "name": "مياه معدنية",
-      "sizes": {
-        "S": 2,
-        "L": 3
-      },
-      "volume": {
-        "S": "330ml",
-        "L": "1.25L"
-      },
-      "type": "مياه",
-      "enabled": true,
-      "image": "water.png"
-    }
+  drinks: [
+    { name: "كولا", price: 4, image: "cola.png" },
+    { name: "Haypi", price: 2, image: "haypi.png" },
+    { name: "Blue", price: 3, image: "blue.png" },
+        { name: "XL عادي", price: 4, image: "xl.png" },
+    { name: "XL Red Label", price: 5, image: "xl-red.png" }
   ]
+};
+
+// ✅ توليد البطاقات حسب الفئة
+function renderSection(containerId, items, isPizza = false) {
+  const container = document.getElementById(containerId);
+  items.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.onclick = () => card.classList.toggle("flipped");
+
+    const front = document.createElement("div");
+    front.className = "card-front";
+    front.innerHTML = `
+      <img src="assets/images/${item.image}" alt="${item.name}">
+      <strong>${item.name}</strong>
+      ${isPizza ? `
+        <select class="size">
+          ${Object.entries(item.sizes).map(([size, price]) => `<option value="${price}">${size} – ${price}₪</option>`).join("")}
+        </select>
+        <input type="number" class="qty" min="1" value="1">
+      ` : `
+        <p>${item.price}₪</p>
+        <input type="number" class="qty" min="1" value="1">
+      `}
+      <button onclick="event.stopPropagation(); addToCart('${item.name}', this${isPizza ? '' : `, ${item.price}`})">🛒 أضف إلى السلة</button>
+    `;
+
+    const back = document.createElement("div");
+    back.className = "card-back";
+    back.innerHTML = `
+      <img src="assets/images/${item.image}" alt="عرض ${item.name}">
+      <button onclick="event.stopPropagation(); sendDirectWhatsApp('${item.name}', this${isPizza ? '' : `, ${item.price}`})">📤 إرسال مباشر</button>
+    `;
+
+    const inner = document.createElement("div");
+    inner.className = "card-inner";
+    inner.appendChild(front);
+    inner.appendChild(back);
+    card.appendChild(inner);
+    container.appendChild(card);
+  });
 }
+
+function addToCart(name, btn, fixedPrice = null) {
+  const card = btn.closest(".card");
+  const qty = +card.querySelector(".qty").value;
+  const price = fixedPrice ?? +card.querySelector(".size")?.value;
+  cart.push({ item: name, price, qty });
+  renderCart();
+  showFloatingNumber(`+${price * qty}₪`, btn);
+}
+
+function renderCart() {
+  const list = document.getElementById("cart-list");
+  const total = document.getElementById("cart-total");
+  const discountBox = document.getElementById("cart-discount");
+  list.innerHTML = "";
+  let sum = 0;
+  cart.forEach(({ item, price, qty }) => {
+    sum += price * qty;
+    const li = document.createElement("li");
+    li.textContent = `• ${item} × ${qty} = ${price * qty}₪`;
+    list.appendChild(li);
+  });
+  const coupon = document.getElementById("coupon-code").value.trim();
+  const discount = getDiscount(coupon);
+  discountBox.textContent = discount;
+  total.textContent = sum - discount;
+}
+
+function getDiscount(code) {
+  switch (code.toUpperCase()) {
+    case "CHICKENXL": return 9;
+    case "FAMILYSET": return 19;
+    default: return 0;
+  }
+}
+
+function generateMessage() {
+  const coupon = document.getElementById("coupon-code").value.trim();
+  const discount = getDiscount(coupon);
+  const rawTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  let msg = `🍕 PIZZA HOT – طلب جديد\n------------------\n📦 محتوى الطلب:\n`;
+  cart.forEach(({ item, price, qty }) => {
+    msg += `• ${item} × ${qty} = ${price * qty}₪\n`;
+  });
+  msg += `\n📦 الإجمالي قبل الخصم: ${rawTotal}₪`;
+  msg += `\n🎟️ كود الخصم: ${coupon || "—"}`;
+  msg += `\n🔻 الخصم المطبق: ${discount}₪`;
+  msg += `\n✅ الإجمالي بعد الخصم: ${rawTotal - discount}₪`;
+  msg += `\n🙏 شكرًا لاختياركم PIZZA HOT`;
+  document.getElementById("order-message").value = msg;
+}
+
+function sendWhatsApp() {
+  const msg = document.getElementById("order-message").value.trim();
+  if (!msg) {
+    alert("⚠️ الرجاء توليد الرسالة أولًا.");
+    return;
+  }
+  window.open("https://wa.me/972569788731?text=" + encodeURIComponent(msg), "_blank");
+}
+
+function sendDirectWhatsApp(name, btn, fixedPrice = null) {
+  const card = btn.closest(".card");
+  const qty = +card.querySelector(".qty").value;
+  const price = fixedPrice ?? +card.querySelector(".size")?.value;
+  const total = price * qty;
+  const msg = `✔️ PIZZA HOT ✔️ الطلب : ${name} × ${qty} = ${total}₪`;
+  window.open("https://wa.me/972569788731?text=" + encodeURIComponent(msg), "_blank");
+}
+
+function showFloatingNumber(text, target) {
+  const float = document.createElement("div");
+  float.textContent = text;
+  float.style.position = "absolute";
+  float.style.color = "#ffd700";
+  float.style.fontWeight = "bold";
+  float.style.fontSize = "1.2rem";
+  float.style.pointerEvents = "none";
+  float.style.zIndex = "9999";
+  float.style.left = target.getBoundingClientRect().left + "px";
+  float.style.top = target.getBoundingClientRect().top + "px";
+  document.body.appendChild(float);
+  setTimeout(() => {
+    float.style.transition = "all 0.8s ease";
+    float.style.transform = "translateY(-40px)";
+    float.style.opacity = "0";
+  }, 10);
+  setTimeout(() => float.remove(), 1000);
+}
+
+window.onload = function() {
+  renderSection("pizza-container", catalog.pizza, true);
+  renderSection("sides-container", catalog.sides);
+  renderSection("drinks-container", catalog.drinks);
+  renderCart();
+};
+</script>
+</body>
+</html>
