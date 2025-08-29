@@ -20,31 +20,31 @@
     "active": true
   },
   {
-    "name": "عرض بيتزا دجاج XL",
+    "name": "عرض بيتزا دجاج XL + بطاطا + كولا",
     "type": "fixed",
     "value": 9,
     "code": "CHICKENXL",
-    "condition": "cart.some(i => i.item === 'عرض بيتزا دجاج XL')",
+    "condition": "cart.some(i => i.item.includes('بيتزا دجاج') && i.item.includes('XL')) && cart.some(i => i.item.includes('بطاطا')) && cart.some(i => i.item.includes('كولا'))",
     "priority": 70,
     "source": "poster",
     "active": true
   },
   {
-    "name": "عرض الحجم العائلي",
+    "name": "العرض العائلي XL + بطاطا + كولا",
     "type": "fixed",
     "value": 19,
     "code": "FAMILYSET",
-    "condition": "cart.some(i => i.item === 'العرض العائلي XL')",
+    "condition": "cart.some(i => i.item.includes('بيتزا') && i.item.includes('XL')) && cart.some(i => i.item.includes('بطاطا')) && cart.some(i => i.item.includes('كولا'))",
     "priority": 60,
     "source": "poster",
     "active": true
   },
   {
-    "name": "عرض أجنحة الدجاج",
+    "name": "عرض أجنحة الدجاج + بطاطا كبير",
     "type": "fixed",
     "value": 7,
     "code": "WINGSDEAL",
-    "condition": "cart.some(i => i.item === 'عرض أجنحة الدجاج')",
+    "condition": "cart.some(i => i.item.includes('أجنحة')) && cart.some(i => i.item.includes('بطاطا') && i.item.includes('كبير'))",
     "priority": 50,
     "source": "poster",
     "active": true
