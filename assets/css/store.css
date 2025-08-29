@@ -6,6 +6,10 @@ body {
   padding: 20px;
   direction: rtl;
   color: #333;
+  background-image: url("../images/pizza_bg_pattern.png");
+  background-repeat: repeat;
+  background-size: 120px;
+  background-attachment: fixed;
 }
 
 /* 🧭 رأس الصفحة */
@@ -115,16 +119,18 @@ thead {
 }
 
 .menu-table td img, .drink-table td img {
-  height: 40px;
-  border-radius: 4px;
-  margin-left: 6px;
+  height: 48px;
+  border-radius: 6px;
+  margin-left: 8px;
   vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
 
 /* ✨ تمييز الصف عند المرور */
 .menu-table tbody tr:hover,
 .drink-table tbody tr:hover {
-  background-color: #f0f8ff;
+  background-color: #e3f2fd;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
