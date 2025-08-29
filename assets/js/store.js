@@ -191,3 +191,31 @@ function startRealCountdown(startTimestamp, durationHours = 3) {
 // ⏱️ بدء العد التنازلي من الآن
 const launchTime = Date.now(); // ← وقت إطلاق النظام الحقيقي
 startRealCountdown(launchTime, 3); // ← تفعيل بعد 3 ساعات فعلية
+// 🧠 تفعيل الكتالوج عند تحميل الصفحة
+function renderCatalog() {
+  renderPizzaMenu(window.catalog.pizza);
+  renderSidesMenu(window.catalog.sides);
+  renderDrinksMenu(window.catalog.drinks);
+}
+
+// 📤 إرسال الطلب إلى WhatsApp
+function sendOrder() {
+  const userName = document.getElementById("user-name").value.trim();
+  const userAddr = document.getElementById("user-address").value.trim();
+  const coupon1 = document.getElementById("user-coupon").value.trim();
+  const coupon2 = document.getElementById("secondary-coupon").value.trim();
+
+  const cart = CartCore.get();
+  const rawTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+  const result = DiscountEngine.apply(rawTotal, cart, userName, coupon1, coupon2);
+  const msg = MessageBuilder.build(cart, userName, userAddr, result.total, result.applied, result.breakdown, rawTotal);
+
+  const encoded = encodeURIComponent(msg);
+  const waNumber = "972599123456"; // ← رقم المشرف
+  const waLink = `https://wa.me/${waNumber}?text=${encoded}`;
+
+  window.open(waLink, "_blank");
+  alert("✅ تم إرسال الطلب إلى WhatsApp.");
+}
+
