@@ -1,11 +1,9 @@
-// 🧠 تفعيل الكتالوج عند تحميل الصفحة
 function renderCatalog() {
   renderPizzaMenu(window.catalog.pizza);
   renderSidesMenu(window.catalog.sides);
   renderDrinksMenu(window.catalog.drinks);
 }
 
-// 🍕 توليد قائمة البيتزا
 function renderPizzaMenu(pizzaList) {
   const tbody = document.querySelector("#pizza-menu tbody");
   tbody.innerHTML = "";
@@ -30,7 +28,6 @@ function renderPizzaMenu(pizzaList) {
   });
 }
 
-// 🍟 توليد قائمة الجوانب
 function renderSidesMenu(sidesList) {
   const tbody = document.querySelector("#sides-menu tbody");
   tbody.innerHTML = "";
@@ -48,7 +45,6 @@ function renderSidesMenu(sidesList) {
   });
 }
 
-// 🥤 توليد قائمة المشروبات
 function renderDrinksMenu(drinksList) {
   const container = document.getElementById("drinks-container");
   container.innerHTML = "";
@@ -68,7 +64,6 @@ function renderDrinksMenu(drinksList) {
   });
 }
 
-// 🛒 إضافة المنتج إلى السلة
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("add-btn")) {
     const parent = e.target.closest("tr") || e.target.closest(".drink-section");
@@ -77,21 +72,17 @@ document.addEventListener("click", function (e) {
     const price = parseFloat(parent.querySelector(".price")?.textContent.replace("₪", "") || "0");
     const sizeSelect = parent.querySelector(".size");
     const size = sizeSelect ? sizeSelect.options[sizeSelect.selectedIndex].text.split("–")[0].trim() : "";
-
     const label = size ? `${name} (${size})` : name;
     CartCore.add(label, price, qty);
     renderCart();
-
     e.target.classList.add("success");
     setTimeout(() => e.target.classList.remove("success"), 1000);
-
     const toast = document.getElementById("add-toast");
     toast.style.display = "block";
     setTimeout(() => toast.style.display = "none", 1200);
   }
 });
 
-// 🧮 عرض السلة
 function renderCart() {
   const cartBox = document.getElementById("cart-preview");
   const cart = CartCore.get();
@@ -99,7 +90,6 @@ function renderCart() {
     cartBox.innerHTML = "<p>🛒 السلة فارغة</p>";
     return;
   }
-
   let html = "<h3>📦 معاينة الطلب</h3><ul>";
   let total = 0;
   cart.forEach(item => {
@@ -110,7 +100,6 @@ function renderCart() {
   cartBox.innerHTML = html;
 }
 
-// 🧼 إدارة السلة
 const CartCore = {
   items: [],
   add(label, price, qty) {
@@ -124,7 +113,6 @@ const CartCore = {
   }
 };
 
-// 🧠 لصق الكود من الحافظة
 function insertCouponFromClipboard(target) {
   navigator.clipboard.readText().then(text => {
     if (target === "primary") {
@@ -136,7 +124,6 @@ function insertCouponFromClipboard(target) {
   });
 }
 
-// 🎯 تفعيل الكود يدويًا
 function insertCoupon(code, target) {
   if (target === "primary") {
     document.getElementById("user-coupon").value = code;
@@ -146,7 +133,6 @@ function insertCoupon(code, target) {
   renderCart();
 }
 
-// 🎯 تفعيل الكود الترويجي تلقائيًا من الكود اليومي
 function activatePrimaryCoupon(code) {
   const input = document.getElementById("user-coupon");
   input.value = code;
@@ -161,16 +147,13 @@ function activateSecondaryCoupon(code) {
   renderCart();
 }
 
-// ⏱️ عد تنازلي حقيقي يبدأ من وقت ثابت
 function startRealCountdown(startTimestamp, durationHours = 3) {
   const timerBox = document.getElementById("countdown-timer");
   const durationMs = durationHours * 60 * 60 * 1000;
-
   const interval = setInterval(() => {
     const now = Date.now();
     const elapsed = now - startTimestamp;
     const remaining = durationMs - elapsed;
-
     if (remaining <= 0) {
       clearInterval(interval);
       timerBox.textContent = "✅ تم تفعيل العروض";
@@ -180,7 +163,6 @@ function startRealCountdown(startTimestamp, durationHours = 3) {
       document.getElementById("auto-discount-alert").style.display = "block";
       return;
     }
-
     const h = String(Math.floor(remaining / 3600000)).padStart(2, "0");
     const m = String(Math.floor((remaining % 3600000) / 60000)).padStart(2, "0");
     const s = String(Math.floor((remaining % 60000) / 1000)).padStart(2, "0");
@@ -188,34 +170,21 @@ function startRealCountdown(startTimestamp, durationHours = 3) {
   }, 1000);
 }
 
-// ⏱️ بدء العد التنازلي من الآن
-const launchTime = Date.now(); // ← وقت إطلاق النظام الحقيقي
-startRealCountdown(launchTime, 3); // ← تفعيل بعد 3 ساعات فعلية
-// 🧠 تفعيل الكتالوج عند تحميل الصفحة
-function renderCatalog() {
-  renderPizzaMenu(window.catalog.pizza);
-  renderSidesMenu(window.catalog.sides);
-  renderDrinksMenu(window.catalog.drinks);
-}
+const launchTime = Date.now();
+startRealCountdown(launchTime, 3);
 
-// 📤 إرسال الطلب إلى WhatsApp
 function sendOrder() {
   const userName = document.getElementById("user-name").value.trim();
   const userAddr = document.getElementById("user-address").value.trim();
   const coupon1 = document.getElementById("user-coupon").value.trim();
   const coupon2 = document.getElementById("secondary-coupon").value.trim();
-
   const cart = CartCore.get();
   const rawTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-
   const result = DiscountEngine.apply(rawTotal, cart, userName, coupon1, coupon2);
   const msg = MessageBuilder.build(cart, userName, userAddr, result.total, result.applied, result.breakdown, rawTotal);
-
   const encoded = encodeURIComponent(msg);
-  const waNumber = "972599123456"; // ← رقم المشرف
+  const waNumber = "972599123456";
   const waLink = `https://wa.me/${waNumber}?text=${encoded}`;
-
-  window.open(waLink, "_blank");
-  alert("✅ تم إرسال الطلب إلى WhatsApp.");
+window.open(waLink, "_blank");
+alert("✅ تم إرسال الطلب إلى WhatsApp.");
 }
-
