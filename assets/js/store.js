@@ -1,203 +1,187 @@
-// 🧠 تحميل قواعد الخصم وتفعيلها
-fetch("https://raw.githubusercontent.com/pizza-hot-ps/store/main/assets/data/rules.json")
-  .then(res => res.json())
-  .then(data => {
-    DiscountEngine.loadRulesFrom(data);
-    renderCart(); // ← سنكتبها لاحقًا
-  });
-
-function renderGenericTable(label, items, containerId) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-
-  const section = document.createElement("div");
-  section.className = "drink-section";
-
-  section.innerHTML = `
-    <h4>${label}</h4>
-    <table class="drink-table menu-table">
-      <thead>
-        <tr><th>المنتج</th><th>الحجم</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th></th></tr>
-      </thead>
-      <tbody>
-        ${items.filter(i => i.enabled !== false).map(item => {
-          const defaultSize = item.sizes ? Object.keys(item.sizes)[0] : item.size || "—";
-          const defaultPrice = item.sizes ? item.sizes[defaultSize] : item.price;
-
-          return `
-            <tr data-item="${item.name}">
-              <td>
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <img src="${item.image}" alt="${item.name}" style="height:40px;border-radius:4px;">
-                  <span>${item.name}</span>
-                </div>
-              </td>
-              <td>
-                ${item.sizes
-                  ? `<select class="size">
-                      ${Object.entries(item.sizes).map(([label, price]) =>
-                        `<option value="${price}">${label} – ${price}${config.currency}</option>`
-                      ).join("")}
-                    </select>`
-                  : item.size || "—"}
-              </td>
-              <td><span class="price">${defaultPrice}${config.currency}</span></td>
-              <td><input class="qty" type="number" min="1" value="1"></td>
-              <td class="total-cell">${defaultPrice}${config.currency}</td>
-              <td><button class="add-btn">أضف</button></td>
-            </tr>
-          `;
-        }).join("")}
-      </tbody>
-    </table>
-  `;
-  container.appendChild(section);
-}
-
+// 🧠 تفعيل الكتالوج عند تحميل الصفحة
 function renderCatalog() {
-  renderGenericTable("🍕 قائمة البيتزا", catalog.pizza, "pizza-menu");
-  renderGenericTable("🍟 أطباق جانبية", catalog.sides, "sides-menu");
-  renderGenericTable("🥤 مشروبات", catalog.drinks, "drinks-container");
-  renderGenericTable("🍸 كوكتيلات", catalog.cocktails.items, "cocktails-container");
-  renderGenericTable("🍹 عصائر طبيعية", catalog.naturalJuices.items, "natural-juices-container");
-
-  bindCartEvents();
-  bindQuantityAndSizeEvents();
+  renderPizzaMenu(window.catalog.pizza);
+  renderSidesMenu(window.catalog.sides);
+  renderDrinksMenu(window.catalog.drinks);
 }
 
-function bindCartEvents() {
-  document.querySelectorAll(".add-btn").forEach(btn => {
-    btn.onclick = () => {
-      const row = btn.closest("tr");
-      const item = row.dataset.item;
-      const sizeSelect = row.querySelector(".size");
-      const qty = parseInt(row.querySelector(".qty").value || "1");
-
-      let price;
-      let label = item;
-
-      if (sizeSelect) {
-        const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
-        price = parseFloat(selectedOption.value);
-        const sizeLabel = selectedOption.text.split(" –")[0];
-        label = `${item} (${sizeLabel})`;
-      } else {
-        price = parseFloat(row.querySelector(".price").textContent);
-      }
-
-      CartCore.add(label, price, qty);
-      showAddToast();
-      renderCart();
-    };
+// 🍕 توليد قائمة البيتزا
+function renderPizzaMenu(pizzaList) {
+  const tbody = document.querySelector("#pizza-menu tbody");
+  tbody.innerHTML = "";
+  pizzaList.forEach(item => {
+    if (!item.enabled) return;
+    const defaultSize = Object.keys(item.sizes)[0];
+    const defaultPrice = item.sizes[defaultSize];
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><img src="${item.image}" alt="${item.name}"> ${item.name}</td>
+      <td>
+        <select class="size">
+          ${Object.entries(item.sizes).map(([size, price]) => `<option value="${price}">${size} – ${price}₪</option>`).join("")}
+        </select>
+      </td>
+      <td><span class="price">${defaultPrice}₪</span></td>
+      <td><input class="qty" type="number" min="1" value="1"></td>
+      <td class="total-cell">${defaultPrice}₪</td>
+      <td><button class="add-btn">أضف</button></td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+// 🍟 توليد قائمة الجوانب
+function renderSidesMenu(sidesList) {
+  const tbody = document.querySelector("#sides-menu tbody");
+  tbody.innerHTML = "";
+  sidesList.forEach(item => {
+    if (!item.enabled) return;
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><img src="${item.image}" alt="${item.name}"> ${item.name}</td>
+      <td><span class="price">${item.price}₪</span></td>
+      <td><input class="qty" type="number" min="1" value="1"></td>
+      <td class="total-cell">${item.price}₪</td>
+      <td><button class="add-btn">أضف</button></td>
+    `;
+    tbody.appendChild(row);
   });
 }
 
-function bindQuantityAndSizeEvents() {
-  document.querySelectorAll("tr[data-item]").forEach(row => {
-    const sizeSelect = row.querySelector(".size");
-    const qtyInput = row.querySelector(".qty");
-    const priceCell = row.querySelector(".price");
-    const totalCell = row.querySelector(".total-cell");
+// 🥤 توليد قائمة المشروبات
+function renderDrinksMenu(drinksList) {
+  const container = document.getElementById("drinks-container");
+  container.innerHTML = "";
+  drinksList.forEach(item => {
+    if (!item.enabled) return;
+    const box = document.createElement("div");
+    box.className = "drink-section";
+    const price = Object.values(item.sizes || {})[0] || item.price;
+    box.innerHTML = `
+      <h4>${item.name}</h4>
+      <img src="${item.image}" alt="${item.name}">
+      <p>السعر: ${price}₪</p>
+      <input class="qty" type="number" min="1" value="1">
+      <button class="add-btn">أضف</button>
+    `;
+    container.appendChild(box);
+  });
+}
+// 🛒 إضافة المنتج إلى السلة
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("add-btn")) {
+    const parent = e.target.closest("tr") || e.target.closest(".drink-section");
+    const name = parent.querySelector("img")?.alt || "منتج غير معروف";
+    const qty = parseInt(parent.querySelector(".qty")?.value || "1");
+    const price = parseFloat(parent.querySelector(".price")?.textContent.replace("₪", "") || "0");
+    const sizeSelect = parent.querySelector(".size");
+    const size = sizeSelect ? sizeSelect.options[sizeSelect.selectedIndex].text.split("–")[0].trim() : "";
 
-    function updateTotal() {
-      const price = sizeSelect ? parseFloat(sizeSelect.value) : parseFloat(row.dataset.price);
-      const qty = parseInt(qtyInput.value || "1");
-      priceCell.textContent = `${price}${config.currency}`;
-      totalCell.textContent = `${(price * qty).toFixed(2)}${config.currency}`;
+    const label = size ? `${name} (${size})` : name;
+    CartCore.add(label, price, qty);
+    renderCart();
+
+    e.target.classList.add("success");
+    setTimeout(() => e.target.classList.remove("success"), 1000);
+
+    const toast = document.getElementById("add-toast");
+    toast.style.display = "block";
+    setTimeout(() => toast.style.display = "none", 1200);
+  }
+});
+
+// 🧮 عرض السلة
+function renderCart() {
+  const cartBox = document.getElementById("cart-preview");
+  const cart = CartCore.get();
+  if (!cart.length) {
+    cartBox.innerHTML = "<p>🛒 السلة فارغة</p>";
+    return;
+  }
+
+  let html = "<h3>📦 معاينة الطلب</h3><ul>";
+  let total = 0;
+  cart.forEach(item => {
+    html += `<li>${item.label} × ${item.qty} = ${item.price * item.qty}₪</li>`;
+    total += item.price * item.qty;
+  });
+  html += `</ul><p><strong>الإجمالي: ${total.toFixed(2)}₪</strong></p>`;
+  cartBox.innerHTML = html;
+}
+// 🧼 إدارة السلة
+const CartCore = {
+  items: [],
+  add(label, price, qty) {
+    this.items.push({ label, price, qty });
+  },
+  get() {
+    return this.items;
+  },
+  clear() {
+    this.items = [];
+  }
+};
+
+// 🧠 لصق الكود من الحافظة
+function insertCouponFromClipboard(target) {
+  navigator.clipboard.readText().then(text => {
+    if (target === "primary") {
+      document.getElementById("user-coupon").value = text.trim();
+    } else {
+      document.getElementById("secondary-coupon").value = text.trim();
+    }
+    renderCart();
+  });
+}
+
+// 🎯 تفعيل الكود يدويًا
+function insertCoupon(code, target) {
+  if (target === "primary") {
+    document.getElementById("user-coupon").value = code;
+  } else {
+    document.getElementById("secondary-coupon").value = code;
+  }
+  renderCart();
+}
+// 🎯 تفعيل الكود الترويجي تلقائيًا من الكود اليومي
+function activatePrimaryCoupon(code) {
+  const input = document.getElementById("user-coupon");
+  input.value = code;
+  input.disabled = true;
+  input.style.background = "#eee";
+  input.style.cursor = "not-allowed";
+  renderCart();
+}
+
+function activateSecondaryCoupon(code) {
+  document.getElementById("secondary-coupon").value = code;
+  renderCart();
+}
+// ⏱️ عد تنازلي حقيقي يبدأ من وقت ثابت
+function startRealCountdown(startTimestamp, durationHours = 3) {
+  const timerBox = document.getElementById("countdown-timer");
+  const durationMs = durationHours * 60 * 60 * 1000;
+
+  const interval = setInterval(() => {
+    const now = Date.now();
+    const elapsed = now - startTimestamp;
+    const remaining = durationMs - elapsed;
+
+    if (remaining <= 0) {
+      clearInterval(interval);
+      timerBox.textContent = "✅ تم تفعيل العروض";
+      if (typeof DiscountEngine !== "undefined" && typeof DiscountEngine.activate === "function") {
+        DiscountEngine.activate();
+      }
+      document.getElementById("auto-discount-alert").style.display = "block";
+      return;
     }
 
-    if (sizeSelect) sizeSelect.onchange = updateTotal;
-    if (qtyInput) qtyInput.oninput = updateTotal;
-    updateTotal();
-  });
+    const h = String(Math.floor(remaining / 3600000)).padStart(2, "0");
+    const m = String(Math.floor((remaining % 3600000) / 60000)).padStart(2, "0");
+    const s = String(Math.floor((remaining % 60000) / 1000)).padStart(2, "0");
+    timerBox.textContent = `${h}:${m}:${s}`;
+  }, 1000);
 }
+const launchTime = new Date("2025-08-29T07:30:00+03:00").getTime();
 
-function renderCart() {
-  const cartData = CartCore.get();
-  const userName = document.getElementById("user-name").value.trim();
-  const coupon1 = document.getElementById("user-coupon").value.trim();
-  const coupon2 = document.getElementById("secondary-coupon").value.trim();
-  const rawTotal = cartData.reduce((sum, item) => sum + item.price * item.qty, 0);
-
-  const { total, applied, breakdown } = DiscountEngine.apply(
-    rawTotal, cartData, userName, coupon1, coupon2,
-    "instore", new Date().toISOString(), "whatsapp", new Date().getHours()
-  );
-
-  const autoRule = applied.find(name =>
-    name.includes("تلقائي") || name.includes("FRIDAY") || name.includes("HOLIDAY")
-  );
-
-  document.getElementById("auto-discount-alert").style.display = autoRule ? "block" : "none";
-
-  const preview = document.getElementById("cart-preview");
-  preview.innerHTML = `
-    <h3>📦 معاينة الطلب</h3>
-    <div class="cart-section">
-      <p>👤 الاسم: <strong>${userName || "—"}</strong></p>
-      <p>🎟️ الكود الأساسي: ${coupon1 || config.promoCoupon}</p>
-      <p>🎟️ الكود الثانوي: ${coupon2 || "—"}</p>
-    </div>
-
-    <div class="cart-section">
-      <p>💰 الإجمالي قبل الخصم: <strong>${rawTotal.toFixed(2)}${config.currency}</strong></p>
-      <p>🧠 القواعد المفعّلة: ${applied.length ? applied.join(", ") : "—"}</p>
-      <p>🎯 الخصومات المطبقة:</p>
-      <ul>${breakdown.map(b => `<li>${b}</li>`).join("")}</ul>
-      <p>💸 الإجمالي بعد الخصم: <strong>${total.toFixed(2)}${config.currency}</strong></p>
-    </div>
-
-    <div class="cart-section">
-      <p>🧾 محتوى السلة:</p>
-      <ul>
-        ${cartData.map(i => {
-          const line = `${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}${config.currency}`;
-          return i.price > 0
-            ? `<li>${line}</li>`
-            : `<li style="background:#fff3cd;border-right:4px solid orange;">${line} 🔺 السعر غير معروف</li>`;
-        }).join("")}
-      </ul>
-    </div>
-
-    <button class="copy-btn" onclick="copyOrderMessage()">📋 نسخ الطلب</button>
-  `;
-}
-
-function copyOrderMessage() {
-  const msg = document.getElementById("cart-preview").textContent;
-  navigator.clipboard.writeText(msg).then(() => {
-    alert("📋 تم نسخ الطلب إلى الحافظة");
-  });
-}
-
-function sendOrder() {
-  const cartData = CartCore.get();
-  const userName = document.getElementById("user-name").value.trim();
-  const coupon1 = document.getElementById("user-coupon").value.trim();
-  const coupon2 = document.getElementById("secondary-coupon").value.trim();
-
-  const rawTotal = cartData.reduce((sum, item) => sum + item.price * item.qty, 0);
-  const { total, applied } = DiscountEngine.apply(
-    rawTotal, cartData, userName, coupon1, coupon2,
-    "instore", new Date().toISOString(), "whatsapp", new Date().getHours()
-  );
-
-  const message = `
-🧺 طلب جديد من ${userName || "—"}:
-${cartData.map(i => `• ${i.qty} × ${i.item} = ${(i.price * i.qty).toFixed(2)}₪`).join("\n")}
-
-💰 الإجمالي قبل الخصم: ${rawTotal.toFixed(2)}₪
-🎯 الخصومات: ${applied.join(", ") || "—"}
-💸 الإجمالي بعد الخصم: ${total.toFixed(2)}₪
-
-🎟️ كود 1: ${coupon1 || "—"}
-🎟️ كود 2: ${coupon2 || "—"}
-📦 تم الإرسال من صفحة الطلب
-  `.trim();
-
-  const encoded = encodeURIComponent(message);
-  const link = `https://wa.me/${config.whatsappNumber}?text=${encoded}`;
-  window.open(link, "_blank");
-
-  savePendingOrder({ userName, cartData, total, coupon1, coupon2 });
-}
+ 
