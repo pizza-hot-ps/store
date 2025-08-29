@@ -4,7 +4,8 @@
     "type": "percentage",
     "value": 0.12,
     "code": null,
-    "condition": "isTomorrow(orderDate)",
+    "condition": "isTomorrow",
+    "applyFn": "applyPercentage",
     "priority": 90,
     "source": "auto",
     "active": true
@@ -14,7 +15,8 @@
     "type": "percentage",
     "value": 0.10,
     "code": null,
-    "condition": "channel === 'instore'",
+    "condition": "isInstore",
+    "applyFn": "applyPercentage",
     "priority": 80,
     "source": "auto",
     "active": true
@@ -24,7 +26,8 @@
     "type": "fixed",
     "value": 9,
     "code": "CHICKENXL",
-    "condition": "coupon1 === 'CHICKENXL'",
+    "condition": "hasPrimaryChickenXL",
+    "applyFn": "applyFixed",
     "priority": 70,
     "source": "poster",
     "active": true
@@ -34,7 +37,8 @@
     "type": "fixed",
     "value": 2.25,
     "code": "CHICKENXL",
-    "condition": "coupon2 === 'CHICKENXL'",
+    "condition": "hasSecondaryChickenXL",
+    "applyFn": "applyFixed",
     "priority": 30,
     "source": "poster",
     "active": true
@@ -44,7 +48,8 @@
     "type": "fixed",
     "value": 19,
     "code": "FAMILYSET",
-    "condition": "coupon1 === 'FAMILYSET'",
+    "condition": "hasPrimaryFamilySet",
+    "applyFn": "applyFixed",
     "priority": 60,
     "source": "poster",
     "active": true
@@ -54,7 +59,8 @@
     "type": "fixed",
     "value": 4.75,
     "code": "FAMILYSET",
-    "condition": "coupon2 === 'FAMILYSET'",
+    "condition": "hasSecondaryFamilySet",
+    "applyFn": "applyFixed",
     "priority": 20,
     "source": "poster",
     "active": true
@@ -64,7 +70,8 @@
     "type": "fixed",
     "value": 7,
     "code": "WINGSDEAL",
-    "condition": "coupon1 === 'WINGSDEAL'",
+    "condition": "hasPrimaryWingsDeal",
+    "applyFn": "applyFixed",
     "priority": 50,
     "source": "poster",
     "active": true
@@ -74,7 +81,8 @@
     "type": "fixed",
     "value": 1.75,
     "code": "WINGSDEAL",
-    "condition": "coupon2 === 'WINGSDEAL'",
+    "condition": "hasSecondaryWingsDeal",
+    "applyFn": "applyFixed",
     "priority": 10,
     "source": "poster",
     "active": true
