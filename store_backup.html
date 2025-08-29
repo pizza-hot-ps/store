@@ -196,6 +196,47 @@
       document.getElementById("order-message").value = msg;
     }
   </script>
+const catalog = {
+  pizza: [
+    { name: "بيتزا دجاج", sizes: { XL: 65, L: 45, M: 33, S: 18 }, image: "chicken.png" },
+    { name: "بيتزا خضار", sizes: { XL: 50, L: 38, M: 20, S: 15 }, image: "veggie.png" },
+    { name: "بيتزا سلامي", sizes: { XL: 55, L: 40, M: 23, S: 16 }, image: "salami.png" },
+    { name: "بيتزا نقانق", sizes: { XL: 55, L: 40, M: 23, S: 16 }, image: "sausage.png" },
+    { name: "بيتزا تونة", sizes: { XL: 55, L: 40, M: 23, S: 16 }, image: "tuna.png" },
+    { name: "بيتزا مارجريتا", sizes: { XL: 50, L: 38, M: 20, S: 14 }, image: "margherita.png" },
+    { name: "كلزوني", sizes: { XL: 60, L: 40, M: 32, S: 17 }, image: "calzone.png" }
+  ],
+  sides: [
+    { name: "بطاطا صغير", price: 5, image: "fries-small.png" },
+    { name: "بطاطا كبير", price: 10, image: "fries-large.png" },
+    { name: "زنجر صغير", price: 13, image: "zinger-small.png" },
+    { name: "زنجر كبير", price: 25, image: "zinger-large.png" },
+    { name: "أجنحة جنان صغير", price: 13, image: "wings-small.png" },
+    { name: "أجنحة دجاج كبير", price: 24, image: "wings-large.png" }
+  ],
+  drinks: [
+    { name: "كولا", size: "330ml", price: 4, image: "cola.png" },
+    { name: "Haypi", size: "330ml", price: 2, image: "haypi.png" },
+    { name: "Blue", size: "330ml", price: 3, image: "blue.png" },
+    { name: "XL عادي", size: "330ml", price: 4, image: "xl.png" },
+    { name: "XL Red Label", size: "330ml", price: 5, image: "xl-red.png" },
+    { name: "كابي عنب", size: "330ml", price: 2, image: "kabi-grape.png" },
+    { name: "كابي تفاح", size: "330ml", price: 2, image: "kabi-apple.png" },
+    { name: "كابي برتقال", size: "330ml", price: 2, image: "kabi-orange.png" },
+    { name: "كابي خوخ", size: "330ml", price: 2, image: "kabi-peach.png" },
+    { name: "كابي مانجا", size: "330ml", price: 2, image: "kabi-mango.png" },
+    { name: "كابي استوائي", size: "330ml", price: 2, image: "kabi-tropical.png" },
+    { name: "كابي فراولة وموز", size: "330ml", price: 2, image: "kabi-strawberry-banana.png" },
+    { name: "عصير برتقال طبيعي", size: "كوب", price: 4, image: "orange.png" },
+    { name: "عصير جزر طبيعي", size: "كوب", price: 4, image: "carrot.png" },
+    { name: "موهيتو كلاسيك", size: "330ml", price: 5, image: "mojito-classic.png" },
+    { name: "موهيتو رمان", size: "1 لتر", price: 10, image: "mojito-pomegranate.png" },
+    { name: "كوكتيل كولا نعناع", size: "330ml", price: 5, image: "cola-mint.png" },
+    { name: "Rio Iced Coffee", size: "330ml", price: 4, image: "rio-coffee.png" },
+    { name: "مياه معدنية صغيرة", size: "330ml", price: 2, image: "water.png" },
+    { name: "مياه معدنية كبيرة", size: "1.25L", price: 3, image: "water.png" }
+  ]
+};
 
 </body>
 </html>
