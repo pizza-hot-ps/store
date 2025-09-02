@@ -5,222 +5,190 @@
   <title>PIZZA HOT – الطلب الرمزي</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: url("assets/images/wood_leaf_bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      font-size: 1.1rem;
-    }
-    header {
-      text-align: center;
-      padding: 16px;
-      background: rgba(0,0,0,0.85);
-      border-bottom: 1px solid #444;
-    }
-    header img {
-      height: 60px;
-    }
-    h1 {
-      font-size: 2rem;
-      color: #ffd700;
-      margin: 30px 0 10px;
-    }
-    .catalog-section {
-      padding: 20px;
-      margin-bottom: 40px;
-    }
-    .catalog-section h2 {
-      text-align: center;
-      color: #ffd700;
-      margin-bottom: 20px;
-    }
-    .catalog-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .product-frame {
-      background: rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 16px;
-      margin: 20px auto;
-      max-width: 600px;
-      position: relative;
-      transition: box-shadow 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .product-frame:hover {
-      box-shadow: 0 0 12px rgba(255,215,0,0.5);
-    }
-    .top-button {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: #ffd700;
-      border: none;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .card-wrapper {
-      display: flex;
-      gap: 12px;
-    }
-    .card {
-      width: 60%;
-      perspective: 1000px;
-    }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 360px;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-    .card.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(8px);
-      border-radius: 12px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .card-front img, .card-back img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    .card-back {
-      transform: rotateY(180deg);
-      align-items: center;
-      text-align: center;
-    }
-    .card-front select, .card-front input, .card-front textarea {
-      margin: 6px 0;
-      padding: 6px;
-      font-size: 0.95rem;
-      border-radius: 6px;
-      border: none;
-      font-family: 'Tajawal', sans-serif;
-    }
-    .card-front textarea {
-      resize: none;
-      height: 40px;
-    }
-    .card-front button {
-      margin-top: 8px;
-      padding: 6px 12px;
-      background-color: #ffd700;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .side-summary {
-      width: 40%;
-      background: rgba(0,0,0,0.3);
-      border-radius: 12px;
-      padding: 12px;
-      color: #fff;
-      font-size: 0.95rem;
-    }
-    .summary-title {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .summary-content {
-      white-space: pre-line;
-      margin-bottom: 10px;
-    }
-    .side-summary button {
-      padding: 6px 12px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .item-name {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #ffd700;
-      text-align: center;
-      margin-bottom: 8px;
-      background: rgba(0,0,0,0.4);
-      padding: 6px;
-      border-radius: 8px;
-    }
-    .product-note {
-      margin-top: 16px;
-      font-size: 1.1rem;
-      color: #ffd700;
-      text-align: center;
-      background: rgba(0,0,0,0.3);
-      padding: 10px;
-      border-radius: 8px;
-    }
-    .action-buttons {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-    }
-    .action-buttons button {
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-    }
-    .action-buttons button:first-child {
-      background: #ffd700;
-      color: #000;
-    }
-    .action-buttons button:last-child {
-      background: #eee;
-      color: #333;
-    }
-  </style>
 </head>
-<body>
-  <header>
-    <img src="assets/images/logo.png" alt="PIZZA HOT Logo">
-    <h1>🍕 PIZZA HOT – اختر طلبك الرمزي</h1>
-  </header>
+<body style="margin:0;font-family:'Tajawal',sans-serif;background:url('assets/images/wood_leaf_bg.jpg') no-repeat center center fixed;background-size:cover;color:#fff;font-size:1.1rem;overflow-x:hidden">
 
-  <div class="catalog-section">
-    <h2>🍕 قسم البيتزا</h2>
-    <div id="pizza-container" class="catalog-container"></div>
-  </div>
+<header style="text-align:center;padding:20px;background:rgba(0,0,0,0.85);border-bottom:1px solid #444">
+  <img src="assets/images/logo.png" alt="PIZZA HOT Logo" style="height:60px;margin-bottom:10px">
+  <h1 style="font-size:2rem;color:#ffd700;margin:0">🍕 PIZZA HOT – اختر طلبك الرمزي</h1>
+</header>
 
-  <div class="catalog-section">
-    <h2>🍟 قسم الجوانب</h2>
-    <div id="sides-container" class="catalog-container"></div>
-  </div>
+<!-- ✅ أقسام المنتجات -->
+<div class="section" style="padding:30px 20px;margin-bottom:40px">
+  <h2 style="text-align:center;color:#ffd700;margin-bottom:20px;font-size:1.6rem;border-bottom:1px solid #444;padding-bottom:6px">🍕 قسم البيتزا</h2>
+  <div id="pizza-container" class="container" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px"></div>
+</div>
 
-  <div class="catalog-section">
-    <h2>🥤 قسم المشروبات</h2>
-    <div id="drinks-container" class="catalog-container"></div>
-  </div>
+<div class="section" style="padding:30px 20px;margin-bottom:40px">
+  <h2 style="text-align:center;color:#ffd700;margin-bottom:20px;font-size:1.6rem;border-bottom:1px solid #444;padding-bottom:6px">🍟 قسم الجوانب</h2>
+  <div id="sides-container" class="container" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px"></div>
+</div>
+
+<div class="section" style="padding:30px 20px;margin-bottom:40px">
+  <h2 style="text-align:center;color:#ffd700;margin-bottom:20px;font-size:1.6rem;border-bottom:1px solid #444;padding-bottom:6px">🥤 قسم المشروبات</h2>
+  <div id="drinks-container" class="container" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px"></div>
+</div>
+
+<div class="section" style="padding:30px 20px;margin-bottom:40px">
+  <h2 style="text-align:center;color:#ffd700;margin-bottom:20px;font-size:1.6rem;border-bottom:1px solid #444;padding-bottom:6px">🍰 قسم الحلويات</h2>
+  <div id="desserts-container" class="container" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px"></div>
+</div>
+<style>
+.product-frame {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px auto;
+  max-width: 600px;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.product-frame:hover {
+  box-shadow: 0 0 12px rgba(255,215,0,0.5);
+}
+
+.card-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.card {
+  width: 60%;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  align-items: center;
+  text-align: center;
+}
+
+.card-front img, .card-back img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.4);
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.card-front select, .card-front input, .card-front textarea {
+  margin: 6px 0;
+  padding: 6px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: none;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.card-front textarea {
+  resize: none;
+  height: 40px;
+}
+
+.card-front button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.top-button {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ffd700;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.side-summary {
+  width: 40%;
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.summary-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.summary-content {
+  white-space: pre-line;
+  margin-bottom: 10px;
+}
+
+.side-summary button {
+  padding: 6px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.product-note {
+  margin-top: 16px;
+  font-size: 1.1rem;
+  color: #ffd700;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  padding: 10px;
+  border-radius: 8px;
+}
+</style>
 <script>
+// ✅ الكتالوج الرمزي الداخلي (مطابق لـ catalog.json)
 const catalog = {
   pizza: [
     { name: "بيتزا دجاج", sizes: { S: 18, M: 33, L: 45, XL: 65 }, image: "chicken.png", type: "pizza" },
@@ -233,18 +201,12 @@ const catalog = {
   ],
   sides: [
     { name: "بطاطا", sizes: { صغير: 5, كبير: 10 }, image: "fries.png", type: "side" },
-    { name: "زنجر", sizes: { صغير: 12, كبير: 25 }, image: "zinger.png", type: "spicy" },
-    { name: "كريسبي", sizes: { صغير: 12, كبير: 25 }, image: "crispy.png", type: "spicy" }
+    { name: "زنجر", sizes: { صغير: 12, كبير: 25 }, image: "zinger.png", type: "spicy" }
   ],
   drinks: [
-    {
-      name: "كابي",
-      flavors: ["عنب", "تفاح", "برتقال", "جريب فروت", "خوخ", "استوائي", "مانجا", "ليمون", "ليمون ونعنع"],
-      sizes: { صغير: 2, كبير: 6 },
-      image: "kabi.png",
-      type: "flavored"
-    },
-    { name: "بلو", flavors: ["توت أزرق"], sizes: { صغير: 3 }, image: "blue.png", type: "flavored" },
+    { name: "كابي", flavors: ["عنب", "تفاح", "برتقال", "جريب فروت", "خوخ", "استوائي", "مانجو"], sizes: { صغير: 2, كبير: 6 }, image: "kabi.png", type: "flavored" },
+    { name: "هايبي", sizes: { صغير: 2 }, image: "haypi.png", type: "drink" },
+    { name: "بلو", sizes: { صغير: 3 }, image: "blue.png", type: "drink" },
     { name: "لايون", sizes: { صغير: 1 }, image: "lion.png", type: "drink" },
     { name: "كوكا كولا بلاستيك", sizes: { صغير: 1 }, image: "coca-small.png", type: "drink" },
     { name: "سبرايت بلاستيك", sizes: { صغير: 1 }, image: "sprite-small.png", type: "drink" },
@@ -252,38 +214,25 @@ const catalog = {
     { name: "كوكا كولا زيرو", sizes: { صغير: 2, "1.25 لتر": 4, "2 لتر": 6 }, image: "coca-zero.png", type: "drink" },
     { name: "كوكا كولا", sizes: { "1.25 لتر": 4, "2 لتر": 6 }, image: "coca.png", type: "drink" },
     { name: "سبرايت", sizes: { "1.25 لتر": 4, "2 لتر": 6 }, image: "sprite.png", type: "drink" },
-    {
-      name: "XL",
-      flavors: ["عادي", "Red Label"],
-      sizes: { "عادي": 4, "Red Label": 5 },
-      image: "xl.png",
-      type: "flavor-priced"
-    },
+    { name: "XL", flavors: ["عادي", "Red Label"], sizes: { عادي: 4, "Red Label": 5 }, image: "xl.png", type: "flavor-priced" },
     { name: "مياه معدنية", sizes: { صغير: 2, كبير: 3 }, image: "water.png", type: "drink" },
     { name: "قهوة باردة – ريو", sizes: { صغير: 4 }, image: "rio-coffee.png", type: "drink" }
-  ]
+  ],
+  desserts: [] // يمكن إضافة الحلويات لاحقًا
 };
-
-function renderAll() {
-  catalog.pizza.forEach(item => renderProductFrame(item, "pizza-container"));
-  catalog.sides.forEach(item => renderProductFrame(item, "sides-container"));
-  catalog.drinks.forEach(item => renderProductFrame(item, "drinks-container"));
-}
 </script>
 <script>
-function renderProductFrame(item, containerId) {
+function renderAll() {
+  catalog.pizza.forEach(item => renderProductCard(item, "pizza-container"));
+  catalog.sides.forEach(item => renderProductCard(item, "sides-container"));
+  catalog.drinks.forEach(item => renderProductCard(item, "drinks-container"));
+  catalog.desserts.forEach(item => renderProductCard(item, "desserts-container"));
+}
+
+function renderProductCard(item, containerId) {
   const container = document.getElementById(containerId);
   const frame = document.createElement("div");
   frame.className = "product-frame";
-
-  const topBtn = document.createElement("button");
-  topBtn.className = "top-button";
-  topBtn.textContent = "⟳";
-  topBtn.onclick = e => {
-    e.stopPropagation();
-    card.classList.toggle("flipped");
-  };
-  frame.appendChild(topBtn);
 
   const wrapper = document.createElement("div");
   wrapper.className = "card-wrapper";
@@ -297,52 +246,26 @@ function renderProductFrame(item, containerId) {
   const front = document.createElement("div");
   front.className = "card-front";
 
-  // اسم المنتج
+  const flipBtn = document.createElement("button");
+  flipBtn.className = "top-button";
+  flipBtn.textContent = "⟳";
+  flipBtn.onclick = () => card.classList.toggle("flipped");
+  front.appendChild(flipBtn);
+
   const nameDiv = document.createElement("div");
   nameDiv.className = "item-name";
   nameDiv.textContent = `🍽️ ${item.name}`;
   front.appendChild(nameDiv);
 
-  // الصورة
   const img = document.createElement("img");
   img.src = `assets/images/${item.image}`;
   img.alt = item.name;
   front.appendChild(img);
 
-  // الحجم أو النكهة التي تحدد السعر
   let price = 0;
-  if (item.type === "flavor-priced") {
-    const flavorSelect = document.createElement("select");
-    flavorSelect.className = "flavor";
-    Object.entries(item.sizes).forEach(([label, val]) => {
-      const opt = document.createElement("option");
-      opt.value = label;
-      opt.textContent = `${label} – ${val}₪`;
-      flavorSelect.appendChild(opt);
-    });
-    front.appendChild(flavorSelect);
-  } else {
-    const sizeSelect = document.createElement("select");
-    sizeSelect.className = "size";
-    Object.entries(item.sizes).forEach(([label, val]) => {
-      const opt = document.createElement("option");
-      opt.value = val;
-      opt.textContent = `${label} – ${val}₪`;
-      sizeSelect.appendChild(opt);
-    });
-    front.appendChild(sizeSelect);
-  }
 
-  // الكمية
-  const qtyInput = document.createElement("input");
-  qtyInput.className = "qty";
-  qtyInput.type = "number";
-  qtyInput.min = "1";
-  qtyInput.value = "1";
-  front.appendChild(qtyInput);
-
-  // النكهة (للمشروبات فقط)
-  if (item.type === "flavored") {
+  // النوع: flavored أو flavor-priced
+  if (item.type === "flavored" || item.type === "flavor-priced") {
     const flavorSelect = document.createElement("select");
     flavorSelect.className = "flavor";
     item.flavors.forEach(f => {
@@ -354,7 +277,36 @@ function renderProductFrame(item, containerId) {
     front.appendChild(flavorSelect);
   }
 
-  // التتبيلة (لزنجر وكريسبي فقط)
+  // النوع: pizza أو side أو drink أو flavored
+  if (item.sizes) {
+    const sizeSelect = document.createElement("select");
+    sizeSelect.className = "size";
+    Object.entries(item.sizes).forEach(([label, val]) => {
+      const opt = document.createElement("option");
+      opt.value = val;
+      opt.textContent = `${label} – ${val}₪`;
+      sizeSelect.appendChild(opt);
+    });
+    front.appendChild(sizeSelect);
+  }
+
+  // النوع: flavor-priced (السعر حسب النكهة مباشرة)
+  if (item.type === "flavor-priced") {
+    const flavorSelect = front.querySelector(".flavor");
+    flavorSelect.onchange = () => {
+      const selected = flavorSelect.value;
+      const priceValue = item.sizes[selected] || 0;
+      sizeSelect.innerHTML = `<option value="${priceValue}">${selected} – ${priceValue}₪</option>`;
+    };
+    const sizeSelect = document.createElement("select");
+    sizeSelect.className = "size";
+    const defaultFlavor = item.flavors[0];
+    const defaultPrice = item.sizes[defaultFlavor] || 0;
+    sizeSelect.innerHTML = `<option value="${defaultPrice}">${defaultFlavor} – ${defaultPrice}₪</option>`;
+    front.appendChild(sizeSelect);
+  }
+
+  // النوع: spicy → إضافة التتبيلة
   if (item.type === "spicy") {
     const spiceSelect = document.createElement("select");
     spiceSelect.className = "spice";
@@ -365,22 +317,25 @@ function renderProductFrame(item, containerId) {
     front.appendChild(spiceSelect);
   }
 
-  // الملاحظات (لكل الأصناف)
+  const qtyInput = document.createElement("input");
+  qtyInput.className = "qty";
+  qtyInput.type = "number";
+  qtyInput.min = "1";
+  qtyInput.value = "1";
+  front.appendChild(qtyInput);
+
   const noteArea = document.createElement("textarea");
   noteArea.className = "note";
   noteArea.placeholder = "📝 ملاحظاتك (اختياري)";
   front.appendChild(noteArea);
 
-  // زر الإضافة للسلة
   const addBtn = document.createElement("button");
   addBtn.textContent = "🛒 أضف إلى السلة";
-  addBtn.onclick = e => {
-    e.stopPropagation();
+  addBtn.onclick = () => {
     addToCart(addBtn, item.name);
   };
   front.appendChild(addBtn);
 
-  // الوجه الخلفي (اختياري)
   const back = document.createElement("div");
   back.className = "card-back";
   back.innerHTML = `
@@ -394,7 +349,6 @@ function renderProductFrame(item, containerId) {
   card.appendChild(inner);
   wrapper.appendChild(card);
 
-  // الصندوق الجانبي + زر الطلب المباشر
   const side = document.createElement("div");
   side.className = "side-summary";
   side.innerHTML = `
@@ -405,25 +359,16 @@ function renderProductFrame(item, containerId) {
   wrapper.appendChild(side);
   frame.appendChild(wrapper);
 
-  // النص الرمزي + الكبسات السفلية
   const note = document.createElement("div");
   note.className = "product-note";
   note.textContent = "🔧 يمكنك تخصيص طلبك حسب الحجم والملاحظات";
   frame.appendChild(note);
 
-  const actions = document.createElement("div");
-  actions.className = "action-buttons";
-  actions.innerHTML = `
-    <button onclick="addToCartFromFrame(this)">🛒 أضف إلى السلة</button>
-    <button onclick="alert('📄 عرض تفاصيل المنتج')">📄 عرض التفاصيل</button>
-  `;
-  frame.appendChild(actions);
-
   container.appendChild(frame);
 }
 </script>
 <script>
-const cart = [];
+let cart = [];
 
 function addToCart(btn, name) {
   const card = btn.closest(".card");
@@ -431,59 +376,22 @@ function addToCart(btn, name) {
 
   const size = card.querySelector(".size")?.selectedOptions[0]?.text || "";
   const price = +card.querySelector(".size")?.value || 0;
-  const flavorKey = card.querySelector(".flavor")?.value || "";
-  const flavorText = card.querySelector(".flavor")?.selectedOptions?.[0]?.text || flavorKey;
+  const flavor = card.querySelector(".flavor")?.value || "";
   const spice = card.querySelector(".spice")?.value || "";
   const qty = +card.querySelector(".qty")?.value || 1;
   const note = card.querySelector(".note")?.value.trim() || "";
 
-  // تحديث الصندوق الجانبي
   const summaryBox = frame.querySelector(".summary-content");
   let summaryText = `• ${name}\n`;
+  if (flavor) summaryText += `النكهة: ${flavor}\n`;
   if (size) summaryText += `الحجم: ${size}\n`;
-  if (flavorText) summaryText += `النكهة: ${flavorText}\n`;
   if (spice) summaryText += `التتبيلة: ${spice}\n`;
   summaryText += `الكمية: ${qty}\n`;
   if (note) summaryText += `📝 ملاحظة: ${note}`;
   summaryBox.textContent = summaryText;
 
-  // إضافة للسلة
-  cart.push({ name, size, flavor: flavorKey, spice, price, qty, note });
+  cart.push({ name, size, flavor, spice, price, qty, note });
   renderCart();
-}
-
-function addToCartFromFrame(btn) {
-  const frame = btn.closest(".product-frame");
-  const card = frame.querySelector(".card");
-  const name = frame.querySelector(".item-name")?.textContent || "";
-
-  const size = card.querySelector(".size")?.selectedOptions[0]?.text || "";
-  const price = +card.querySelector(".size")?.value || 0;
-  const flavorKey = card.querySelector(".flavor")?.value || "";
-  const spice = card.querySelector(".spice")?.value || "";
-  const qty = +card.querySelector(".qty")?.value || 1;
-  const note = card.querySelector(".note")?.value.trim() || "";
-
-  cart.push({ name, size, flavor: flavorKey, spice, price, qty, note });
-  renderCart();
-}
-
-function sendDirectFromSide(btn) {
-  const frame = btn.closest(".product-frame");
-  const card = frame.querySelector(".card");
-  const name = frame.querySelector(".item-name")?.textContent || "";
-
-  const size = card.querySelector(".size")?.selectedOptions[0]?.text || "";
-  const price = +card.querySelector(".size")?.value || 0;
-  const flavorKey = card.querySelector(".flavor")?.value || "";
-  const flavorText = card.querySelector(".flavor")?.selectedOptions?.[0]?.text || flavorKey;
-  const spice = card.querySelector(".spice")?.value || "";
-  const qty = +card.querySelector(".qty")?.value || 1;
-  const note = card.querySelector(".note")?.value.trim() || "";
-
-  let msg = `✔️ PIZZA HOT ✔️ الطلب:\n• ${name}${flavorText ? ` (${flavorText})` : ""} – ${size} – ${spice} × ${qty} = ${price * qty}₪`;
-  if (note) msg += `\n📝 ملاحظة: ${note}`;
-  window.open("https://wa.me/972569788731?text=" + encodeURIComponent(msg), "_blank");
 }
 
 function renderCart() {
@@ -501,7 +409,7 @@ function renderCart() {
 
   let sum = 0;
   Object.values(grouped).forEach(({ name, size, flavor, spice, price, qty }) => {
-    const label = `• ${name}${flavor ? ` (${flavor})` : ""} – ${size} – ${spice} × ${qty} = ${price * qty}₪`;
+    const label = `• ${name}${flavor ? ` (${flavor})` : ""} – ${size}${spice ? ` – ${spice}` : ""} × ${qty} = ${price * qty}₪`;
     const li = document.createElement("li");
     li.textContent = label;
     list.appendChild(li);
@@ -523,7 +431,7 @@ function generateMessage() {
 
   let msg = `🍕 PIZZA HOT – طلب جديد\n------------------\n📦 محتوى الطلب:\n`;
   Object.values(grouped).forEach(({ name, size, flavor, spice, price, qty, notes }) => {
-    msg += `• ${name}${flavor ? ` (${flavor})` : ""} – ${size} – ${spice} × ${qty} = ${price * qty}₪\n`;
+    msg += `• ${name}${flavor ? ` (${flavor})` : ""} – ${size}${spice ? ` – ${spice}` : ""} × ${qty} = ${price * qty}₪\n`;
     if (notes.length) {
       msg += `  📝 ملاحظات: ${notes.join(" / ")}\n`;
     }
@@ -542,18 +450,334 @@ function sendWhatsApp() {
   }
   window.open("https://wa.me/972569788731?text=" + encodeURIComponent(msg), "_blank");
 }
+
+function clearCart() {
+  cart = [];
+  renderCart();
+  document.getElementById("order-message").value = "";
+}
 </script>
-<div class="order-box" style="background:#fff;color:#000;border-radius:8px;padding:20px;max-width:600px;margin:40px auto;box-shadow:0 0 10px rgba(0,0,0,0.2)">
-  <h2>🛒 السلة</h2>
+<style>
+.cart-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #ffd700;
+  color: #000;
+  padding: 10px 14px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.order-box {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 340px;
+  height: 100%;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: left 0.3s ease;
+  z-index: 1001;
+  overflow-y: auto;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.order-box.active {
+  left: 0;
+}
+
+.order-box h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #d00;
+}
+
+.order-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+.order-box li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.order-box textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.order-box button {
+  margin-top: 8px;
+  width: 100%;
+  padding: 10px;
+  background: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+</style>
+
+<div class="cart-toggle" onclick="toggleCart()">🛒 السلة</div>
+
+<div class="order-box" id="mainCart">
+  <h2>✔️ طلبك الرمزي – PIZZA HOT</h2>
   <ul id="cart-list"></ul>
-  <p><strong>الإجمالي:</strong> <span id="cart-total">0</span>₪</p>
+  <p><strong>📦 الإجمالي:</strong> <span id="cart-total">0</span> شيكل</p>
   <button onclick="generateMessage()">📋 توليد الرسالة</button>
-  <button onclick="sendWhatsApp()">📤 إرسال الطلب عبر واتساب</button>
-  <textarea id="order-message" rows="6" style="width:100%;margin-top:10px;padding:10px;border-radius:6px;border:1px solid #ccc;font-family:'Tajawal',sans-serif"></textarea>
+  <button onclick="sendWhatsApp()">📤 تنفيذ الطلب عبر واتساب</button>
+  <button onclick="clearCart()">🧹 تفريغ السلة</button>
+  <button onclick="toggleCart()">🔙 عودة للقائمة</button>
+  <textarea id="order-message" rows="6"></textarea>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", renderAll);
+function toggleCart() {
+  document.getElementById("mainCart").classList.toggle("active");
+}
+</script>
+<style>
+.supermarket-box {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  margin: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.supermarket-box h2 {
+  text-align: center;
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+
+.supermarket-box input,
+.supermarket-box textarea {
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1rem;
+  background: #333;
+  color: #ffd700;
+}
+
+.supermarket-box button {
+  background: #ffd700;
+  color: #000;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.supermarket-box .note {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 10px;
+}
+</style>
+
+<div class="supermarket-box">
+  <h2>🛒 طلب من السوبر ماركت</h2>
+  <input type="text" id="superItem" placeholder="🧾 اسم الصنف المطلوب">
+  <textarea id="superNote" rows="3" placeholder="📝 تفاصيل إضافية (اختياري)"></textarea>
+  <button onclick="submitSuperRequest()">📤 إرسال الطلب الخارجي</button>
+  <div class="note">⚠️ سيتم تقدير تكلفة التوصيل حسب حالة الطلب.</div>
+</div>
+
+<script>
+function generateRequestId() {
+  const timestamp = Date.now();
+  const random = Math.floor(Math.random() * 1000);
+  return `REQ-${timestamp}-${random}`;
+}
+
+function saveSuperRequestLocally(requestId, item, note) {
+  const existing = JSON.parse(localStorage.getItem("pendingSuperOrders") || "[]");
+  existing.push({ id: requestId, item, note, timestamp: Date.now() });
+  localStorage.setItem("pendingSuperOrders", JSON.stringify(existing));
+}
+
+function submitSuperRequest() {
+  const item = document.getElementById("superItem").value.trim();
+  const note = document.getElementById("superNote").value.trim();
+  if (!item) {
+    alert("⚠️ الرجاء إدخال اسم الصنف المطلوب.");
+    return;
+  }
+
+  const requestId = generateRequestId();
+  saveSuperRequestLocally(requestId, item, note);
+
+  const hasCatalogItems = cart.length > 0;
+  let msg = `🛒 طلب خارجي من الزبون\n------------------\n✔️ رقم الطلب: ${requestId}\n📦 الصنف: ${item}\n`;
+  if (note) msg += `📝 ملاحظات: ${note}\n`;
+  msg += hasCatalogItems
+    ? `✅ الطلب مرفق مع منتجات من كتالوج PIZZA HOT – التوصيل مجاني.\n`
+    : `⚠️ الطلب منفصل – سيتم تقدير تكلفة التوصيل لاحقًا حسب الموقع.\n`;
+  msg += `📍 يرجى مراجعة صفحة المعالجة:\nprice.html?id=${requestId}`;
+
+  window.open("https://wa.me/972569788731?text=" + encodeURIComponent(msg), "_blank");
+  alert("✅ تم إرسال الطلب الخارجي بنجاح.");
+}
+</script>
+<style>
+.pending-orders-box {
+  background: #111;
+  color: #fff;
+  padding: 20px;
+  margin: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pending-orders-box h2 {
+  text-align: center;
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+
+.pending-orders-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pending-orders-box li {
+  background: #222;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 4px solid #ffd700;
+}
+
+.pending-orders-box .empty {
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+}
+
+.pending-orders-box a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.pending-orders-box a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<div class="pending-orders-box">
+  <h2>📂 الطلبات الخارجية غير المعالجة</h2>
+  <ul id="pending-orders-list"></ul>
+</div>
+
+<script>
+function loadPendingSuperOrders() {
+  const list = document.getElementById("pending-orders-list");
+  const orders = JSON.parse(localStorage.getItem("pendingSuperOrders") || "[]");
+  list.innerHTML = "";
+
+  if (!orders.length) {
+    const empty = document.createElement("li");
+    empty.className = "empty";
+    empty.textContent = "لا توجد طلبات خارجية غير معالجة حاليًا.";
+    list.appendChild(empty);
+    return;
+  }
+
+  orders.forEach(({ id, item, note, timestamp }) => {
+    const li = document.createElement("li");
+    const date = new Date(timestamp).toLocaleString("ar-EG");
+    li.innerHTML = `
+      <strong>✔️ رقم الطلب:</strong> ${id}<br>
+      <strong>📦 الصنف:</strong> ${item}<br>
+      ${note ? `<strong>📝 ملاحظات:</strong> ${note}<br>` : ""}
+      <strong>📅 التاريخ:</strong> ${date}<br>
+      <a href="price.html?id=${id}" target="_blank">🔗 معالجة السعر</a>
+    `;
+    list.appendChild(li);
+  });
+}
+</script>
+<style>
+footer {
+  background: #000;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+  border-top: 1px solid #444;
+  margin-top: 60px;
+}
+
+footer a {
+  color: #ffd700;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-logo {
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.footer-note {
+  font-style: italic;
+  color: #999;
+  margin-top: 10px;
+}
+</style>
+
+<footer>
+  <img src="assets/images/logo.png" alt="PIZZA HOT Logo" class="footer-logo">
+  <div>💡 مشروع رمزي ضمن شبكة <strong>SolvaGrid</strong></div>
+  <div>
+    <a href="https://github.com/pizza-hot-ps">GitHub</a> |
+    <a href="https://solvanix.github.io/urban_symbolic_city">الموقع الرمزي</a> |
+    <a href="mailto:eng.ali.khateb@gmail.com">📧 تواصل معنا</a>
+  </div>
+  <div class="footer-note">جميع الطلبات تُدار ضمن بيئة تشغيل رمزية قابلة للتكرار – نسخة احتياطية تجريبية</div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  renderAll();              // توليد البطاقات حسب الكتالوج
+  loadPendingSuperOrders(); // تحميل الطلبات الخارجية من localStorage
+});
 </script>
 </body>
 </html>
