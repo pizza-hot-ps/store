@@ -109,7 +109,8 @@
   border-radius: 8px;
 }
 
-.card-front select, .card-front input, .card-front textarea {
+.card-front select, .card-front input, .card-front textarea,
+.card-back select, .card-back input, .card-back textarea {
   margin: 6px 0;
   padding: 6px;
   font-size: 0.95rem;
@@ -118,12 +119,12 @@
   font-family: 'Tajawal', sans-serif;
 }
 
-.card-front textarea {
+.card-front textarea, .card-back textarea {
   resize: none;
   height: 40px;
 }
 
-.card-front button {
+.card-front button, .card-back button {
   margin-top: 8px;
   padding: 6px 12px;
   background-color: #ffd700;
@@ -246,11 +247,11 @@ function renderProductCard(item, containerId) {
   const front = document.createElement("div");
   front.className = "card-front";
 
-  const flipBtn = document.createElement("button");
-  flipBtn.className = "top-button";
-  flipBtn.textContent = "⟳";
-  flipBtn.onclick = () => card.classList.toggle("flipped");
-  front.appendChild(flipBtn);
+  const flipBtnFront = document.createElement("button");
+  flipBtnFront.className = "top-button";
+  flipBtnFront.textContent = "⟳";
+  flipBtnFront.onclick = () => card.classList.toggle("flipped");
+  front.appendChild(flipBtnFront);
 
   const nameDiv = document.createElement("div");
   nameDiv.className = "item-name";
@@ -262,9 +263,7 @@ function renderProductCard(item, containerId) {
   img.alt = item.name;
   front.appendChild(img);
 
-  let price = 0;
-
-  // النوع: flavored أو flavor-priced
+  // النكهات
   if (item.type === "flavored" || item.type === "flavor-priced") {
     const flavorSelect = document.createElement("select");
     flavorSelect.className = "flavor";
@@ -277,7 +276,7 @@ function renderProductCard(item, containerId) {
     front.appendChild(flavorSelect);
   }
 
-  // النوع: pizza أو side أو drink أو flavored
+  // الأحجام
   if (item.sizes) {
     const sizeSelect = document.createElement("select");
     sizeSelect.className = "size";
@@ -290,23 +289,21 @@ function renderProductCard(item, containerId) {
     front.appendChild(sizeSelect);
   }
 
-  // النوع: flavor-priced (السعر حسب النكهة مباشرة)
+  // النوع الخاص بـ XL
   if (item.type === "flavor-priced") {
     const flavorSelect = front.querySelector(".flavor");
+    const sizeSelect = front.querySelector(".size");
     flavorSelect.onchange = () => {
       const selected = flavorSelect.value;
       const priceValue = item.sizes[selected] || 0;
       sizeSelect.innerHTML = `<option value="${priceValue}">${selected} – ${priceValue}₪</option>`;
     };
-    const sizeSelect = document.createElement("select");
-    sizeSelect.className = "size";
     const defaultFlavor = item.flavors[0];
     const defaultPrice = item.sizes[defaultFlavor] || 0;
     sizeSelect.innerHTML = `<option value="${defaultPrice}">${defaultFlavor} – ${defaultPrice}₪</option>`;
-    front.appendChild(sizeSelect);
   }
 
-  // النوع: spicy → إضافة التتبيلة
+  // التتبيلة
   if (item.type === "spicy") {
     const spiceSelect = document.createElement("select");
     spiceSelect.className = "spice";
@@ -339,6 +336,7 @@ function renderProductCard(item, containerId) {
   const back = document.createElement("div");
   back.className = "card-back";
   back.innerHTML = `
+    <button class="top-button" onclick="event.stopPropagation(); this.closest('.card').classList.toggle('flipped')">⟳</button>
     <img src="assets/images/${item.image}" alt="عرض ${item.name}">
     <button onclick="event.stopPropagation(); alert('📄 عرض تفاصيل المنتج لاحقًا')">📄 عرض التفاصيل</button>
     <button onclick="event.stopPropagation(); alert('🎁 عرض خاص لهذا الصنف')">🎁 عرض مرتبط</button>
@@ -455,6 +453,23 @@ function clearCart() {
   cart = [];
   renderCart();
   document.getElementById("order-message").value = "";
+}
+
+function sendDirectFromSide(btn) {
+  const frame = btn.closest(".product-frame");
+  const card = frame.querySelector(".card");
+  const name = frame.querySelector(".item-name")?.textContent || "";
+
+  const size = card.querySelector(".size")?.selectedOptions[0]?.text || "";
+  const price = +card.querySelector(".size")?.value || 0;
+  const flavor = card.querySelector(".flavor")?.value || "";
+  const spice = card.querySelector(".spice")?.value || "";
+  const qty = +card.querySelector(".qty")?.value || 1;
+  const note = card.querySelector(".note")?.value.trim() || "";
+
+  let msg = `✔️ PIZZA HOT ✔️ الطلب:\n• ${name}${flavor ? ` (${flavor})` : ""} – ${size}${spice ? ` – ${spice}` : ""} × ${qty} = ${price * qty}₪`;
+  if (note) msg += `\n📝 ملاحظة: ${note}`;
+  window.open("https://wa.me/972569788731?text=" + encodeURIComponent(msg), "_blank");
 }
 </script>
 <style>
